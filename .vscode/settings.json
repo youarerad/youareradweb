@@ -1,0 +1,18 @@
+{
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "addMissingImports": true
+  },
+
+  "css.validate": false,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.validate": true,
+
+  "prettier.configPath": ".prettierrc"
+}
