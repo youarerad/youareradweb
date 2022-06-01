@@ -1,0 +1,6 @@
+User-agent: Googlebot
+Disallow: /air/*
+User-agent: *
+Allow: /
+
+Sitemap: https://www.youarerad.org/sitemap.xml

@@ -4,9 +4,16 @@ import { withTRPC } from '@trpc/next'
 import { AppRouter } from './api/trpc/[trpc]'
 import { loggerLink } from '@trpc/client/links/loggerLink'
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink'
+import PageLayout from '@layouts/PageLayout'
+import DefaultSEO from '@components/SEO/DefaultSEO'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <PageLayout>
+      <DefaultSEO />
+      <Component {...pageProps} />
+    </PageLayout>
+  )
 }
 
 export default withTRPC<AppRouter>({

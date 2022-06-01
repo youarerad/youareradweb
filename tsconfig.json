@@ -20,6 +20,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/utils/hooks/*"],
+      "@data/*": ["src/data/*"],
       "@libs/*": ["src/libs/*"]
     }
   },

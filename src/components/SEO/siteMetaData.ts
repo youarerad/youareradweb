@@ -1,0 +1,25 @@
+export const siteMetaData = {
+  pathPrefix: '/',
+  keywords: ['mental health, wellness, nonprofit, charity, gaming, esports'],
+  title: 'Rise Above The Disorder',
+  titleAlt: 'YouAreRAD',
+  description:
+    'Rise Above The Disorder, RAD, is a non-profit covering the cost of mental health care for people all over the world. Founded as a World of Warcraft guild in 2012, RAD has since helped over 39,000 people across 134 countries receive free mental health care.',
+  url: 'https://youarerad.org/',
+  siteUrl: 'https://youarerad.org/',
+  siteLanguage: 'en-US',
+  logo: 'https://youarerad.org/RAD.webp',
+  image: 'https://youarerad.org/RADSeo.webp',
+  favicon: '/favicons/favicon.ico',
+  shortName: 'RAD',
+  themeColor: '#000000',
+  backgroundColor: '#ffffff',
+  twitterDesc:
+    'Rise Above The Disorder, RAD, is a non-profit covering the cost of mental health care for people all over the world.',
+  twitter: '@youarerad',
+  twitter_logo: 'https://youarerad.org/RAD.webp',
+  linkedin: 'https://www.linkedin.com/in/youarerad/',
+  linkedin_logo: 'https://youarerad.org/RAD.webp',
+  locale: 'en-US',
+  ogLanguage: 'en_US',
+}

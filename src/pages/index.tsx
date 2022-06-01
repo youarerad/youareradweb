@@ -1,9 +1,169 @@
+import Link from 'next/link'
+import Image from 'next/image'
 import type { NextPage } from 'next'
+import StyledLink from '@components/StyledLink'
+import SectionGrid from '@layouts/SectionGrid'
+import SectionHighlight from '@utils/SectionHighlight'
+import dynamic from 'next/dynamic'
+import { twitterFundraiserData, twitterTestimonialData } from '@components/Tweet/TweetData'
+import { waysToSupport } from '@data/WaysToSupport'
+
+const PrimaryButton = dynamic(() => import('@components/PrimaryButton'), { ssr: false })
+const LazyVideo = dynamic(() => import('@components/VideoPlayer'))
+const Tweet = dynamic(() => import('@components/Tweet'))
 
 const Home: NextPage = () => {
   return (
     <div>
-      <div></div>
+      <section>
+        <header>
+          <h1>
+            Everyone deserves mental health care.{' '}
+            <span className="text-rad">We are the non-profit making that possible.</span>
+          </h1>
+        </header>
+        <Link href="/donate">
+          <div className="max-w-sm">
+            <PrimaryButton type="button" buttonText="Donate Therapy" />
+          </div>
+        </Link>
+      </section>
+
+      <section>
+        <header>
+          <h2>RAD is on a mission to make mental health care accessible to everyone, everywhere</h2>
+          <StyledLink href="/about">Learn more about RAD</StyledLink>
+        </header>
+        <SectionHighlight>
+          <SectionGrid>
+            <div className="space-y-2">
+              <h3>
+                RAD helps people find their perfect therapist{' '}
+                <span className="text-transparent bg-gradient-to-r from-red-light to-primary-light bg-clip-text">
+                  and start healing.
+                </span>
+              </h3>
+              <p>
+                Finding a therapist can be tough<span className="text-red">-</span> especially when
+                you&apos;re not feeling well. We&apos;ll work together to find a therapist and get
+                you feeling rad.
+              </p>
+            </div>
+            <LazyVideo src="https://res.cloudinary.com/df23ubjbb/video/upload/v1642035630/Starttherapy.mp4" />
+          </SectionGrid>
+        </SectionHighlight>
+        <SectionHighlight>
+          <SectionGrid>
+            <LazyVideo src="https://res.cloudinary.com/df23ubjbb/video/upload/v1630889981/RADHighlightTwo.mp4" />
+            <div className="order-first space-y-2">
+              <h3>
+                For those unable to afford mental health care{' '}
+                <span className="text-transparent bg-gradient-to-r from-red-light to-primary-light bg-clip-text">
+                  we cover the cost.
+                </span>
+              </h3>
+              <p>
+                Unlimited sessions with fully licensed and vetted mental health professionals,
+                practicing empirically researched therapy.
+                <span className="font-semibold"> Entirely funded by donations.</span>
+              </p>
+            </div>
+          </SectionGrid>
+        </SectionHighlight>
+      </section>
+
+      <section className="bg-black text-white rounded-xl relative flex px-4 sm:px-6 lg:px-8 overflow-hidden space-y-0 shadow-2xl">
+        <div className="absolute inset-0 flex justify-between">
+          <div className="w-1/2 bg-black/5"></div>
+          <div className="relative hidden w-1/3 sm:flex bg-sunset">
+            <Image
+              src="https://res.cloudinary.com/df23ubjbb/image/upload/v1648588376/Group_3321_akgpfr.webp"
+              alt="A cartoonish style image of the world."
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+        </div>
+        <div className="relative z-30 sm:w-2/3">
+          <h2 className="text-white">
+            Universal mental health care<span className="text-rad">.</span>
+          </h2>
+          <div className="mt-2 text-white max-w-prose">
+            <h3 className="font-medium text-white">
+              The best way to summarize RAD is simply,
+              <span className="italic">
+                {' '}
+                &quot;we are a universal mental health care system.&quot;
+              </span>{' '}
+              We help people regardless of health insurance or budget, because everyone deserves
+              mental health care.
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 gap-10 mt-20 sm:grid-cols-2">
+            <h3 className="font-medium text-transparent bg-gradient-to-br from-secondary to-green-light bg-clip-text">
+              39k people helped
+            </h3>
+            <h3 className="font-medium text-transparent rounded-xl bg-gradient-to-br from-secondary to-green-light bg-clip-text">
+              134 countries reached
+            </h3>
+            <h3 className="font-medium text-transparent rounded-xl bg-gradient-to-br from-secondary to-green-light bg-clip-text">
+              97% success rate
+            </h3>
+            <h3 className="font-medium text-transparent rounded-xl bg-gradient-to-br from-secondary to-green-light bg-clip-text">
+              $10m total spent
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <div className="sticky z-10 block py-10 text-center bg-white -top-1">
+          <header>
+            <h2>You can be the reason someone starts therapy</h2>
+            <StyledLink href="/stream">Create a live stream fundraiser</StyledLink>
+          </header>
+        </div>
+        <div className="z-0 max-w-xl mx-auto space-y-20">
+          <Tweet TwitterPostData={twitterFundraiserData} />
+        </div>
+      </section>
+
+      <section>
+        <header>
+          <h2>More ways to support Rise Above The Disorder</h2>
+        </header>
+        <div className="grid grid-cols-1 gap-10 mx-auto sm:grid-cols-3">
+          {waysToSupport.map((options) => (
+            <Link key={options.link} href={options.link} passHref>
+              <a className="relative mx-auto overflow-hidden transition-all duration-300 flex group rounded-xl">
+                <Image
+                  className="z-10 transition-all duration-300 scale-100 group-hover:scale-105 group-focus:scale-105"
+                  height="240"
+                  width="320"
+                  objectFit="cover"
+                  alt="support rad"
+                  src={options.bgImage}
+                />
+                <h3 className="absolute left-0 z-30 flex items-center justify-center w-full h-20 font-bold text-center text-white bg-black bg-opacity-80 bottom-2">
+                  {options.linktext}
+                </h3>
+              </a>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-10">
+        <div className="sticky z-10 block text-center bg-white -top-1 py-10">
+          <header>
+            <h2>Whenever you&apos;re ready, we&apos;re here to help.</h2>
+            <StyledLink href="/stream">Learn more about therapy with RAD</StyledLink>
+          </header>
+        </div>
+        <div className="z-0 max-w-xl mx-auto space-y-20">
+          <Tweet TwitterPostData={twitterTestimonialData} />
+        </div>
+      </section>
     </div>
   )
 }
