@@ -13,7 +13,7 @@ import {
 
 export const contactRouter = trpc
   .router()
-  .mutation('createContactFormSubmit', {
+  .mutation('create-contact-general', {
     input: z.object({
       name: z.string(),
       email: z.string(),
@@ -24,7 +24,7 @@ export const contactRouter = trpc
       return await createContactForm(input.name, input.email, input.department, input.message)
     },
   })
-  .mutation('createPartnerFormSubmit', {
+  .mutation('create-contact-partner', {
     input: z.object({
       name: z.string(),
       email: z.string(),
@@ -35,7 +35,7 @@ export const contactRouter = trpc
       return await createPartnerForm(input.name, input.email, input.company, input.message)
     },
   })
-  .mutation('createVolunteerFormSubmit', {
+  .mutation('create-contact-volunteer', {
     input: z.object({
       name: z.string(),
       email: z.string(),
@@ -53,7 +53,7 @@ export const contactRouter = trpc
       )
     },
   })
-  .mutation('createNewsletterFormSubmit', {
+  .mutation('create-contact-newsletter', {
     input: z.object({
       email: z.string(),
     }),
@@ -61,7 +61,7 @@ export const contactRouter = trpc
       return await createNewsletterForm(input.email)
     },
   })
-  .mutation('createOneTimeDonorContactSubmit', {
+  .mutation('create-contact-oncedonor', {
     input: z.object({
       name: z.string(),
       email: z.string(),
@@ -77,7 +77,7 @@ export const contactRouter = trpc
       )
     },
   })
-  .mutation('createMonthlyDonorContactSubmit', {
+  .mutation('create-contact-monthlydonor', {
     input: z.object({
       name: z.string(),
       email: z.string(),
