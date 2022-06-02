@@ -19,7 +19,7 @@ export default function TweetShare({ userHandle, tweetId }: TweetShareMenuProps)
         <>
           <Menu.Button className="group relative focus:fill-[#1d9bf0] focus:bg-[#1d9bf0]/20 outline-[#1d9bf0]/40">
             <span className="group-hover:fill-[#1d9bf0]">
-              <div className="absolute w-8 h-8 -right-[6px] -top-1  -z-10  rounded-full transition-all duration-300 group-hover:bg-[#1d9bf0]/20 " />
+              <div className="absolute w-8 h-8 -right-[6px] -top-0  -z-10  rounded-full transition-all duration-300 group-hover:bg-[#1d9bf0]/20 " />
               <TwitterShare />
             </span>
           </Menu.Button>
