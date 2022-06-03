@@ -1,3 +1,5 @@
+/* TweetData contains all of the tweets we will be displaying on the home page. The naming of each variable here must be exact to what the Tweet component expects. */
+
 export const twitterFundraiserData = [
   {
     tweetId: '1393354511662653440',

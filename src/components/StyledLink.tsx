@@ -1,6 +1,8 @@
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import Link from 'next/link'
 
+/* StyledLink is our take on GitHub's homepage links. They provide fairly clear indication that they are interactive, with simple animation to show when they're engaged. These links are entirely for internal linking, often only being used to guide visitors to an endpoint. */
+
 const arrowAnimation = {
   initial: {
     scale: 1,

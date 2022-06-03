@@ -2,6 +2,8 @@ import { LazyMotion, domAnimation, m } from 'framer-motion'
 import Image from 'next/image'
 import React from 'react'
 
+/* PrimaryButton contains a great deal of animations, all of which aid in drawing attention to our call to actions. This button is used for things like donating, sending forms, and otherwise exists at the end point of where we want someone to interact. In previous version of this button, the animation was all done with a lottie file; however, it meant any interaction or changes needed to be made to the animation required a great deal of effort. Here, each part of the animation is independently animated and open to adjustment. */
+
 interface PrimaryButtonProps {
   buttonText: string
   type: 'button' | 'submit'

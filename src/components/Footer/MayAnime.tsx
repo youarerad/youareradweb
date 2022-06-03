@@ -2,6 +2,8 @@ import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 import Image from 'next/image'
 
+/*MayAnime contains an animated version of our mascot, May. Each year we work with Mercedes Bazan to craft a new theme for May that reflects the most common mental health issue treated at RAD. In the future, I'd like to break down various aspects of May to paralax or independently animate. */
+
 export default function May() {
   return (
     <LazyMotion features={domAnimation}>

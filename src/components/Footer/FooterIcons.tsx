@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 
+/* FooterIcons may need a rename at some point to be more specific, as there are social media icons displayed in the footer that are not contained here. This file contains both Twitch & Discord icons, which were animated for fun to bring a small easter egg to the site. For further performance efforts, the motion.svg's could be convereted to LazyMotion wrapping m.svg. */
+
 export function TwitchIcon() {
   return (
     <motion.svg

@@ -2,6 +2,8 @@ import { DefaultSeo } from 'next-seo'
 import { siteMetaData } from './siteMetaData'
 import { useRouter } from 'next/router'
 
+/* DefaultSEO contains a modular component that emebeds information in Next/Head. We import this directly into _app.tsx, which should allow for all of the meta data to be shared across each page. I believe there may be a lot of redundancies, especially in the way of combining it with the PageSEO.tsx component in the SEO folder. It's worth exploring further what additional meta date is worth adding to this; as well as, exploring deeper how it interacts with PageSEO.tsx. */
+
 interface DefaultSEOProps {
   title?: string
   description?: string

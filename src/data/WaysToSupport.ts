@@ -1,3 +1,5 @@
+/* */
+
 export const waysToSupport = [
   {
     linktext: 'Online Community',

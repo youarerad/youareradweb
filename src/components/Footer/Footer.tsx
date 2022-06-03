@@ -6,6 +6,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Pages } from '@data/PageLinks'
 import { DiscordIcon, TwitchIcon } from './FooterIcons'
+
+/* Footer is the combination of components within the Footer folder. Although some folders export an index.ts, in this use-case it seems acceptable to see the collective Footer component. There are several unique pieces to the Footer all with the intended goal of performance: Next/Dynamic, useIsVisable, and LazyMotion (contained in MayAnime.tsx). It's worth having a more senior hand test the actual impact of these efforts, but the general thinking is that the MayAnmie.tsx is a fairly heavy file to load and we want to do so only when needed. */
+
 const LazyMayAnmie = dynamic(() => import('./MayAnime'), { ssr: false })
 
 export default function Footer() {

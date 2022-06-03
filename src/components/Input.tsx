@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import classNames from '@utils/classNames'
 import { useField } from '@unform/core'
 
+/* Input is a polymorphic component designed to work directly with our unform forms. We've explored several approaches to input and form components, with this approach both being the result of that exploration and simply not wanting to spend more time optimizing. With this current approach, the Input and its state are all managed by unform. Styling here may be better with a module.css approach, especially as much of the styling is the same.  */
+
 interface Props {
   name: string
   label?: string

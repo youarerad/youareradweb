@@ -1,3 +1,5 @@
+/* siteMetaData holds all of our default SEO strings. They will be added to every page via the DefaultSEO.tsx file. It may be worth exploring adding additional information here, such as our total social media sites/links/or even strings for social media logos. */
+
 export const siteMetaData = {
   pathPrefix: '/',
   keywords: ['mental health, wellness, nonprofit, charity, gaming, esports'],

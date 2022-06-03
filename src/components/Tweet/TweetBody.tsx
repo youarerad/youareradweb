@@ -2,7 +2,7 @@ import Image from 'next/image'
 import TweetFooter from './TweetFooter'
 import * as Icons from './TweetIcons'
 
-/* TweetBody is the main exported function for the collective Tweet function. It contains all sections of a Twitter post, leaving us with a template that can be filled to emulate the full function of a Twitter post.*/
+/* TweetBody is the main exported function for the collective Tweet function. It contains all sections of a Twitter post, leaving us with a template that can be filled to emulate the full function of a Twitter post. In the future, we'd love to imporve the TweetBody by parsing through the actual tweetBody data and being able to hyper link where @youarerad is tagged. */
 
 interface TweetBodyTypes {
   userProfileImage: string
