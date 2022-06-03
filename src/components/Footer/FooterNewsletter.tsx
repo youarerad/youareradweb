@@ -1,74 +1,63 @@
-import { z } from 'zod'
-import { SubmitHandler, useForm, RefCallBack } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '@components/Input'
+import { useRef, useState } from 'react'
+import { SubmitHandler, FormHandles } from '@unform/core'
+import { Form } from '@unform/web'
+import { z } from 'zod'
 import { trpc } from '@libs/trpc'
-import { useState } from 'react'
 
-/* FooterNewsletter contains the Newsletter form and a fairly overkill approach to handling form data. In previous version of the site, a simple method (detailed below) was used; however, validation and typesaftey were overlooked. In this version, react-hook-form helps with built-in focus management, while zod requires each step of the form to maintain strict typesafety. Additionally, we're taking advantage of aria-invalid and role="alert" to provide a more accessible message to the user. 
+/* FooterNewsletter is an absolutely overkill approach to gathering the most basic data. The thought process here is to be as strict as possible when it comes to validating the data entering our database, while providing clear client-side information regarding form status. We begin with FormData, an interface with just email: string. This interface is expected when handleSubmit begins, followed by zod validation expecting the user input to match. Finally, should the input indeed be a string, and zod parases it to be an string.email, our contactRouter send the data to our database. Lastly, we get feedback from our database API to confirm success or failure.
 
-const handleNewsletterSubmit = async (event: { preventDefault: () => void }) => {
-    event.preventDefault()
+Our previous approach was a bit less detailed..:
 
-    if (submit === false) {
+ if (submit === false) {
       try {
         contactRouter.mutateAsync({
           email: contactEmail,
         })
       } finally {
-        setContactEmail(' ') **To Clear Form Values**
-        setSubmit(true) **For Disabled State**
+        setContactEmail(' ')
+        setSubmit(true)
       }
     }
-  }
-
 */
 
-const NewsLetterInputs = z.object({
-  email: z.string().email({ message: 'Invalid email' }),
-})
+interface FormData {
+  email: string
+}
 
-type NewsLetterInputs = z.infer<typeof NewsLetterInputs>
-
-export default function Newsletter() {
+export default function FooterNewsletter() {
+  const formRef = useRef<FormHandles>(null)
   const [submit, setSubmit] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<NewsLetterInputs>({
-    resolver: zodResolver(NewsLetterInputs),
-  })
+  const { isSuccess, isError, ...contactRouter } = trpc.useMutation(['create-contact-newsletter'])
 
-  const { ...contactRouter } = trpc.useMutation('create-contact-newsletter')
-  const handleNewsletterSubmit: SubmitHandler<NewsLetterInputs> = (data) => {
-    contactRouter.mutateAsync({
-      email: data.email,
-    })
-    reset()
-    setSubmit(true)
+  const handleSubmit: SubmitHandler<FormData> = async (data) => {
+    const schema = z
+      .object({
+        email: z.string().email({ message: 'Email invalid' }),
+      })
+      .safeParse({ email: data.email })
+    if (schema.success) {
+      await contactRouter.mutateAsync({
+        email: data.email,
+      })
+      formRef.current?.reset()
+      formRef.current?.clearField('email')
+      formRef.current?.setFieldError('email', '')
+      setSubmit(true)
+    }
+    if (!schema.success) formRef.current?.setFieldError('email', 'Invalid Email Address')
   }
   return (
-    <form aria-label="Newsletter sign up form." onSubmit={handleSubmit(handleNewsletterSubmit)}>
-      <Input
-        aria-invalid={errors.email ? 'true' : 'false'}
-        id="email"
-        variant="email"
-        {...register('email').ref}
-      />
-      {errors.email?.message && (
-        <p role="alert" className="block text-sm text-red mt-2">
-          {errors.email.message}
-        </p>
-      )}
+    <Form ref={formRef} onSubmit={handleSubmit} className="space-y-2">
+      <Input name="email" variant="email" disabled={submit} />
       <button
         type="submit"
-        className="w-full mt-2 px-3 py-1 text-base font-bold transition-all duration-300 ease-linear bg-white border-2 border-black elative rounded-xl hover:shadow-none focus-within:shadow-none hover:bg-black hover:text-white shadow-deep focus:bg-green-light disabled:bg-green-light disabled:shadow-none disabled:pointer-events-none focus-within:text-black"
-        disabled={submit === true}
+        disabled={submit}
+        className="w-full px-3 py-1 text-base font-bold transition-all duration-300 ease-linear bg-white border-2 border-black elative rounded-xl hover:shadow-none focus-within:shadow-none hover:bg-black hover:text-white shadow-deep focus:bg-green-light disabled:bg-green-light disabled:shadow-none disabled:pointer-events-none focus-within:text-black"
       >
-        {submit === true ? 'Success!' : 'Sign Up'}
+        {isSuccess ? 'Subscribed!' : 'Subscribe'}
+        {isError ?? contactRouter.error?.message}
       </button>
-    </form>
+    </Form>
   )
 }

@@ -62,7 +62,7 @@ export async function createVolunteerForm(
 }
 
 export async function createNewsletterForm(email: string) {
-  const { error } = await supabase.from('newsletter').insert([
+  const { error } = await supabase.from('live_newsletter').insert([
     {
       email: email,
     },
