@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import { useRef } from 'react'
 import useIsVisible from '@utils/hooks/useIsVisable'
-import Newsletter from './FooterNewsletter'
+import FooterNewsletter from './FooterNewsletter'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Pages } from '@data/PageLinks'
@@ -25,7 +25,7 @@ export default function Footer() {
         Subscribe to our newsletter and stay updated on our mission to make mental health care
         accessible to everyone.
       </p>
-      <Newsletter />
+      <FooterNewsletter />
 
       <nav className="flex flex-wrap items-center justify-center pt-8 pb-4 space-x-2 max-w-lg mx-auto">
         {Pages.map((page) => (
