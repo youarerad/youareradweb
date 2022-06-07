@@ -15,7 +15,7 @@ const Tweet = dynamic(() => import('@components/Tweet'))
 const Home: NextPage = () => {
   return (
     <div>
-      <section>
+      <section className="mt-10">
         <header>
           <h1>
             Everyone deserves mental health care.{' '}
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
           </h1>
         </header>
         <Link href="/donate">
-          <div className="max-w-sm">
+          <div className="sm:max-w-sm">
             <PrimaryButton type="button" buttonText="Donate Therapy" />
           </div>
         </Link>
@@ -116,14 +116,13 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="py-10">
-        <div className="sticky z-10 block py-10 text-center bg-white -top-1">
-          <header>
-            <h2>You can be the reason someone starts therapy</h2>
-            <StyledLink href="/stream">Create a live stream fundraiser</StyledLink>
-          </header>
-        </div>
-        <div className="z-0 max-w-xl mx-auto space-y-20">
+      <section className="py-10 flex flex-col">
+        <header className="sticky z-10 block py-10 text-center bg-white -top-1">
+          <h2>You can be the reason someone starts therapy</h2>
+          <StyledLink href="/stream">Create a live stream fundraiser</StyledLink>
+        </header>
+
+        <div className="z-0 mx-auto space-y-20">
           <Tweet TwitterPostData={twitterFundraiserData} />
         </div>
       </section>
@@ -153,14 +152,12 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section className="py-10">
-        <div className="sticky z-10 block text-center bg-white -top-1 py-10">
-          <header>
-            <h2>Whenever you&apos;re ready, we&apos;re here to help.</h2>
-            <StyledLink href="/stream">Learn more about therapy with RAD</StyledLink>
-          </header>
-        </div>
-        <div className="z-0 max-w-xl mx-auto space-y-20">
+      <section className="py-10 flex flex-col">
+        <header className="sticky z-10 block text-center bg-white -top-1 py-10">
+          <h2>Whenever you&apos;re ready, we&apos;re here to help.</h2>
+          <StyledLink href="/stream">Learn more about therapy with RAD</StyledLink>
+        </header>
+        <div className="z-0 mx-auto space-y-20">
           <Tweet TwitterPostData={twitterTestimonialData} />
         </div>
       </section>

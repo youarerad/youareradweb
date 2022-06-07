@@ -8,10 +8,20 @@ interface Props {
   name: string
   label?: string
   variant: 'text' | 'textarea' | 'radio' | 'email' | 'number'
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  radioGroup?: string
+  checked?: boolean
 }
 type InputProps = JSX.IntrinsicElements['input'] & Props
 
-export default function Input({ name, label, ...props }: InputProps) {
+export default function Input({
+  name,
+  label,
+  onChange,
+  radioGroup,
+  checked,
+  ...props
+}: InputProps) {
   const inputRef = useRef(null)
   const { fieldName, defaultValue, registerField, error } = useField(name)
   const { variant = 'text', ...rest } = props
@@ -65,6 +75,42 @@ export default function Input({ name, label, ...props }: InputProps) {
         </svg>
         {error && <span className="text-red text-sm">{error}</span>}
       </div>
+    )
+  }
+
+  if (variant === 'radio') {
+    return (
+      <div className="relative w-full group rounded-xl">
+        <input
+          className="w-full sr-only peer"
+          type="radio"
+          name={radioGroup}
+          id={fieldName}
+          ref={inputRef}
+          {...rest}
+          checked={checked}
+          onChange={onChange}
+        />
+        <label
+          htmlFor={fieldName}
+          className="relative z-10 flex items-center justify-center w-full p-3 font-bold text-center transition-all duration-100 border-2 cursor-pointer border-gray-light peer-checked:bg-secondary peer-checked:border-secondary peer-checked:text-white peer-checked:shadow-xl peer-checked:drop-shadow-sm rounded-xl  hover:bg-secondary hover:border-secondary hover:text-white"
+        >
+          {name}
+        </label>
+      </div>
+    )
+  }
+
+  if (variant === 'number') {
+    return (
+      <input
+        className="relative z-10 flex items-center justify-center w-full p-3 font-bold transition-all duration-100 border-2 cursor-pointer border-gray-light rounded-xl hover:border-secondary outline-none"
+        type="number"
+        id={fieldName}
+        ref={inputRef}
+        {...rest}
+        onChange={onChange}
+      />
     )
   }
 

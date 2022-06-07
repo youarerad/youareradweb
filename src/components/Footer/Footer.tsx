@@ -4,7 +4,7 @@ import useIsVisible from '@utils/hooks/useIsVisable'
 import FooterNewsletter from './FooterNewsletter'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Pages } from '@data/PageLinks'
+import { footerPages } from '@data/PageLinks'
 import { DiscordIcon, TwitchIcon } from './FooterIcons'
 
 /* Footer is the combination of components within the Footer folder. Although some folders export an index.ts, in this use-case it seems acceptable to see the collective Footer component. There are several unique pieces to the Footer all with the intended goal of performance: Next/Dynamic, useIsVisable, and LazyMotion (contained in MayAnime.tsx). It's worth having a more senior hand test the actual impact of these efforts, but the general thinking is that the MayAnmie.tsx is a fairly heavy file to load and we want to do so only when needed. */
@@ -31,7 +31,7 @@ export default function Footer() {
       <FooterNewsletter />
 
       <nav className="flex flex-wrap items-center justify-center pt-8 pb-4 space-x-2 max-w-lg mx-auto">
-        {Pages.map((page) => (
+        {footerPages.map((page) => (
           <Link href={page.href} key={page.name} passHref>
             <a className="hover:text-secondary-dark">{page.name}</a>
           </Link>

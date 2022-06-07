@@ -10,7 +10,7 @@ The typography is set with consideration of the fluid type system and its associ
  */
 
   h1 {
-    @apply text-6xl font-extrabold text-transparent bg-gradient-to-br from-black to-gray-dark bg-clip-text;
+    @apply text-6xl font-extrabold text-gray-dark;
   }
 
   h2 {
@@ -128,6 +128,48 @@ The typography is set with consideration of the fluid type system and its associ
     }
     100% {
       background-position: 51% 0%;
+    }
+  }
+
+  .bg-rad {
+    background: linear-gradient(270deg, #60a5fa, #f472b6, #64dfb8);
+    background-size: 300% 600%;
+    -webkit-animation: bgrad 50s ease infinite;
+    -moz-animation: bgrad 50s ease infinite;
+    animation: bgrad 50s ease infinite;
+  }
+
+  @-webkit-keyframes bgrad {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes bgrad {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes bgrad {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
 }
