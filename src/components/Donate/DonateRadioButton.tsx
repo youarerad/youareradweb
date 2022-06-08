@@ -1,18 +1,14 @@
-import { InputHTMLAttributes, useEffect, useRef, RefObject } from 'react'
-import { useField, SubmitHandler, FormHandles } from '@unform/core'
+import { useField } from '@unform/core'
+import { InputHTMLAttributes, MutableRefObject, useEffect, useRef } from 'react'
+import { DonateOptions } from './types'
 
 interface BaseRadioProps {
   name: string
   label?: string
-  options: {
-    priceId: string
-    priceString: string
-    priceLabel: string
-    message: string
-  }[]
+  options: DonateOptions[]
 }
 
-type RefInputEl = RefObject<HTMLInputElement[]>
+type RefInputEl = MutableRefObject<HTMLInputElement[]>
 type DonateRadioButtonProps = InputHTMLAttributes<HTMLInputElement> & BaseRadioProps
 
 export default function DonateRadioButton({
@@ -21,7 +17,7 @@ export default function DonateRadioButton({
   options,
   ...rest
 }: DonateRadioButtonProps) {
-  const inputRefs: RefInputEl = useRef(null)
+  const inputRefs: RefInputEl = useRef([])
   const { fieldName, registerField, defaultValue, error } = useField(name)
 
   useEffect(() => {
@@ -50,9 +46,9 @@ export default function DonateRadioButton({
             className="w-full sr-only peer"
             type="radio"
             name={option.priceString}
-            id={option.priceId}
+            id={String(option.priceId)}
             ref={(ref) => {
-              inputRefs.current.[index] = ref
+              if (ref) inputRefs.current[index] = ref
             }}
             {...rest}
           />
