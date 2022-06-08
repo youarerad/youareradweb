@@ -1,6 +1,7 @@
 import { Form } from '@unform/web'
 import { SubmitHandler, FormHandles } from '@unform/core'
 import DonationOptions from './DonationOptions'
+import PrimaryButton from '@components/PrimaryButton'
 
 interface DonateOptions {
   priceString: string
@@ -13,7 +14,7 @@ type SelectDonateOption = {
   options: Array<DonateOptions>
 }
 
-const handleSubmit: SubmitHandler<{ amount: number }> = async (data) => {
+const handleSubmit: SubmitHandler<{ priceId: number }> = async (data) => {
   console.log(data)
 }
 
@@ -21,8 +22,9 @@ export default function DonateForm({ options }: SelectDonateOption) {
   const selectedOption = options
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="space-y-4">
       <DonationOptions options={options} />
+      <PrimaryButton type="submit" buttonText="Donate Now" />
     </Form>
   )
 }
