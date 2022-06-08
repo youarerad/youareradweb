@@ -1,5 +1,6 @@
 import Input from '@components/Input'
 import { useState } from 'react'
+import DonateRadioOptions from './DonateRadioOptions'
 import DonateTwitchSub from './DonateTwitchSub'
 
 interface DonateOptions {
@@ -19,22 +20,7 @@ export default function DonationOptions({ options }: SelectDonateOption) {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      {options.map((option, index) => (
-        <Input
-          name={option.priceLabel}
-          radioGroup="donate-options"
-          key={option.priceString}
-          variant="radio"
-          id={option.priceLabel}
-          value={option.priceId}
-          checked={!customAmount && currentOption === index}
-          onChange={() => {
-            setCurrentOption(index)
-            setCustomAmount(undefined)
-            console.log(option.priceString)
-          }}
-        />
-      ))}
+      <DonateRadioOptions name="priceId" options={options} />
       <div className="col-span-2">
         <DonateTwitchSub />
       </div>
