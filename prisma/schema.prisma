@@ -1,0 +1,41 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id   Int    @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email String @unique
+  name  String? @unique
+  newsletter Boolean
+  donation Donation[]
+  address Address?
+}
+
+model Donation {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  amount Int
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+model Address {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  street String
+  city String
+  zip String
+  country String
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+

@@ -15,6 +15,7 @@ export default function LazyVideo({ src }: { src: string | undefined }) {
       video?.pause()
     }
   })
+
   return (
     <video
       autoPlay
