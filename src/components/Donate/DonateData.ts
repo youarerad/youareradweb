@@ -1,4 +1,4 @@
-export const DonationOptions = {
+export const DonationData = {
   'Donate Once': [
     {
       priceId: 3000,

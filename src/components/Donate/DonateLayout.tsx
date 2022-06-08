@@ -1,14 +1,14 @@
 import { Tab } from '@headlessui/react'
 import classNames from '@utils/classNames'
-import { DonationOptions } from './DonateData'
-import DonateWidget from './DonateWidget'
+import { DonationData } from './DonateData'
+import DonateForm from './DonateForm'
 
 export default function DonateLayoutTest() {
   return (
     <div className="flex flex-col w-full max-w-md mx-auto">
       <Tab.Group defaultIndex={1}>
         <Tab.List className="flex w-full mx-auto space-x-4">
-          {Object.keys(DonationOptions).map((id) => (
+          {Object.keys(DonationData).map((id) => (
             <Tab
               key={id}
               className={({ selected }) =>
@@ -23,12 +23,12 @@ export default function DonateLayoutTest() {
           ))}
         </Tab.List>
         <Tab.Panels>
-          {Object.values(DonationOptions).map((options, id) => (
+          {Object.values(DonationData).map((options, id) => (
             <Tab.Panel
               key={id}
               className="px-4 pt-4 pb-6 mt-4 border-2 border-gray-light rounded-xl bg-gray-light bg-opacity-10"
             >
-              <DonateWidget SetOptions={options} />
+              <DonateForm options={options} />
             </Tab.Panel>
           ))}
         </Tab.Panels>

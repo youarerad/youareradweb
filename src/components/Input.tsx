@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { InputHTMLAttributes, useEffect, useRef } from 'react'
 import classNames from '@utils/classNames'
 import { useField } from '@unform/core'
 
@@ -12,7 +12,7 @@ interface Props {
   radioGroup?: string
   checked?: boolean
 }
-type InputProps = JSX.IntrinsicElements['input'] & Props
+type InputProps = InputHTMLAttributes<HTMLInputElement> & Props
 
 export default function Input({
   name,
@@ -108,6 +108,7 @@ export default function Input({
         type="number"
         id={fieldName}
         ref={inputRef}
+        defaultValue={defaultValue}
         {...rest}
         onChange={onChange}
       />
