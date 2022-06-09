@@ -63,6 +63,14 @@ export async function createVolunteerForm(
 }
 
 export async function createNewsletterForm(email: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+  })
+  if (user) {
+    return user
+  }
   await prisma.user.create({
     data: {
       email: email,

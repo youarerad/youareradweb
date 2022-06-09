@@ -25,7 +25,7 @@ model User {
   id          String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   created_at  DateTime?  @default(now()) @db.Timestamptz(6)
   name        String?    @db.VarChar
-  email       String?    @db.VarChar
+  email       String?    @db.VarChar @unique
   is_monthly  Boolean? @default(false)
   newsletter  Boolean    @default(false)
   customer_id String?    @db.VarChar
