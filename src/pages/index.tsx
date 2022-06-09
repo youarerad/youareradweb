@@ -134,7 +134,7 @@ const Home: NextPage = () => {
         <div className="grid grid-cols-1 gap-10 mx-auto sm:grid-cols-3">
           {waysToSupport.map((options) => (
             <Link key={options.link} href={options.link} passHref>
-              <a className="relative mx-auto overflow-hidden transition-all duration-300 flex group rounded-xl">
+              <a className="relative mx-auto overflow-hidden transition-all duration-300 flex group rounded-xl  outline-none focus:ring-4 focus:ring-secondary-light">
                 <Image
                   className="z-10 transition-all duration-300 scale-100 group-hover:scale-105 group-focus:scale-105"
                   height="240"
