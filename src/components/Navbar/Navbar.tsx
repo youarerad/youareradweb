@@ -19,7 +19,7 @@ export default function Navbar() {
             aria-label="Main menu"
           >
             <Link href="/" passHref className="flex w-2/5">
-              <a className="inline-flex items-center">
+              <a className="inline-flex items-center outline-none focus:ring-4 focus:ring-secondary-light rounded-xl">
                 <Image
                   width={48}
                   height={48}

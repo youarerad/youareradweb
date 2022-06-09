@@ -29,7 +29,7 @@ export default function StyledLink({ href, children }: StyledLinkProps) {
           initial="initial"
           whileHover="hover"
           whileFocus="hover"
-          className="relative inline-flex items-center space-x-2 text-base cursor-pointer group"
+          className="relative inline-flex items-center space-x-2 text-base cursor-pointer group outline-none focus:ring-4 focus:ring-secondary-light rounded-xl"
         >
           <span className="relative font-semibold truncate">
             {children}

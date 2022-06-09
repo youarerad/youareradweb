@@ -33,29 +33,47 @@ export default function Footer() {
       <nav className="flex flex-wrap items-center justify-center pt-8 pb-4 space-x-2 max-w-lg mx-auto">
         {footerPages.map((page) => (
           <Link href={page.href} key={page.name} passHref>
-            <a className="hover:text-secondary-dark">{page.name}</a>
+            <a className="hover:text-secondary-dark outline-none focus:ring-4 focus:ring-secondary-light p-2 rounded-xl">
+              {page.name}
+            </a>
           </Link>
         ))}
       </nav>
 
       <div className="flex justify-center space-x-4">
-        <a href="https://www.discord.gg/youarerad">
+        <a
+          className="outline-none focus:ring-4 focus:ring-secondary-light rounded-xl"
+          href="https://www.discord.gg/youarerad"
+        >
           <DiscordIcon />
         </a>
-        <a href="https://www.instagram.com/riseabovethedisorder/">
+        <a
+          className="outline-none focus:ring-4 focus:ring-secondary-light rounded-xl"
+          href="https://www.instagram.com/riseabovethedisorder/"
+        >
           <Image alt="RAD's Instagram page." src="/icons/Instagram.svg" width={32} height={32} />
         </a>
-        <a href="https://www.twitch.tv/youarerad">
+        <a
+          className="outline-none focus:ring-4 focus:ring-secondary-light rounded-xl"
+          href="https://www.twitch.tv/youarerad"
+        >
           <TwitchIcon />
         </a>
-        <a href="https://twitter.com/YouAreRAD">
+        <a
+          className="outline-none focus:ring-4 focus:ring-secondary-light rounded-xl"
+          href="https://twitter.com/YouAreRAD"
+        >
           <Image alt="RAD's Twitter page" src="/icons/Twitter.svg" width={32} height={32} />
         </a>
       </div>
 
       <div className="text-center">
         <Link href="https://vercel.com/home?utm_source=youarerad&utm_campaign=oss">
-          <a target="_blank">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className="outline-none focus:border-4 focus:border-secondary-light rounded-xl overflow-hidden"
+          >
             <Image
               src="https://res.cloudinary.com/df23ubjbb/image/upload/v1635261153/Vercel.svg"
               alt="Click to check out Vercel"

@@ -80,6 +80,7 @@ The typography is set with consideration of the fluid type system and its associ
       background-position: 0 50%;
     }
   }
+
   /* Common Page Element Styles*/
   header {
     @apply space-y-4;

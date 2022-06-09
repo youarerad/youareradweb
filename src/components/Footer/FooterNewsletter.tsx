@@ -53,7 +53,7 @@ export default function FooterNewsletter() {
       <button
         type="submit"
         disabled={submit}
-        className="w-full px-3 py-1 text-base font-bold transition-all duration-300 ease-linear bg-white border-2 border-black elative rounded-xl hover:shadow-none focus-within:shadow-none hover:bg-black hover:text-white shadow-deep focus:bg-green-light disabled:bg-green-light disabled:shadow-none disabled:pointer-events-none focus-within:text-black"
+        className="w-full px-3 py-1 text-base font-bold transition-all duration-300 ease-linear bg-white border-2 border-black elative rounded-xl hover:shadow-none focus-within:shadow-none hover:bg-black hover:text-white shadow-deep focus:bg-green-light disabled:bg-green-light disabled:shadow-none disabled:pointer-events-none focus-within:text-black outline-none focus:ring-4 focus:ring-secondary-light"
       >
         {isSuccess ? 'Subscribed!' : 'Subscribe'}
         {isError ?? contactRouter.error?.message}

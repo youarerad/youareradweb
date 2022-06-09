@@ -55,7 +55,7 @@ export default function Input({
           {...rest}
           className={classNames(
             error ? 'border-red-light' : '',
-            'relative block w-full px-10 py-2 text-black transition-all duration-300 ease-in-out border-2 border-gray-light rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent'
+            'relative block w-full px-10 py-2 text-black transition-all duration-300 ease-in-out border-2 border-gray-light rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light'
           )}
         />
         <svg
