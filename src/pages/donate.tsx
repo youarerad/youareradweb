@@ -1,4 +1,5 @@
 import DonateLayout from '@components/Donate/DonateLayout'
+
 import PageSEO from '@components/SEO/PageSEO'
 
 export default function Doante() {

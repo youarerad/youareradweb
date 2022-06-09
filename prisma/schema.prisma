@@ -1,3 +1,4 @@
+
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
@@ -25,7 +26,7 @@ model User {
   created_at  DateTime?  @default(now()) @db.Timestamptz(6)
   name        String?    @db.VarChar
   email       String?    @db.VarChar
-  is_monthly  Boolean?
+  is_monthly  Boolean? @default(false)
   newsletter  Boolean    @default(false)
   customer_id String?    @db.VarChar
   Donation    Donation[]

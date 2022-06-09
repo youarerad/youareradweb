@@ -65,7 +65,7 @@ export default function Navbar() {
                 {({ open }) => (
                   <>
                     <Popover.Button
-                      className="flex flex-wrap items-center p-2 text-sm font-bold group overflow-hidden rounded-xl"
+                      className="flex flex-wrap items-center p-2 text-sm font-bold group overflow-hidden rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black outline-none"
                       role="navigation"
                       aria-label="Open menu to learn more about getting involved."
                     >
@@ -84,7 +84,7 @@ export default function Navbar() {
                           d="M19 9l-7 7-7-7"
                         />
                       </svg>
-                      <div className="bg-rad ease-linear bottom-0 left-0 h-0.5 w-full origin-bottom-right scale-x-0 transition-transform duration-300 group-hover:origin-bottom-left group-hover:scale-x-100" />
+                      <div className="bg-rad ease-linear bottom-0 left-0 h-0.5 w-full origin-bottom-right scale-x-0 transition-transform duration-300 group-hover:origin-bottom-left group-hover:scale-x-100 group-focus:scale-x-100 group-focus:origin-bottom-left" />
                     </Popover.Button>
                     <Transition
                       show={open}
@@ -111,7 +111,7 @@ export default function Navbar() {
                               {supportPages.map((supportpage) => (
                                 <li key={supportpage.name} className="flow-root">
                                   <Link href={supportpage.href} passHref>
-                                    <a className="flex items-center p-3 -m-3 text-base font-medium rounded-md hover:bg-gray-light/40">
+                                    <a className="flex items-center p-3 -m-3 text-base font-medium rounded-md hover:bg-secondary-light/10 focus:bg-secondary-light/10 focus:ring-4 focus:ring-secondary-light outline-none">
                                       <Image
                                         src={supportpage.icon}
                                         className="flex-shrink-0 w-6 h-6"
@@ -133,7 +133,7 @@ export default function Navbar() {
                               {fundraisePages.map((fundraisepage) => (
                                 <li key={fundraisepage.name} className="flow-root">
                                   <Link href={fundraisepage.href} passHref>
-                                    <a className="flex p-3 -m-3 rounded-md hover:bg-gray/20">
+                                    <a className="flex p-3 -m-3 rounded-md hover:bg-white focus:bg-white focus:ring-4 focus:ring-secondary-light outline-none">
                                       <Image
                                         width={200}
                                         height={100}
