@@ -1,10 +1,10 @@
 import { DonateOnceConfig } from './DonateConfig'
 import { useState } from 'react'
-import RadioButton from './RadioButton'
 import getStripe from '@utils/hooks/getStripe'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
 import DonateCustomInput from './DonateCustomInput'
+import AppRadioGroup from './AppRadioGroup'
 
 export default function DonateOnce() {
   const [currentOption, setCurrentOption] = useState<number>(0)
@@ -36,18 +36,18 @@ export default function DonateOnce() {
     <>
       <form onSubmit={handleDonationSubmit}>
         <div className="grid grid-cols-3 gap-4 mb-4">
-          {DonateOnceConfig.map((option, index) => (
-            <RadioButton
-              key={option.priceLabel}
-              id={option.priceLabel}
-              value={option.priceLabel}
-              checked={!customAmount && currentOption === index}
-              onChange={() => {
-                setCurrentOption(index)
-                setCustomAmount(undefined)
-              }}
-            />
-          ))}
+          <AppRadioGroup
+            value={currentOption}
+            onChange={(index) => {
+              setCurrentOption(index)
+              setCustomAmount(undefined)
+            }}
+            options={DonateOnceConfig.map((option, index) => ({
+              label: option.priceLabel,
+              value: index,
+            }))}
+            className="contents"
+          />
           <DonateCustomInput
             value={customAmount}
             onChange={(e) => setCustomAmount(e.currentTarget.valueAsNumber)}

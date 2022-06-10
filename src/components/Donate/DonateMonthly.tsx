@@ -1,10 +1,10 @@
 import { DonateMonthlyConfig } from './DonateConfig'
 import { useState } from 'react'
 import DonateTwitchSub from './DonateTwitchSub'
-import RadioButton from './RadioButton'
 import getStripe from '@utils/hooks/getStripe'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
+import AppRadioGroup from './AppRadioGroup'
 
 export default function DonateMonthly() {
   const [currentOption, setCurrentOption] = useState<number>(0)
@@ -30,17 +30,15 @@ export default function DonateMonthly() {
     <>
       <form onSubmit={handleDonationSubmit}>
         <div className="grid grid-cols-3 gap-4 mb-4">
-          {DonateMonthlyConfig.map((option, index) => (
-            <RadioButton
-              key={option.priceLabel}
-              id={option.priceLabel}
-              value={option.priceLabel}
-              checked={currentOption === index}
-              onChange={() => {
-                setCurrentOption(index)
-              }}
-            />
-          ))}
+          <AppRadioGroup
+            value={currentOption}
+            onChange={setCurrentOption}
+            options={DonateMonthlyConfig.map((option, index) => ({
+              label: option.priceLabel,
+              value: index,
+            }))}
+            className="contents"
+          />
           <DonateTwitchSub />
           <p className="col-span-3">
             Your donation of <span className="font-bold">{selectedOption.priceLabel}</span>{' '}
