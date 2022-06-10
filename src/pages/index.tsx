@@ -2,14 +2,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { NextPage } from 'next'
 import StyledLink from '@components/StyledLink'
-import SectionGrid from '@layouts/SectionGrid'
-import SectionHighlight from '@utils/SectionHighlight'
 import dynamic from 'next/dynamic'
 import { twitterFundraiserData, twitterTestimonialData } from '@components/Tweet/TweetData'
 import { waysToSupport } from '@data/WaysToSupport'
+import FeatureSection from '@components/FeatureSection'
 
 const PrimaryButton = dynamic(() => import('@components/PrimaryButton'), { ssr: false })
-const LazyVideo = dynamic(() => import('@components/VideoPlayer'))
 const Tweet = dynamic(() => import('@components/Tweet'))
 
 const Home: NextPage = () => {
@@ -34,42 +32,24 @@ const Home: NextPage = () => {
           <h2>RAD is on a mission to make mental health care accessible to everyone, everywhere</h2>
           <StyledLink href="/about">Learn more about RAD</StyledLink>
         </header>
-        <SectionHighlight>
-          <SectionGrid>
-            <div className="space-y-2">
-              <h3>
-                RAD helps people find their perfect therapist{' '}
-                <span className="text-transparent bg-gradient-to-r from-red-light to-primary-light bg-clip-text">
-                  and start healing.
-                </span>
-              </h3>
-              <p>
-                Finding a therapist can be tough<span className="text-red">-</span> especially when
-                you&apos;re not feeling well. We&apos;ll work together to find a therapist and get
-                you feeling rad.
-              </p>
-            </div>
-            <LazyVideo src="https://res.cloudinary.com/df23ubjbb/video/upload/v1642035630/Starttherapy.mp4" />
-          </SectionGrid>
-        </SectionHighlight>
-        <SectionHighlight>
-          <SectionGrid>
-            <LazyVideo src="https://res.cloudinary.com/df23ubjbb/video/upload/v1630889981/RADHighlightTwo.mp4" />
-            <div className="order-first space-y-2">
-              <h3>
-                For those unable to afford mental health care{' '}
-                <span className="text-transparent bg-gradient-to-r from-red-light to-primary-light bg-clip-text">
-                  we cover the cost.
-                </span>
-              </h3>
-              <p>
-                Unlimited sessions with fully licensed and vetted mental health professionals,
-                practicing empirically researched therapy.
-                <span className="font-semibold"> Entirely funded by donations.</span>
-              </p>
-            </div>
-          </SectionGrid>
-        </SectionHighlight>
+        <FeatureSection
+          headerText="RAD helps people find their perfect therapist"
+          headerTextHighlight="and start healing."
+          videoSrc="https://res.cloudinary.com/df23ubjbb/video/upload/v1642035630/Starttherapy.mp4"
+        >
+          Finding a therapist can be tough<span className="text-red">-</span> especially when
+          you&apos;re not feeling well. We&apos;ll work together to find a therapist and get you
+          feeling rad.
+        </FeatureSection>
+        <FeatureSection
+          headerText="For those unable to afford mental health care"
+          headerTextHighlight="we cover the cost."
+          videoSrc="https://res.cloudinary.com/df23ubjbb/video/upload/v1630889981/RADHighlightTwo.mp4"
+        >
+          Unlimited sessions with fully licensed and vetted mental health professionals, practicing
+          empirically researched therapy.
+          <span className="font-semibold"> Entirely funded by donations.</span>
+        </FeatureSection>
       </section>
 
       <section className="bg-black text-white rounded-xl relative flex px-4 sm:px-6 lg:px-8 overflow-hidden space-y-0 shadow-2xl">
@@ -154,7 +134,7 @@ const Home: NextPage = () => {
 
       <section className="py-10 flex flex-col">
         <header className="sticky z-10 block text-center bg-white -top-1 py-10">
-          <h2>Whenever you&apos;re ready, we&apos;re here to help.</h2>
+          <h2>Whenever you&apos;re ready, we&apos;re here to help</h2>
           <StyledLink href="/stream">Learn more about therapy with RAD</StyledLink>
         </header>
         <div className="z-0 mx-auto space-y-20">

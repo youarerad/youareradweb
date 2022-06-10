@@ -20,7 +20,7 @@ The typography is set with consideration of the fluid type system and its associ
     @apply text-xl font-extrabold tracking-tight text-gray-dark;
   }
   h4 {
-    @apply font-bold;
+    @apply font-extrabold text-base;
   }
   p {
     @apply text-base max-w-prose;

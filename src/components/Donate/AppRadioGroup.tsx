@@ -18,7 +18,9 @@ export default function AppRadioGroup({ value, onChange, options, ...rest }: Rad
     <RadioGroup value={value} onChange={onChange} {...rest}>
       {options.map((option) => (
         <>
-          <RadioGroup.Label className="sr-only">{option.label}</RadioGroup.Label>
+          <RadioGroup.Label key={option.value} className="sr-only">
+            {option.label}
+          </RadioGroup.Label>
           <RadioGroup.Option
             value={option.value}
             className={({ active, checked }) =>
