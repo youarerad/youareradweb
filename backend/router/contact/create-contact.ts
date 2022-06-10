@@ -9,7 +9,9 @@ export async function createNewsletterForm(email: string) {
     },
   })
   if (user) {
-    return user
+    return {
+      message: 'You are already subscribed!',
+    }
   }
   await prisma.user.create({
     data: {
@@ -17,4 +19,7 @@ export async function createNewsletterForm(email: string) {
       newsletter: true,
     },
   })
+  return {
+    message: 'Subscribed!',
+  }
 }
