@@ -31,7 +31,7 @@ export default function Therapy() {
       <section>
         <HeaderSection
           headerSubText="The Process"
-          headerSubTextColor="text-blue"
+          headerSubTextColor="text-secondary"
           headerText="Ready to start therapy?"
           headerTextHighlightColor="from-secondary-light to-red-light"
           headerTextHighlight="You're just two steps away"

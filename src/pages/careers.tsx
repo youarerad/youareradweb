@@ -26,7 +26,7 @@ export default function Careers() {
       <section>
         <HeaderSection
           headerSubText="Life At RAD"
-          headerSubTextColor="text-blue"
+          headerSubTextColor="text-secondary"
           headerText="A work environment focused on"
           headerTextHighlight="your mental health"
           headerTextHighlightColor="from-secondary-light to-primary-light"
