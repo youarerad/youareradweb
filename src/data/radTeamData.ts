@@ -141,33 +141,33 @@ export const DiversityData = [
 
 export const TeamTestimonials = [
   {
-    postId: '1494019653143871488',
-    postBody:
+    tweetId: '1494019653143871488',
+    tweetBody:
       "I've never worked at a company that was transparent about their employee's wages and team diversity on the actual company website. Also never worked at a company that raised wages due to the ongoing inflated prices in America currently. Somehow @YouAreRAD did both of that 🥰",
-    profileImage: 'https://res.cloudinary.com/df23ubjbb/image/upload/v1646418992/Heather.webp',
+    userProfileImage: 'https://res.cloudinary.com/df23ubjbb/image/upload/v1646418992/Heather.webp',
     userName: 'heather 🐻',
     isVerified: false,
-    userId: 'kokiribear',
-    time: '10:43 AM',
-    date: 'Feb 16, 2022',
-    comments: '2',
-    retweets: '2',
-    likes: '13',
+    userHandle: 'kokiribear',
+    tweetTime: '10:43 AM',
+    tweetDate: 'Feb 16, 2022',
+    tweetComments: '2',
+    tweetRetweets: '2',
+    tweetLikes: '13',
   },
   {
-    postId: '1407078146709475348',
-    postBody:
-      "The founder of RAD, @JasonDocton, may be one of the most genuine and caring humans I've had the pleasure to meet in my entire life. I couldn't be more excited to spend some of my time helping him and the team get mental health prioritization to the forefront of our culture <3",
-    profileImage:
+    tweetId: '1407078146709475348',
+    tweetBody:
+      "The founder of RAD, @JasonDocton, may be one of the most genuine and caring humans I've had the pleasure to meet in my entire life. I couldn't be more excited to spend some of my tweetTime helping him and the team get mental health prioritization to the forefront of our culture <3",
+    userProfileImage:
       'https://res.cloudinary.com/df23ubjbb/image/upload/v1647464584/_d_x41_K_400x400_gmhbee.webp',
     userName: 'Brian Tran',
     isVerified: false,
-    userId: 'Tranmobile_',
-    time: '1:49 PM',
-    date: 'Jun 21, 2021',
-    comments: '19',
-    retweets: '2',
-    likes: '13',
+    userHandle: 'Tranmobile_',
+    tweetTime: '1:49 PM',
+    tweetDate: 'Jun 21, 2021',
+    tweetComments: '19',
+    tweetRetweets: '2',
+    tweetLikes: '13',
   },
 ]
 
@@ -201,7 +201,7 @@ export const careerData = [
     icon: '/icons/CareerPage/Leave.svg',
   },
   {
-    id: 'Paid Time Off',
+    id: 'Paid tweetTime Off',
     desc: 'Vacations, family matters, voting, protests, and mental health days are all welcome.',
     color: 'text-primary-light',
     border: 'border-primary-light',
