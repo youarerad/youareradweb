@@ -90,3 +90,19 @@ export const twitterTestimonialData = [
     tweetLikes: '25',
   },
 ]
+
+export const therapyTweetData = [
+  {
+    tweetId: '1420166020250042369',
+    userProfileImage: 'https://res.cloudinary.com/df23ubjbb/image/upload/v1641925303/Boop.webp',
+    userName: 'TruBloop',
+    userHandle: 'trubloop',
+    tweetBody:
+      "ok. if you are seeking help but don't want to go from therapist to therapist trying to find the right one... go through @YouAreRAD. I found my current therapist through them and honestly I could not be happier? This therapist actually listens and gets me. We CLICKED. thats HUGE.",
+    tweetTime: '4:35pm',
+    tweetDate: 'Jul 27, 2021',
+    tweetComments: '1',
+    tweetRetweets: '28',
+    tweetLikes: '8',
+  },
+]

@@ -22,11 +22,7 @@ export const supportPages = [
     href: '/partner',
     icon: '/icons/Partner.svg',
   },
-  {
-    name: 'Store',
-    href: '/store',
-    icon: '/icons/Store.svg',
-  },
+
   {
     name: 'Contact',
     href: '/contact',
@@ -66,10 +62,7 @@ export const mobileNav = [
     name: 'Partnerships',
     href: '/partner',
   },
-  {
-    name: 'Store',
-    href: '/store',
-  },
+
   {
     name: 'Join the guild',
     href: '/guild',
@@ -88,7 +81,6 @@ export const footerPages = [
   { name: 'Careers', href: '/careers' },
   { name: 'Volunteer', href: '/volunteer' },
   { name: 'Partner', href: '/partner' },
-  { name: 'Store', href: '/store' },
   { name: 'Contact', href: '/contact' },
   { name: 'Privacy', href: '/privacy' },
   { name: 'Terms', href: '/terms' },
