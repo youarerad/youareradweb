@@ -23,3 +23,61 @@ export async function createNewsletterForm(email: string) {
     message: 'Subscribed!',
   }
 }
+
+export async function createVolunteerForm(
+  name: string,
+  email: string,
+  experience: string,
+  message: string
+) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+  })
+  if (user) {
+    await prisma.user.update({
+      where: { email: email },
+      data: {
+        name: name,
+        Volunteer: {
+          upsert: {
+            where: {
+              id: user.id,
+            },
+            create: {
+              name: name,
+              email: email,
+              experience: experience,
+              message: message,
+            },
+            update: {
+              name: name,
+              email: email,
+              experience: experience,
+              message: message,
+            },
+          },
+        },
+      },
+    })
+  }
+  if (!user) {
+    await prisma.user.create({
+      data: {
+        name: name,
+        email: email,
+        newsletter: true,
+        Volunteer: {
+          create: {
+            name: name,
+            email: email,
+            experience: experience,
+            message: message,
+          },
+        },
+      },
+    })
+  }
+  return { message: 'Form Sent!' }
+}

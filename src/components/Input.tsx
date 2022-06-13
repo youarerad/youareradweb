@@ -12,7 +12,7 @@ interface Props {
   radioGroup?: string
   checked?: boolean
 }
-type InputProps = InputHTMLAttributes<HTMLInputElement> & Props
+type InputProps = InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> & Props
 
 export default function Input({
   name,
@@ -23,7 +23,7 @@ export default function Input({
   ...props
 }: InputProps) {
   const inputRef = useRef(null)
-  const { fieldName, defaultValue, registerField, error } = useField(name)
+  const { fieldName, defaultValue, registerField, error, clearError } = useField(name)
   const { variant = 'text', ...rest } = props
 
   useEffect(() => {
@@ -44,35 +44,44 @@ export default function Input({
 
   if (variant === 'email') {
     return (
-      <div className="relative group">
-        {label && <label htmlFor={fieldName}>{label}</label>}
-        <input
-          id={fieldName}
-          ref={inputRef}
-          type="email"
-          disabled={props.disabled}
-          defaultValue={defaultValue}
-          {...rest}
-          className={classNames(
-            error ? 'border-red-light' : '',
-            'relative block w-full px-10 py-2 text-black transition-all duration-300 ease-in-out border-2 border-gray-light rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light'
-          )}
-        />
-        <svg
-          aria-hidden
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute -top-0.5 left-2 h-7 w-7 translate-y-1/3 select-none text-gray-light"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      <div>
+        {label && (
+          <label className="font-semibold text-gray" htmlFor={fieldName}>
+            {label}
+          </label>
+        )}
+        <div className="relative group">
+          <input
+            id={fieldName}
+            ref={inputRef}
+            type="email"
+            onFocus={clearError}
+            disabled={props.disabled}
+            defaultValue={defaultValue}
+            {...rest}
+            className={classNames(
+              error ? 'border-red-light' : 'border-gray-light',
+              'relative block w-full px-10 py-2 text-black transition-all duration-300 ease-in-out border-2 rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light'
+            )}
           />
-        </svg>
+          <div className="inset-y-0 left-0 pl-3 flex items-center pointer-events-none absolute select-none">
+            <svg
+              aria-hidden
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7 text-gray-light"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+        </div>
         {error && <span className="text-red text-sm">{error}</span>}
       </div>
     )
@@ -115,16 +124,49 @@ export default function Input({
     )
   }
 
+  if (variant === 'textarea') {
+    return (
+      <div className="relative group">
+        {label && (
+          <label className="font-semibold text-gray" htmlFor={fieldName}>
+            {label}
+          </label>
+        )}
+        <textarea
+          id={fieldName}
+          rows={4}
+          ref={inputRef}
+          onFocus={clearError}
+          defaultValue={defaultValue}
+          {...rest}
+          className={classNames(
+            error ? 'border-red-light' : 'border-gray-light',
+            'relative block w-full px-3 py-2 text-black transition-all duration-300 ease-in-out border-2 rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light'
+          )}
+        />
+        {error && <span className="text-red text-sm">{error}</span>}
+      </div>
+    )
+  }
+
   return (
     <div className="relative group">
-      {label && <label htmlFor={fieldName}>{label}</label>}
+      {label && (
+        <label className="font-semibold text-gray" htmlFor={fieldName}>
+          {label}
+        </label>
+      )}
       <input
         id={fieldName}
         ref={inputRef}
+        onFocus={clearError}
         defaultValue={defaultValue}
         type="text"
         {...rest}
-        className="relative block w-full px-10 py-2 text-black transition-all duration-300 ease-in-out border-2 border-gray-light rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent"
+        className={classNames(
+          error ? 'border-red-light' : 'border-gray-light',
+          'relative block w-full px-3 py-2 text-black transition-all duration-300 ease-in-out border-2 rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light'
+        )}
       />
       {error && <span className="text-red text-sm">{error}</span>}
     </div>
