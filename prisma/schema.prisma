@@ -21,27 +21,28 @@ model Donation {
 }
 
 model Volunteer {
-  id                             String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  created_at                     DateTime? @default(now()) @db.Timestamptz(6)
-  name                           String?
-  email                          String?
-  experience                     String?
-  message                        String?
-  user                           String?    @db.Uuid
-  User                           User?      @relation(fields: [user], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String?
+  email      String?
+  position   String?   @db.VarChar
+  experience String?
+  message    String?
+  user       String?   @unique @db.Uuid
+  User       User?     @relation(fields: [user], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model User {
-  id                                  String      @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  created_at                          DateTime?   @default(now()) @db.Timestamptz(6)
-  name                                String?     @db.VarChar
-  email                               String?     @unique @db.VarChar
-  is_monthly                          Boolean?    @default(false)
-  newsletter                          Boolean     @default(false)
-  customer_id                         String?     @db.VarChar
-  volunteer                           String?     @db.Uuid
-  Donation                            Donation[]
-  Volunteer                           Volunteer[]
+  id          String      @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at  DateTime?   @default(now()) @db.Timestamptz(6)
+  name        String?     @db.VarChar
+  email       String?     @unique @db.VarChar
+  is_monthly  Boolean?    @default(false)
+  newsletter  Boolean     @default(false)
+  customer_id String?     @db.VarChar
+  volunteer   String?     @db.Uuid
+  Donation    Donation[]
+  Volunteer   Volunteer[]
 }
 
 enum PaymentMethod {

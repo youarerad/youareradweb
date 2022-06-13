@@ -8,10 +8,11 @@ interface SelectOptions {
 type SelectProps = {
   ariaLabel: string
   options: Array<SelectOptions>
+  disabled?: boolean
   state: Dispatch<SetStateAction<string>>
 }
 
-export default function Select({ ariaLabel, options, state }: SelectProps) {
+export default function Select({ ariaLabel, options, disabled, state }: SelectProps) {
   const [selected, setSelected] = useState('Select')
 
   useEffect(() => {
@@ -25,9 +26,12 @@ export default function Select({ ariaLabel, options, state }: SelectProps) {
       </span>
       <Listbox value={selected} onChange={setSelected}>
         <Listbox.Button
+          disabled={disabled}
           className={({ open }) =>
-            `relative w-full px-3 py-2 border-2 bg-white-light rounded-xl border-gray-light group-hover:border-secondary focus-within:border-secondary flex items-center ${
-              open ? 'border-secondary' : 'border-gray-light'
+            `relative w-full px-3 py-2 border-2 bg-white-light rounded-xl border-gray-light group-hover:border-secondary-light
+            focus:ring-4 focus:ring-secondary-light
+            disabled:select-none disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent focus-within:border-secondary flex items-center ${
+              open ? 'border-secondary-light' : 'border-gray-light'
             }`
           }
         >

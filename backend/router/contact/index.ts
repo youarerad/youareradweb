@@ -20,10 +20,17 @@ export const contactRouter = trpc
     input: z.object({
       name: z.string(),
       email: z.string(),
+      position: z.string(),
       experience: z.string(),
       message: z.string(),
     }),
     async resolve({ input }) {
-      return await createVolunteerForm(input.name, input.email, input.experience, input.message)
+      return await createVolunteerForm(
+        input.name,
+        input.email,
+        input.position,
+        input.experience,
+        input.message
+      )
     },
   })

@@ -4,12 +4,13 @@ import PageSEO from '@components/SEO/PageSEO'
 import SupportTabs from '@components/SupportTabs'
 import { volunteerData } from '@data/WaysToSupport'
 import Input from '@components/Input'
-import { useRef, useState } from 'react'
+import { useRef, useState, SetStateAction } from 'react'
 import { SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
 import { z } from 'zod'
+import Select from '@components/Select'
 
 interface VolunteerFormData {
   name: string
@@ -18,9 +19,23 @@ interface VolunteerFormData {
   message: string
 }
 
+const selectOptions = [
+  {
+    label: 'Coding',
+  },
+  { label: 'Clinical' },
+  { label: 'Community' },
+  { label: 'Event' },
+]
+
 export default function Volunteer() {
   const formRef = useRef<FormHandles>(null)
   const [submit, setSubmit] = useState(false)
+  const [selectOption, setSelectOptions] = useState('')
+  const updateOption = (option: SetStateAction<string>) => {
+    setSelectOptions(option)
+    console.log(selectOption)
+  }
   const { isSuccess, ...contactRouter } = trpc.useMutation(['create-contact-volunteer'])
 
   const handleSubmit: SubmitHandler<VolunteerFormData> = async (data) => {
@@ -49,6 +64,13 @@ export default function Volunteer() {
       })
     }
     if (schema.success) {
+      await contactRouter.mutateAsync({
+        name: data.name,
+        email: data.email,
+        position: selectOption,
+        message: data.message,
+        experience: data.experience,
+      })
       formRef.current?.reset()
       setSubmit(true)
     }
@@ -87,6 +109,12 @@ export default function Volunteer() {
           <Form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
             <Input name="name" variant="text" disabled={submit} label="Name" />
             <Input name="email" variant="email" disabled={submit} label="Email" />
+            <Select
+              ariaLabel="Volunteer roles"
+              options={selectOptions}
+              state={updateOption}
+              disabled={submit}
+            />
             <Input
               name="experience"
               variant="textarea"

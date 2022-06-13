@@ -27,6 +27,7 @@ export async function createNewsletterForm(email: string) {
 export async function createVolunteerForm(
   name: string,
   email: string,
+  position: string,
   experience: string,
   message: string
 ) {
@@ -48,12 +49,14 @@ export async function createVolunteerForm(
             create: {
               name: name,
               email: email,
+              position: position,
               experience: experience,
               message: message,
             },
             update: {
               name: name,
               email: email,
+              position: position,
               experience: experience,
               message: message,
             },
@@ -72,6 +75,7 @@ export async function createVolunteerForm(
           create: {
             name: name,
             email: email,
+            position: position,
             experience: experience,
             message: message,
           },
