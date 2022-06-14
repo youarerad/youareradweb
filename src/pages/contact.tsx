@@ -72,7 +72,7 @@ export default function Contact() {
   return (
     <div>
       <PageSEO
-        title="Contact"
+        title="Contact RAD"
         description="Contact the team at Rise Above The Disorder! We're happy to answer any questions you may have about our programs, mental health, and our cause."
       />
       <section className="mt-10">

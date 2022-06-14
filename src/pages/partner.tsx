@@ -81,7 +81,7 @@ export default function Partner() {
   return (
     <div>
       <PageSEO
-        title="Partner With"
+        title="Partner With RAD"
         description="Join incredible partners like Electronic Arts, Jagex, Columbia Records, and more! Rise Above The Disorder partners with teams all over the world to make mental health care accessible to all."
       />
       <PageHeader

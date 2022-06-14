@@ -37,7 +37,7 @@ export async function CreateMonthlyDonation(priceId: string) {
           'Donation to Rise Above The Disorder, a 501(c)(3) non-profit organization. Thank you for supporting our mission to provide mental health care to everyone, everywhere!',
       },
     ],
-    success_url: `${ORIGIN_URL}/donationcomplete?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${ORIGIN_URL}/guildmember?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${ORIGIN_URL}/donate`,
   }
   return await stripe.checkout.sessions.create(params)

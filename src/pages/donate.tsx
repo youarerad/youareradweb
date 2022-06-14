@@ -6,7 +6,7 @@ export default function Doante() {
   return (
     <div>
       <PageSEO
-        title="Donate To Rise Above The Disorder"
+        title="Donate To RAD"
         description="Donate to RAD and help someone start therapy today! Every $30 donated covers a week of therapy for someone in need. Join us in making mental health care possible for everyone, everywhere."
       />
       <section className="mt-10">

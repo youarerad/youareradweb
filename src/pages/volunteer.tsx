@@ -79,7 +79,7 @@ export default function Volunteer() {
   return (
     <div>
       <PageSEO
-        title="Volunteer"
+        title="Volunteer with RAD"
         description="Learn more about volunteering with Rise Above The Disorder. Equipped with your time and talent, we can make mental health care accessible to everyone."
       />
       <PageHeader

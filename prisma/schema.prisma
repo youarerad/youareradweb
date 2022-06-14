@@ -17,7 +17,10 @@ model Donation {
   payment_type   PaymentType?
   payment_method PaymentMethod?
   payment_status PaymentStatus?
+  customer_id    String         @unique @db.VarChar
+  email          String?        @db.VarChar
   User           User?          @relation(fields: [user], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  name           String?        @db.VarChar
 }
 
 model Volunteer {
@@ -52,16 +55,15 @@ model Contact {
 }
 
 model User {
-  id          String      @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  created_at  DateTime?   @default(now()) @db.Timestamptz(6)
-  name        String?     @db.VarChar
-  email       String?     @unique @db.VarChar
-  is_monthly  Boolean?    @default(false)
-  newsletter  Boolean     @default(false)
-  customer_id String?     @db.VarChar
-  volunteer   String?     @db.Uuid
-  Donation    Donation[]
-  Volunteer   Volunteer[]
+  id         String      @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime?   @default(now()) @db.Timestamptz(6)
+  name       String?     @db.VarChar
+  email      String?     @unique @db.VarChar
+  is_monthly Boolean?    @default(false)
+  newsletter Boolean     @default(false)
+  volunteer  String?     @db.Uuid
+  Donation   Donation[]
+  Volunteer  Volunteer[]
 }
 
 enum PaymentMethod {

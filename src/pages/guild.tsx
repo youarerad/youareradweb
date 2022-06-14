@@ -8,7 +8,7 @@ export default function Guild() {
   return (
     <div>
       <PageSEO
-        title="Guild"
+        title="RAD Guild"
         description="Founded as a World of Warcraft guild dedicated to covering the cost of mental health care for members, our cause has always centered around our Guild. Become a guild member today and help thousands of people access mental health care all over the world."
       />
       <section className="mt-10 flex flex-col">

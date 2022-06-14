@@ -8,19 +8,36 @@ export async function createNewsletterForm(email: string) {
       email: email,
     },
   })
-  if (user) {
+  if (user?.newsletter === true) {
     return {
       message: 'You are already subscribed!',
     }
   }
-  await prisma.user.create({
-    data: {
-      email: email,
-      newsletter: true,
-    },
-  })
-  return {
-    message: 'Subscribed!',
+
+  if (!user) {
+    await prisma.user.create({
+      data: {
+        email: email,
+        newsletter: true,
+      },
+    })
+    return {
+      message: 'Subscribed!',
+    }
+  }
+
+  if (user.newsletter === false) {
+    await prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        newsletter: true,
+      },
+    })
+    return {
+      message: 'Subscribed!',
+    }
   }
 }
 

@@ -9,7 +9,7 @@ export default function Careers() {
   return (
     <div>
       <PageSEO
-        title="Careers At"
+        title="Careers At RAD"
         description="Explore opportunities to work at Rise Above The Disorder. Our team enjoys some of the best benefits, compensation, and work-life balance in the field. We center our team on passion, purpose, and personal wellbeing."
       />
       <section className="mt-10">

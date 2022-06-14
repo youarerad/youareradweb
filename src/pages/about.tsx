@@ -14,7 +14,7 @@ export default function About() {
   return (
     <div>
       <PageSEO
-        title="About Us"
+        title="About RAD"
         description="What started as a World of Warcraft guild has become the largest community funded mental health effort in the world. Rise Above The Disorder helps tens of thousands of people spanning 134 countries access mental health care."
       />
       <section className="mt-10">

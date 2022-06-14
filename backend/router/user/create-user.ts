@@ -6,31 +6,55 @@ export async function createUserOneTimeDonation(
   amount: number,
   customer_id: string
 ) {
-  const user = await prisma.user.findUnique({
-    where: {
+  await prisma.donation.create({
+    data: {
+      name: name,
       email: email,
+      amount: amount,
+      payment_status: 'SUCCESS',
+      payment_method: 'STRIPE',
+      payment_type: 'ONETIME',
+      customer_id: customer_id,
+      User: {
+        connectOrCreate: {
+          where: {
+            email: email,
+          },
+          create: {
+            name: name,
+            email: email,
+          },
+        },
+      },
     },
   })
-  if (user) {
-    prisma.donation.create({
-      data: {
-        user: user.email,
-        amount: amount,
-        payment_method: 'STRIPE',
-        payment_type: 'ONETIME',
-      },
-    })
-  }
-  await prisma.user.create({
+}
+
+export async function createUserMonthlyDonation(
+  name: string,
+  email: string,
+  amount: number,
+  customer_id: string
+) {
+  await prisma.donation.create({
     data: {
-      email: email,
-      customer_id: customer_id,
       name: name,
-      Donation: {
-        create: {
-          amount: amount,
-          payment_method: 'STRIPE',
-          payment_type: 'ONETIME',
+      email: email,
+      amount: amount,
+      payment_status: 'SUCCESS',
+      payment_method: 'STRIPE',
+      payment_type: 'MONTHLY',
+      customer_id: customer_id,
+      User: {
+        connectOrCreate: {
+          where: {
+            email: email,
+          },
+          create: {
+            name: name,
+            email: email,
+            is_monthly: true,
+          },
         },
       },
     },

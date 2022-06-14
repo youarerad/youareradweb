@@ -201,7 +201,7 @@ export const careerData = [
     icon: '/icons/CareerPage/Leave.svg',
   },
   {
-    id: 'Paid tweetTime Off',
+    id: 'Paid Time Off',
     desc: 'Vacations, family matters, voting, protests, and mental health days are all welcome.',
     color: 'text-primary-light',
     border: 'border-primary-light',
