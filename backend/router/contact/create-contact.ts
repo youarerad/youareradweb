@@ -85,3 +85,39 @@ export async function createVolunteerForm(
   }
   return { message: 'Form Sent!' }
 }
+
+export async function createPartnerForm(
+  name: string,
+  email: string,
+  company: string,
+  type: string,
+  message: string
+) {
+  await prisma.partner.create({
+    data: {
+      name: name,
+      email: email,
+      company: company,
+      type: type,
+      message: message,
+    },
+  })
+  return { message: 'Form Sent!' }
+}
+
+export async function createContactForm(
+  name: string,
+  email: string,
+  department: string,
+  message: string
+) {
+  await prisma.contact.create({
+    data: {
+      name: name,
+      email: email,
+      department: department,
+      message: message,
+    },
+  })
+  return { message: 'Form Sent!' }
+}

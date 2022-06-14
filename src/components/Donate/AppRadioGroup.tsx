@@ -17,7 +17,7 @@ export default function AppRadioGroup({ value, onChange, options, ...rest }: Rad
   return (
     <RadioGroup value={value} onChange={onChange} {...rest}>
       {options.map((option) => (
-        <>
+        <div key={option.value}>
           <RadioGroup.Label key={option.value} className="sr-only">
             {option.label}
           </RadioGroup.Label>
@@ -33,7 +33,7 @@ export default function AppRadioGroup({ value, onChange, options, ...rest }: Rad
           >
             {option.label}
           </RadioGroup.Option>
-        </>
+        </div>
       ))}
     </RadioGroup>
   )

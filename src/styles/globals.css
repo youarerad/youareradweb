@@ -173,4 +173,46 @@ The typography is set with consideration of the fluid type system and its associ
       background-position: 0% 50%;
     }
   }
+  .bg-highlight {
+    background: linear-gradient(295deg, #ffffff, #ffe7ad, #b1e3b5, #fbaaaa);
+    background-size: 800% 800%;
+
+    -webkit-animation: Highlight 43s ease infinite;
+    -moz-animation: Highlight 43s ease infinite;
+    animation: Highlight 43s ease infinite;
+  }
+
+  @-webkit-keyframes Highlight {
+    0% {
+      background-position: 33% 0%;
+    }
+    50% {
+      background-position: 68% 100%;
+    }
+    100% {
+      background-position: 33% 0%;
+    }
+  }
+  @-moz-keyframes Highlight {
+    0% {
+      background-position: 33% 0%;
+    }
+    50% {
+      background-position: 68% 100%;
+    }
+    100% {
+      background-position: 33% 0%;
+    }
+  }
+  @keyframes Highlight {
+    0% {
+      background-position: 33% 0%;
+    }
+    50% {
+      background-position: 68% 100%;
+    }
+    100% {
+      background-position: 33% 0%;
+    }
+  }
 }

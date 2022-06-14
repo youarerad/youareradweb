@@ -32,6 +32,25 @@ model Volunteer {
   User       User?     @relation(fields: [user], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
+model Partner {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String?
+  email      String?
+  company    String?
+  type       String?   @db.VarChar
+  message    String?
+}
+
+model Contact {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String?
+  email      String?
+  department String?   @db.VarChar
+  message    String?
+}
+
 model User {
   id          String      @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   created_at  DateTime?   @default(now()) @db.Timestamptz(6)

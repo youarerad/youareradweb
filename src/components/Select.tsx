@@ -24,11 +24,10 @@ export default function Select({ ariaLabel, options, disabled, state }: SelectPr
       <span className="font-semibold text-gray group-focus-within:text-secondary ">
         {ariaLabel}
       </span>
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={setSelected} disabled={disabled}>
         <Listbox.Button
-          disabled={disabled}
           className={({ open }) =>
-            `relative w-full px-3 py-2 border-2 bg-white-light rounded-xl border-gray-light group-hover:border-secondary-light
+            `relative w-full px-3 py-2 border-2 bg-white-light rounded-xl border-gray-light 
             focus:ring-4 focus:ring-secondary-light
             disabled:select-none disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent focus-within:border-secondary flex items-center ${
               open ? 'border-secondary-light' : 'border-gray-light'

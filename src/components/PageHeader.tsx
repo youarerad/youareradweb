@@ -18,12 +18,12 @@ export default function PageHeader({
       <header>
         <h1 className="text-center">
           {headerText}
-          {headerTextCont && <span className="block">{headerTextCont}</span>}
+          {headerTextCont && <span className="block">{headerTextCont}</span>}{' '}
           <span
             className={classNames(
               variant === 'corePage' ? 'to-secondary-light from-primary-light' : '',
               variant === 'supportPage' ? 'to-secondary from-green' : '',
-              'block text-transparent bg-gradient-to-r bg-clip-text'
+              'text-transparent sm:whitespace-nowrap bg-gradient-to-r bg-clip-text'
             )}
           >
             {headerTextHighlight}
