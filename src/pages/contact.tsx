@@ -34,7 +34,7 @@ export default function Contact() {
     console.log(selectOption)
   }
 
-  const { isSuccess, ...contactRouter } = trpc.useMutation(['create-contact-general'])
+  const { isSuccess, ...contactRouter } = trpc.useMutation(['contact.create-contact-general'])
 
   const handleSubmit: SubmitHandler<ContactFormData> = async (data) => {
     const schema = z

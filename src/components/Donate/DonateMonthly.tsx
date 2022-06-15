@@ -9,7 +9,7 @@ import AppRadioGroup from './AppRadioGroup'
 export default function DonateMonthly() {
   const [currentOption, setCurrentOption] = useState<number>(0)
   const selectedOption = DonateMonthlyConfig[currentOption]
-  const { isLoading, ...createCheckout } = trpc.useMutation('create-monthly-donation')
+  const { isLoading, ...createCheckout } = trpc.useMutation('checkout.create-monthly-donation')
 
   const handleDonationSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()

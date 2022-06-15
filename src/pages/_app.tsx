@@ -43,5 +43,5 @@ export default withTRPC<AppRouter>({
       ],
     }
   },
-  ssr: false,
+  ssr: false, // Disabling SSR via tRPC for now
 })(MyApp)

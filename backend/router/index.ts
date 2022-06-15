@@ -5,6 +5,10 @@ import { userRouter } from './user'
 
 /* This index.ts, which will return as simply as router, allows for combining both our checkout and contact router functions. See the individual routers for more information about their particular function. */
 
-export const appRouter = trpc.router().merge(checkoutRouter).merge(contactRouter).merge(userRouter)
+export const appRouter = trpc
+  .router()
+  .merge('checkout.', checkoutRouter)
+  .merge('contact.', contactRouter)
+  .merge('user.', userRouter)
 
 export type AppRouter = typeof appRouter

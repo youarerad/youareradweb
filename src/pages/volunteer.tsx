@@ -36,7 +36,7 @@ export default function Volunteer() {
     setSelectOptions(option)
     console.log(selectOption)
   }
-  const { isSuccess, ...contactRouter } = trpc.useMutation(['create-contact-volunteer'])
+  const { isSuccess, ...contactRouter } = trpc.useMutation(['contact.create-contact-volunteer'])
 
   const handleSubmit: SubmitHandler<VolunteerFormData> = async (data) => {
     const schema = z

@@ -9,8 +9,8 @@ export default function Donationcomplete() {
   const router = useRouter()
   const session_id = router.query['session_id'] as string
 
-  const { ...contactRouter } = trpc.useMutation(['create-user'])
-  const { data, status } = trpc.useQuery(['get-session', { session_id }], {
+  const { ...contactRouter } = trpc.useMutation(['user.create-user'])
+  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
     onSuccess(data) {
       contactRouter.mutate({
         name: data.customer_details?.name as string,

@@ -38,7 +38,7 @@ export default function Partner() {
     console.log(selectOption)
   }
 
-  const { isSuccess, ...contactRouter } = trpc.useMutation(['create-contact-partner'])
+  const { isSuccess, ...contactRouter } = trpc.useMutation(['contact.create-contact-partner'])
 
   const handleSubmit: SubmitHandler<PartnerFormData> = async (data) => {
     const schema = z

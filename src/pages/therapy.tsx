@@ -7,7 +7,6 @@ import SectionGrid from '@layouts/SectionGrid'
 import Tweet from '@components/Tweet'
 import { therapyTweetData } from '@components/Tweet/TweetData'
 import TherapyFAQ from '@components/TherapyFaq'
-import Link from 'next/link'
 
 export default function Therapy() {
   return (

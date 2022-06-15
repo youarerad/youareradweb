@@ -9,8 +9,8 @@ export default function GuildMember() {
   const router = useRouter()
   const session_id = router.query['session_id'] as string
 
-  const { ...contactRouter } = trpc.useMutation(['create-monthly-user'])
-  const { data, status } = trpc.useQuery(['get-session', { session_id }], {
+  const { ...contactRouter } = trpc.useMutation(['user.create-monthly-user'])
+  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
     async onSuccess(data) {
       if (data.mode === 'subscription') {
         contactRouter.mutate({

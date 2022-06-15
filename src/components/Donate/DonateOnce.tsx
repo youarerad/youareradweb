@@ -15,7 +15,7 @@ export default function DonateOnce() {
         message: ` will cover ${Math.floor(customAmount / 30)} therapy sessions.`,
       }
     : DonateOnceConfig[currentOption]
-  const { isLoading, ...createCheckout } = trpc.useMutation('create-onetime-donation')
+  const { isLoading, ...createCheckout } = trpc.useMutation('checkout.create-onetime-donation')
 
   const handleDonationSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
