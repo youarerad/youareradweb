@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default withTRPC<AppRouter>({
   config({ ctx }) {
     const url = 'https://youarerad.org/'
-      ? `https://https://youarerad.org/api/trpc`
+      ? `https://youarerad.org/api/trpc`
       : 'http://localhost:3000/api/trpc'
 
     const ONE_DAY_SECONDS = 60 * 60 * 24
