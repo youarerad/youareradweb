@@ -13,7 +13,7 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
-  experimental: { optimizeCss: true, browsersListForSwc: true },
+  experimental: { optimizeCss: true },
 
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
