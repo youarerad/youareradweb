@@ -1,5 +1,5 @@
 import * as trpc from '@trpc/server'
-import { CreateMonthlyDonation, CreateOneTimeDonation } from './create-checkout'
+import { createMonthlyDonation, createOneTimeDonation } from './create-checkout'
 import getSessionById from './getSessionById'
 import { z } from 'zod'
 
@@ -22,7 +22,7 @@ export const checkoutRouter = trpc
       priceId: z.number(),
     }),
     async resolve({ input }) {
-      return await CreateOneTimeDonation(input.priceId)
+      return await createOneTimeDonation(input.priceId)
     },
   })
   .mutation('create-monthly-donation', {
@@ -30,6 +30,6 @@ export const checkoutRouter = trpc
       priceId: z.string(),
     }),
     async resolve({ input }) {
-      return await CreateMonthlyDonation(input.priceId)
+      return await createMonthlyDonation(input.priceId)
     },
   })
