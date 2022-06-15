@@ -28,7 +28,9 @@ interface FormData {
 export default function FooterNewsletter() {
   const formRef = useRef<FormHandles>(null)
   const [submit, setSubmit] = useState(false)
-  const { isSuccess, isError, ...contactRouter } = trpc.useMutation(['create-contact-newsletter'])
+  const { isSuccess, isError, ...contactRouter } = trpc.useMutation([
+    'contact.create-contact-newsletter',
+  ])
 
   const handleSubmit: SubmitHandler<FormData> = async (data) => {
     const schema = z
