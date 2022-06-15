@@ -16,11 +16,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
+function getBaseUrl() {
+  if (process.browser) return '' // Browser should use current path
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}` // SSR should use vercel url
+
+  return `http://localhost:${process.env.PORT ?? 3000}` // dev SSR should use localhost
+}
+
 export default withTRPC<AppRouter>({
   config({ ctx }) {
-    const url = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}/api/trpc`
-      : 'http://localhost:3000/api/trpc'
+    const url = `${getBaseUrl()}/api/trpc`
 
     const ONE_DAY_SECONDS = 60 * 60 * 24
     ctx?.res?.setHeader('Cache-Control', `s-maxage=1, stale-while-revalidate=${ONE_DAY_SECONDS}`)
