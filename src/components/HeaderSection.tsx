@@ -1,3 +1,4 @@
+import classNames from '@utils/classNames'
 import StyledLink from './StyledLink'
 
 interface HeaderSectionProps {
@@ -7,6 +8,7 @@ interface HeaderSectionProps {
   headerTextCentered?: boolean
   headerTextHighlight: string
   headerTextHighlightColor: string
+  headerTextHighlightBlock?: boolean
   children?: React.ReactNode
   link?: string
   linkText?: string
@@ -19,6 +21,7 @@ export default function HeaderSection({
   headerText,
   headerTextHighlight,
   headerTextHighlightColor,
+  headerTextHighlightBlock,
   children,
   link,
   linkText,
@@ -29,9 +32,13 @@ export default function HeaderSection({
         <span className={`block text-base ${headerSubTextColor} text-extrabold`}>
           {headerSubText}
         </span>
-        {headerText}
+        {headerText}{' '}
         <span
-          className={`block text-transparent bg-gradient-to-r ${headerTextHighlightColor} bg-clip-text`}
+          className={classNames(
+            headerTextHighlightBlock ? 'sm:block' : '',
+            `text-transparent bg-gradient-to-r 
+            ${headerTextHighlightColor} bg-clip-text`
+          )}
         >
           {headerTextHighlight}
         </span>

@@ -96,6 +96,7 @@ export default function Partner() {
           headerText="Your partnership"
           headerTextHighlight="makes healing possible"
           headerTextHighlightColor="from-secondary-light to-primary-light"
+          headerTextHighlightBlock
         >
           Join incredible partners like Electronic Arts, Jagex, Columbia Records, and more! Rise
           Above The Disorder partners with teams all over the world to make mental health care

@@ -10,7 +10,7 @@ export async function createUserOneTimeDonation(
     data: {
       name: name,
       email: email,
-      amount: amount,
+      amount: amount / 100,
       payment_status: 'SUCCESS',
       payment_method: 'STRIPE',
       payment_type: 'ONETIME',
@@ -40,7 +40,7 @@ export async function createUserMonthlyDonation(
     data: {
       name: name,
       email: email,
-      amount: amount,
+      amount: amount / 100,
       payment_status: 'SUCCESS',
       payment_method: 'STRIPE',
       payment_type: 'MONTHLY',

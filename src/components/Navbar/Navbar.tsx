@@ -57,7 +57,7 @@ export default function Navbar() {
               aria-label="Secondary menu"
             >
               {corePages.map((corepage) => (
-                <NavLink href={corepage.href} key={corepage.name}>
+                <NavLink onClick={() => close()} href={corepage.href} key={corepage.name}>
                   {corepage.name}
                 </NavLink>
               ))}

@@ -55,9 +55,10 @@ export default function About() {
         <HeaderSection
           headerSubText="Our Team"
           headerSubTextColor="text-secondary"
-          headerText="Mental Health Champions"
+          headerText="Mental health champions,"
           headerTextHighlight="pretty RAD people"
           headerTextHighlightColor="from-secondary-light to-primary-light"
+          headerTextHighlightBlock
           link="/careers"
           linkText="Learn more about careers at RAD"
         >
@@ -93,6 +94,7 @@ export default function About() {
           headerTextHighlight="and world shapers"
           headerTextHighlightColor="from-primary-light to-secondary-dark"
           headerTextCentered
+          headerTextHighlightBlock
         />
 
         <div className="flex flex-col">
@@ -128,6 +130,7 @@ export default function About() {
           headerText="Radical kindness"
           headerTextHighlight="radical transparency"
           headerTextHighlightColor="from-red-light to-secondary-dark"
+          headerTextHighlightBlock
         />
         <Tab.Group>
           <Tab.List className="flex space-x-2">

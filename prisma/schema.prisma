@@ -13,13 +13,13 @@ model Donation {
   id             String         @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   created_at     DateTime?      @default(now()) @db.Timestamptz(6)
   amount         Decimal?       @db.Decimal
-  user           String?        @db.Uuid
+  user           String?        @db.VarChar
   payment_type   PaymentType?
   payment_method PaymentMethod?
   payment_status PaymentStatus?
   customer_id    String         @unique @db.VarChar
   email          String?        @db.VarChar
-  User           User?          @relation(fields: [user], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  User           User?          @relation(fields: [user], references: [email], onDelete: NoAction, onUpdate: NoAction)
   name           String?        @db.VarChar
 }
 

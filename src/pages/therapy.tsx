@@ -35,6 +35,7 @@ export default function Therapy() {
           headerText="Ready to start therapy?"
           headerTextHighlightColor="from-secondary-light to-red-light"
           headerTextHighlight="You're just two steps away"
+          headerTextHighlightBlock
         />
         <SectionHighlight>
           <SectionGrid>
@@ -65,11 +66,12 @@ export default function Therapy() {
       </section>
 
       <section className="max-w-lg mx-auto">
-        <Link href="https://intakeq.com/new/KT5Fej/ttVScO">
-          <div>
-            <PrimaryButton type="button" buttonText="Start Therapy Form" />
-          </div>
-        </Link>
+        <div>
+          <PrimaryButton type="button" buttonText="Temporarily Closed" disabled />
+          <p className="italic text-red text-center mt-4">
+            Care is temporarily closed for maintenance*
+          </p>
+        </div>
       </section>
 
       <section className="bg-black text-white rounded-3xl px-4 sm:px-6 lg:px-8">

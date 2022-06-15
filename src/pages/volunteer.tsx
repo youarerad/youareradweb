@@ -94,6 +94,7 @@ export default function Volunteer() {
           headerText="Lend your time and talent to"
           headerTextHighlight="help others rise above"
           headerTextHighlightColor="from-secondary-light to-primary-light"
+          headerTextHighlightBlock
         />
         <div className="px-4 py-10 mx-auto mt-20 bg-gradient-to-br from-secondary-light to-primary-light rounded-xl max-w-7xl sm:px-6 lg:px-8">
           <SupportTabs tabs={volunteerData} />

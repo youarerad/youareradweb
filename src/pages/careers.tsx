@@ -30,6 +30,7 @@ export default function Careers() {
           headerText="A work environment focused on"
           headerTextHighlight="your mental health"
           headerTextHighlightColor="from-secondary-light to-primary-light"
+          headerTextHighlightBlock
         >
           Engage with a purpose driven team or enjoy working solo. Work when you&apos;re inspired or
           rest when you&apos;re not. We believe the ideal work environment comes from putting the
@@ -44,11 +45,10 @@ export default function Careers() {
       <section className="bg-black text-white rounded-3xl px-4 sm:px-6 lg:px-8">
         <header>
           <h2 className="text-center text-white">
-            <span className="block text-base text-extrabold text-primary-light">
-              Team Benefits{' '}
-            </span>
+            <span className="block text-base text-extrabold text-primary-light">Team Benefits</span>
             Benefits that empower you to
-            <span className="text-transparent block bg-gradient-to-r from-secondary-light to-primary-light bg-clip-text">
+            <span className="text-transparent sm:block bg-gradient-to-r from-secondary-light to-primary-light bg-clip-text">
+              {' '}
               live your best life
             </span>
           </h2>
