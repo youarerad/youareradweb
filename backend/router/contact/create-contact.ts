@@ -5,7 +5,7 @@ import prisma from '@libs/prisma'
 export async function createNewsletterForm(email: string) {
   const user = await prisma.user.findUnique({
     where: {
-      email: email,
+      email: email.toLowerCase(),
     },
   })
   if (user?.newsletter === true) {
@@ -17,7 +17,7 @@ export async function createNewsletterForm(email: string) {
   if (!user) {
     await prisma.user.create({
       data: {
-        email: email,
+        email: email.toLowerCase(),
         newsletter: true,
       },
     })
@@ -29,7 +29,7 @@ export async function createNewsletterForm(email: string) {
   if (user.newsletter === false) {
     await prisma.user.update({
       where: {
-        email: email,
+        email: email.toLowerCase(),
       },
       data: {
         newsletter: true,
@@ -50,12 +50,12 @@ export async function createVolunteerForm(
 ) {
   const user = await prisma.user.findUnique({
     where: {
-      email: email,
+      email: email.toLowerCase(),
     },
   })
   if (user) {
     await prisma.user.update({
-      where: { email: email },
+      where: { email: email.toLowerCase() },
       data: {
         name: name,
         Volunteer: {
@@ -65,14 +65,14 @@ export async function createVolunteerForm(
             },
             create: {
               name: name,
-              email: email,
+              email: email.toLowerCase(),
               position: position,
               experience: experience,
               message: message,
             },
             update: {
               name: name,
-              email: email,
+              email: email.toLowerCase(),
               position: position,
               experience: experience,
               message: message,
@@ -86,12 +86,12 @@ export async function createVolunteerForm(
     await prisma.user.create({
       data: {
         name: name,
-        email: email,
+        email: email.toLowerCase(),
         newsletter: true,
         Volunteer: {
           create: {
             name: name,
-            email: email,
+            email: email.toLowerCase(),
             position: position,
             experience: experience,
             message: message,
@@ -113,7 +113,7 @@ export async function createPartnerForm(
   await prisma.partner.create({
     data: {
       name: name,
-      email: email,
+      email: email.toLowerCase(),
       company: company,
       type: type,
       message: message,
@@ -131,7 +131,7 @@ export async function createContactForm(
   await prisma.contact.create({
     data: {
       name: name,
-      email: email,
+      email: email.toLowerCase(),
       department: department,
       message: message,
     },

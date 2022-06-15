@@ -18,11 +18,11 @@ export async function createUserOneTimeDonation(
       User: {
         connectOrCreate: {
           where: {
-            email: email,
+            email: email.toLowerCase(),
           },
           create: {
             name: name,
-            email: email,
+            email: email.toLowerCase(),
           },
         },
       },
@@ -39,7 +39,7 @@ export async function createUserMonthlyDonation(
   await prisma.donation.create({
     data: {
       name: name,
-      email: email,
+      email: email.toLowerCase(),
       amount: amount / 100,
       payment_status: 'SUCCESS',
       payment_method: 'STRIPE',
@@ -48,11 +48,11 @@ export async function createUserMonthlyDonation(
       User: {
         connectOrCreate: {
           where: {
-            email: email,
+            email: email.toLowerCase(),
           },
           create: {
             name: name,
-            email: email,
+            email: email.toLowerCase(),
             is_monthly: true,
           },
         },
