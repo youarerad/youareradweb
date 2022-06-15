@@ -8,41 +8,36 @@ export async function createNewsletterForm(email: string) {
       email: email,
     },
   })
-
-  try {
-    if (user?.newsletter === true) {
-      return {
-        message: 'You are already subscribed!',
-      }
+  if (user?.newsletter === true) {
+    return {
+      message: 'You are already subscribed!',
     }
+  }
 
-    if (!user) {
-      await prisma.user.create({
-        data: {
-          email: email,
-          newsletter: true,
-        },
-      })
-      return {
-        message: 'Subscribed!',
-      }
+  if (!user) {
+    await prisma.user.create({
+      data: {
+        email: email,
+        newsletter: true,
+      },
+    })
+    return {
+      message: 'Subscribed!',
     }
+  }
 
-    if (user.newsletter === false) {
-      await prisma.user.update({
-        where: {
-          email: email,
-        },
-        data: {
-          newsletter: true,
-        },
-      })
-      return {
-        message: 'Subscribed!',
-      }
+  if (user.newsletter === false) {
+    await prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        newsletter: true,
+      },
+    })
+    return {
+      message: 'Subscribed!',
     }
-  } catch (error) {
-    console.log(error)
   }
 }
 
