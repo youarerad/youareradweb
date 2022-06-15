@@ -27,11 +27,9 @@ function getBaseUrl() {
 }
 
 export default withTRPC<AppRouter>({
-  config({ ctx }) {
+  config() {
     const url = `${getBaseUrl()}/api/trpc`
 
-    const ONE_DAY_SECONDS = 60 * 60 * 24
-    ctx?.res?.setHeader('Cache-Control', `s-maxage=1, stale-while-revalidate=${ONE_DAY_SECONDS}`)
     return {
       links: [
         loggerLink({
@@ -43,10 +41,7 @@ export default withTRPC<AppRouter>({
           url,
         }),
       ],
-      headers: {
-        'x-ssr': '1',
-      },
     }
   },
-  ssr: true,
+  ssr: false,
 })(MyApp)
