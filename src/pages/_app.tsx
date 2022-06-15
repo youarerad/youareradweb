@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 export default withTRPC<AppRouter>({
   config({ ctx }) {
-    const url = 'https://youarerad.org/'
+    const url = 'process.env.VERCEL_URL'
       ? `https://youarerad.org/api/trpc`
       : 'http://localhost:3000/api/trpc'
 

@@ -3,7 +3,7 @@ import { stripe } from '@libs/stripe'
 
 /* create-checkout contains our core router functions for making donations on youarerad.org. They outline the type of checkout session to be created, what information to include, and contain an export variable that we can later use to fill out the amount donated. Within createMonthlyDonation, a priceId is required instead of a number. This priceId is a unique string created on Stripe that is directly connected to a monthly giving amount.  */
 
-const ORIGIN_URL = 'https://youarerad.org/' || 'http://localhost:3000'
+const ORIGIN_URL = 'https://youarerad.org' || 'http://localhost:3000'
 
 export async function CreateOneTimeDonation(priceId: number) {
   const params: Stripe.Checkout.SessionCreateParams = {
