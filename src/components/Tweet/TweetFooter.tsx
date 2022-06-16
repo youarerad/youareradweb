@@ -44,7 +44,7 @@ export default function TweetFooter({
   ]
 
   return (
-    <div className="flex flex-row pt-3 border-t justify-between pr-20 relative">
+    <div className="flex flex-row pt-3 border-t justify-between relative">
       {FooterIcons.map((icons) => (
         <a
           key={icons.id}
