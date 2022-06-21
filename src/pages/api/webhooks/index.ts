@@ -50,6 +50,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse): Promis
                     create: {
                       email: donationData.customer_details?.email?.toLowerCase() as string,
                       name: donationData.customer_details?.name as string,
+                      is_monthly: donationData.mode === 'subscription' ? true : false,
                     },
                   },
                 },
