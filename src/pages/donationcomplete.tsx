@@ -9,20 +9,7 @@ export default function Donationcomplete() {
   const router = useRouter()
   const session_id = router.query['session_id'] as string
 
-  const { ...contactRouter } = trpc.useMutation(['user.create-user'])
-  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
-    onSuccess(data) {
-      contactRouter.mutate({
-        name: data.customer_details?.name as string,
-        email: data.customer_details?.email as string,
-        amount: data.amount_total as number,
-        customer_id: data.id,
-      })
-    },
-    staleTime: Infinity,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-  })
+  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }])
   const donation = data?.amount_total
   const donationString = donation ? Math.floor(donation / 100) : null
   const donationImpact = donationString ? Math.floor(donationString / 30) : null
@@ -30,7 +17,7 @@ export default function Donationcomplete() {
   if (status === 'error') {
     return (
       <div>
-        <section className="flex flex-col align-middle justify-center items-center text-center">
+        <section className="flex flex-col items-center justify-center text-center align-middle">
           <header>
             <h1>Failed to load doantion.</h1>
           </header>
@@ -136,7 +123,7 @@ export default function Donationcomplete() {
   return (
     <div>
       <div>
-        <section className="flex flex-col align-middle justify-center items-center text-center">
+        <section className="flex flex-col items-center justify-center text-center align-middle">
           <header>
             <Loading text="Loading donation" />
           </header>

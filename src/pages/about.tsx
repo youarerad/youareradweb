@@ -86,7 +86,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-gray-light/20 rounded-xl px-4 sm:px-6 lg:px-8">
+      <section className="px-4 bg-gray-light/20 rounded-xl sm:px-6 lg:px-8">
         <HeaderSection
           headerSubText="Our Board"
           headerSubTextColor="text-primary"

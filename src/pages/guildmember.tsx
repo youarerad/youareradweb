@@ -9,22 +9,7 @@ export default function GuildMember() {
   const router = useRouter()
   const session_id = router.query['session_id'] as string
 
-  const { ...contactRouter } = trpc.useMutation(['user.create-monthly-user'])
-  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
-    async onSuccess(data) {
-      if (data.mode === 'subscription') {
-        contactRouter.mutate({
-          name: data.customer_details?.name as string,
-          email: data.customer_details?.email as string,
-          amount: data.amount_total as number,
-          customer_id: data.id,
-        })
-      }
-    },
-    staleTime: Infinity,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
-  })
+  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }])
   const donation = data?.amount_total
   const donationString = donation ? Math.floor(donation / 100) : null
   const donationImpact = donationString ? Math.floor(donationString / 30) : null
@@ -79,7 +64,7 @@ export default function GuildMember() {
   return (
     <div>
       <div>
-        <section className="flex flex-col align-middle justify-center items-center text-center">
+        <section className="flex flex-col items-center justify-center text-center align-middle">
           <header>
             <Loading text="Loading donation" />
           </header>

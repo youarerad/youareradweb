@@ -24,6 +24,6 @@
       "@libs/*": ["src/libs/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "StripeDiscriminatedEvents.d.ts"],
   "exclude": ["node_modules"]
 }
