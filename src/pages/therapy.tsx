@@ -7,6 +7,7 @@ import SectionGrid from '@layouts/SectionGrid'
 import Tweet from '@components/Tweet'
 import { therapyTweetData } from '@components/Tweet/TweetData'
 import TherapyFAQ from '@components/TherapyFaq'
+import Link from 'next/link'
 
 export default function Therapy() {
   return (
@@ -65,17 +66,16 @@ export default function Therapy() {
       </section>
 
       <section className="max-w-lg mx-auto">
-        <div>
-          <PrimaryButton type="button" buttonText="Temporarily Closed" disabled />
-          <p className="italic text-red text-center mt-4">
-            Care is temporarily closed for maintenance*
-          </p>
-        </div>
+        <Link href="https://intakeq.com/new/KT5Fej/ttVScO">
+          <div>
+            <PrimaryButton type="button" buttonText="Start Therapy Form" />
+          </div>
+        </Link>
       </section>
 
-      <section className="bg-black text-white rounded-3xl px-4 sm:px-6 lg:px-8">
+      <section className="px-4 text-white bg-black rounded-3xl sm:px-6 lg:px-8">
         <header>
-          <h2 className="text-white text-center">Frequently asked questions</h2>
+          <h2 className="text-center text-white">Frequently asked questions</h2>
         </header>
         <TherapyFAQ />
       </section>
