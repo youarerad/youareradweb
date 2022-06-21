@@ -38,11 +38,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse): Promis
       console.log('Payment Intent Created', event.data.object.id)
     } else if (event.type === 'payment_intent.payment_failed') {
       console.log('Payment Intent Payment Failed', event.data.object.last_payment_error?.message)
-    } else if (
-      event.type === 'checkout.session.completed' &&
-      event.data.object.mode === 'subscription'
-    ) {
-      if (event.data.object.customer_details?.email) {
+    } else if (event.type === 'checkout.session.completed') {
+      if (event.data.object.customer_details?.email && event.data.object.mode === 'subscription') {
         await prisma.donation.create({
           data: {
             name: event.data.object.customer_details.name,
@@ -69,11 +66,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse): Promis
           },
         })
       }
-    } else if (
-      event.type === 'checkout.session.completed' &&
-      event.data.object.mode === 'payment'
-    ) {
-      if (event.data.object.customer_details?.email) {
+
+      if (event.data.object.customer_details?.email && event.data.object.mode === 'payment') {
         await prisma.donation.create({
           data: {
             name: event.data.object.customer_details.name,
@@ -99,8 +93,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse): Promis
           },
         })
       }
-    } else {
-      console.warn('Unknown event type:', event.type)
     }
     res.json({ received: true })
   } else {
