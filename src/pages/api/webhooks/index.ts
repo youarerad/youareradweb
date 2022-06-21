@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { buffer } from 'micro'
+import { buffer, RequestHandler } from 'micro'
+import Cors from 'micro-cors'
 import { stripe } from '@libs/stripe'
 import Stripe from 'stripe'
 
@@ -11,94 +12,77 @@ export const config = {
   },
 }
 
+const cors = Cors({
+  allowMethods: ['POST', 'HEAD'],
+})
+
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === 'POST') {
     const buf = await buffer(req)
     const sig = req.headers['stripe-signature'] || ''
-    const event = stripe.webhooks.constructEvent(
-      buf.toString(),
-      sig,
-      webhookSecret
-    ) as Stripe.DiscriminatedEvent
 
     try {
-      event
+      const event = stripe.webhooks.constructEvent(
+        buf.toString(),
+        sig,
+        webhookSecret
+      ) as Stripe.DiscriminatedEvent
+
+      console.log('Stripe webhook recieved:', event.type, event.id)
+      switch (event.type) {
+        case 'checkout.session.completed':
+          {
+            const donationData = event.data.object
+            await prisma.donation.create({
+              data: {
+                name: donationData.customer_details?.name,
+                email: donationData.customer_details?.email,
+                amount: donationData.amount_total ? Math.floor(donationData.amount_total / 100) : 0,
+                customer_id: donationData.id,
+                payment_method: 'STRIPE',
+                payment_status: 'SUCCESS',
+                payment_type: donationData.mode === 'payment' ? 'ONETIME' : 'MONTHLY',
+                User: {
+                  connectOrCreate: {
+                    where: {
+                      email: donationData.customer_details?.email?.toLowerCase() as string,
+                    },
+                    create: {
+                      email: donationData.customer_details?.email?.toLowerCase() as string,
+                      name: donationData.customer_details?.name as string,
+                    },
+                  },
+                },
+              },
+            })
+          }
+          break
+        case 'payment_intent.payment_failed':
+          {
+            console.log(
+              'Payment failed',
+              event.id,
+              event.type,
+              event.data.object.last_payment_error?.message
+            )
+          }
+          break
+
+        default:
+          console.log(event.type)
+      }
+      res.json({ received: true })
+      console.log('Stripe webhook processed:', event.type)
+      res.send(200)
     } catch (err: unknown) {
       if (err instanceof SyntaxError) {
-        console.log(`❌ Error message: ${err.message}`)
+        console.log(`Error message: ${err.message}`)
         res.status(400).send(`Webhook Error: ${err.message}`)
         return
       }
       return
     }
-
-    console.log('✅ Success:', event.id)
-
-    if (event.type === 'payment_intent.created') {
-      console.log('Payment Intent Created', event.data.object.id)
-    } else if (event.type === 'payment_intent.payment_failed') {
-      console.log('Payment Intent Payment Failed', event.data.object.last_payment_error?.message)
-    } else if (event.type === 'checkout.session.completed') {
-      if (event.data.object.customer_details?.email && event.data.object.mode === 'subscription') {
-        await prisma.donation.create({
-          data: {
-            name: event.data.object.customer_details.name,
-            email: event.data.object.customer_details.email,
-            amount: event.data.object.amount_total
-              ? Math.floor(event.data.object.amount_total / 100)
-              : 0,
-            customer_id: event.data.object.id,
-            payment_status: 'SUCCESS',
-            payment_method: 'STRIPE',
-            payment_type: 'MONTHLY',
-            User: {
-              connectOrCreate: {
-                where: {
-                  email: event.data.object.customer_details.email.toLowerCase(),
-                },
-                create: {
-                  name: event.data.object.customer_details.name,
-                  email: event.data.object.customer_details.email.toLowerCase(),
-                  is_monthly: true,
-                },
-              },
-            },
-          },
-        })
-      }
-
-      if (event.data.object.customer_details?.email && event.data.object.mode === 'payment') {
-        await prisma.donation.create({
-          data: {
-            name: event.data.object.customer_details.name,
-            email: event.data.object.customer_details.email,
-            amount: event.data.object.amount_total
-              ? Math.floor(event.data.object.amount_total / 100)
-              : 0,
-            customer_id: event.data.object.id,
-            payment_status: 'SUCCESS',
-            payment_method: 'STRIPE',
-            payment_type: 'ONETIME',
-            User: {
-              connectOrCreate: {
-                where: {
-                  email: event.data.object.customer_details.email.toLowerCase(),
-                },
-                create: {
-                  name: event.data.object.customer_details.name,
-                  email: event.data.object.customer_details.email.toLowerCase(),
-                },
-              },
-            },
-          },
-        })
-      }
-    }
-    res.json({ received: true })
-  } else {
-    res.setHeader('Allow', 'POST')
-    res.status(405).end('Method Not Allowed')
   }
 }
 
-export default webhookHandler
+export default cors(webhookHandler as RequestHandler)
