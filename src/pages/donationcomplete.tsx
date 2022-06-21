@@ -9,7 +9,20 @@ export default function Donationcomplete() {
   const router = useRouter()
   const session_id = router.query['session_id'] as string
 
-  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }])
+  const { ...contactRouter } = trpc.useMutation(['user.create-user'])
+  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
+    onSuccess(data) {
+      contactRouter.mutate({
+        name: data.customer_details?.name as string,
+        email: data.customer_details?.email as string,
+        amount: data.amount_total as number,
+        customer_id: data.id,
+      })
+    },
+    staleTime: Infinity,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+  })
   const donation = data?.amount_total
   const donationString = donation ? Math.floor(donation / 100) : null
   const donationImpact = donationString ? Math.floor(donationString / 30) : null

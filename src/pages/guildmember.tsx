@@ -9,7 +9,22 @@ export default function GuildMember() {
   const router = useRouter()
   const session_id = router.query['session_id'] as string
 
-  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }])
+  const { ...contactRouter } = trpc.useMutation(['user.create-monthly-user'])
+  const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
+    async onSuccess(data) {
+      if (data.mode === 'subscription') {
+        contactRouter.mutate({
+          name: data.customer_details?.name as string,
+          email: data.customer_details?.email as string,
+          amount: data.amount_total as number,
+          customer_id: data.id,
+        })
+      }
+    },
+    staleTime: Infinity,
+    refetchOnReconnect: false,
+    refetchOnMount: false,
+  })
   const donation = data?.amount_total
   const donationString = donation ? Math.floor(donation / 100) : null
   const donationImpact = donationString ? Math.floor(donationString / 30) : null
