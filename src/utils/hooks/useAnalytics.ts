@@ -9,7 +9,7 @@ export const useAnalytics = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID as string, {
-        includedDomains: ['www.youarerad.org'],
+        includedDomains: ['youarerad.org', 'www.youarerad.org'],
       })
     }
 
