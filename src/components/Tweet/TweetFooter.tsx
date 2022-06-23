@@ -44,7 +44,7 @@ export default function TweetFooter({
   ]
 
   return (
-    <div className="flex flex-row pt-3 border-t justify-between relative">
+    <div className="relative flex flex-row justify-between pt-3 border-t">
       {FooterIcons.map((icons) => (
         <a
           key={icons.id}
@@ -58,7 +58,7 @@ export default function TweetFooter({
             icons.id === 'likes'
               ? 'hover:text-[#ee3c90] focus:text-[#ee3c90] focus:bg-[#ee3c90]/20 outline-[#ee3c90]/40'
               : '',
-            'flex items-center text-base leading-5 group relative  '
+            'flex items-center text-base leading-5 group relative'
           )}
           target="_blank"
           rel="no-referr noreferrer"
@@ -73,7 +73,7 @@ export default function TweetFooter({
             )}
           />
           <icons.icon />
-          <span className="z-0 relative ml-2">{icons.input}</span>
+          <span className="relative z-0 ml-2">{icons.input}</span>
         </a>
       ))}
       <TweetShare tweetId={tweetId} userHandle={userHandle} />
