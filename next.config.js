@@ -13,7 +13,12 @@ const nextConfig = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
-  experimental: { optimizeCss: true, browsersListForSwc: true },
+  experimental: {
+    optimizeCss: true,
+    newNextLinkBehavior: true,
+    legacyBrowsers: false,
+    browsersListForSwc: true,
+  },
 }
 
 module.exports = nextConfig
