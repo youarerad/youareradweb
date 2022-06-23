@@ -4,9 +4,10 @@ import { Stripe } from 'stripe'
 import getRawBody from 'raw-body'
 import { stripe } from '@libs/stripe'
 import { createNewDonation } from '@utils/hooks/createNewDonation'
+import { runMiddleware } from '@utils/middleware'
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
-
+import bodyParser from 'body-parser'
 export const config = {
   api: {
     bodyParser: false,
@@ -14,19 +15,20 @@ export const config = {
 }
 
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+  await runMiddleware(req, res, bodyParser.raw({ type: 'application/json' }))
+
   if (req.method === 'POST') {
-    const rawBody = await getRawBody(req)
     const signature = req.headers['stripe-signature'] as string
 
     try {
       const event = stripe.webhooks.constructEvent(
-        rawBody,
+        req.body,
         signature,
         webhookSecret
       ) as Stripe.DiscriminatedEvent
+      res.send(200)
       await createNewDonation(event)
       console.log('Stripe Webook Recieved', event.type)
-      res.send(200)
     } catch (err: unknown) {
       if (err instanceof SyntaxError) {
         console.log(`Error message: ${err.message}`)

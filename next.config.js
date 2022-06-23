@@ -15,7 +15,6 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: true,
-    newNextLinkBehavior: true,
     legacyBrowsers: false,
     browsersListForSwc: true,
   },
