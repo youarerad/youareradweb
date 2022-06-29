@@ -3,12 +3,14 @@ import PrimaryButton from '@components/PrimaryButton'
 import { trpc } from '@libs/trpc'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { PayPalDonorContext } from '@components/PayPalButton'
+import { useContext } from 'react'
 
 export default function Donationcomplete() {
   const date = new Date()
   const router = useRouter()
   const session_id = router.query['session_id'] as string
-
+  const paypalData = useContext(PayPalDonorContext)
   const { ...contactRouter } = trpc.useMutation(['user.create-user'])
   const { data, status } = trpc.useQuery(['checkout.get-session', { session_id }], {
     onSuccess(data) {
@@ -28,10 +30,13 @@ export default function Donationcomplete() {
   const donationImpact = donationString ? Math.floor(donationString / 30) : null
 
   if (status === 'error') {
+    try {
+    } catch {}
     return (
       <div>
         <section className="flex flex-col items-center justify-center text-center align-middle">
           <header>
+            {paypalData.name}
             <h1>Failed to load doantion.</h1>
           </header>
         </section>

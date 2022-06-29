@@ -8,7 +8,7 @@ interface FrequencySwitchProps {
 export default function FrequencySwitch({ checked, onChange }: FrequencySwitchProps) {
   return (
     <Switch.Group>
-      <div className="relative flex justify-between w-full overflow-hidden  focus-within:ring-secondary-light rounded-xl py-2 ring-4 ring-offset-1 ring-gray-light font-bold text-lg">
+      <div className="relative flex justify-between w-full py-2 overflow-hidden text-lg font-bold focus-within:ring-secondary-light rounded-xl ring-4 ring-offset-1 ring-gray-light">
         <Switch.Label
           passive
           className={`${
@@ -28,7 +28,7 @@ export default function FrequencySwitch({ checked, onChange }: FrequencySwitchPr
         <Switch
           checked={checked}
           onChange={onChange}
-          className="w-full absolute h-full inset-0 outline-none"
+          className="absolute inset-0 w-full h-full outline-none"
         >
           <span
             className={`${

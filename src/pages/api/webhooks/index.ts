@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { NextApiResponse, NextApiRequest } from 'next'
 import { Stripe } from 'stripe'
-import getRawBody from 'raw-body'
 import { stripe } from '@libs/stripe'
 import { createNewDonation } from '@utils/hooks/createNewDonation'
 import { runMiddleware } from '@utils/middleware'

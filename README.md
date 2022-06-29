@@ -18,7 +18,10 @@ We are a non-profit covering the cost of mental health care for people all over 
 
 ## About This Repository
 
-Our cause has always been the result of many incredible people coming together to make a difference. It's in this same theme we provide our website in its entirety here- to be worked on as a community. From grammatical errors and code optimizations, to major feature additions and complete redesigns; we welcome any and all efforts to improve our site.
+Our cause has always been the result of many incredible people coming together to make a difference.
+It's in this same theme we provide our website in its entirety here- to be worked on as a community.
+From grammatical errors and code optimizations, to major feature additions and complete redesigns;
+we welcome any and all efforts to improve our site.
 
 ### Built With
 
@@ -60,4 +63,5 @@ Our cause has always been the result of many incredible people coming together t
 
 ## Credits
 
-A huge thank you to [Open Source Raid Guild](https://osrg.t3.gg), whose members showed us the way of Typescript.
+A huge thank you to [Open Source Raid Guild](https://osrg.t3.gg), whose members showed us the way of
+Typescript.

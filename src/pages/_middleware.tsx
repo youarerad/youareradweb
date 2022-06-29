@@ -2,16 +2,16 @@ import { NextResponse } from 'next/server'
 
 export function middleware() {
   const ContentSecurityPolicy = `
-  frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com;
+  frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://hooks.stripe.com https://www.sandbox.paypal.com/ https://www.paypal.com/;
   frame-ancestors 'none';
   object-src 'self';
   base-uri 'self' ;
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://checkout.stripe.com https://js.stripe.com https://cdn.usefathom.com/script.js;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://checkout.stripe.com https://js.stripe.com https://cdn.usefathom.com/script.js https://www.paypal.com/;
   child-src 'self';
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src 'self' *.cloudinary.com ;
-  connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://vitals.vercel-insights.com/v1/vitals;
+  connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://vitals.vercel-insights.com/v1/vitals https://www.paypal.com/;
   upgrade-insecure-requests;
   block-all-mixed-content;
   font-src 'self';
