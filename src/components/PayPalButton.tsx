@@ -23,7 +23,7 @@ interface PayPalProps {
 export default function PayPalButton({ donationValue }: PayPalProps) {
 	const context = useContext(PayPalDonorContext)
 
-	const { ...createDonation } = trpc.useMutation('user.create-user')
+	const { ...createDonation } = trpc.useMutation('user.create-paypal-user')
 
 	return (
 		<PayPalScriptProvider
