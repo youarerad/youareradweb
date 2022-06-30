@@ -64,7 +64,7 @@ export default function DonateOnce() {
 					type="submit"
 					disabled={isLoading}
 				/>
-				<PayPalButton donationValue={30} />
+				<PayPalButton donationValue={selectedOption.priceId} />
 			</form>
 		</>
 	)
