@@ -14,8 +14,8 @@ export const userRouter = trpc
 			name: z.string(),
 			amount: z.number(),
 			customer_id: z.string(),
-			honor: z.string(),
-			message: z.string(),
+			honor: z.string().optional(),
+			message: z.string().optional(),
 		}),
 		async resolve({ input }) {
 			return await createUserOneTimeDonation(

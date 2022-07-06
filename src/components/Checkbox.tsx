@@ -1,6 +1,6 @@
-import { ChangeEventHandler } from 'react'
+import { ChangeEventHandler, ComponentPropsWithoutRef } from 'react'
 
-interface CheckboxProps {
+interface CheckboxProps extends ComponentPropsWithoutRef<'input'> {
 	checked: boolean
 	onChange: ChangeEventHandler<HTMLInputElement>
 	label: string

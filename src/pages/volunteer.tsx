@@ -9,7 +9,6 @@ import { SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
-import { z } from 'zod'
 import Select from '@components/Select'
 import { CreateContactVolunteerSchema, createContactVolunteerSchema } from 'src/shared/schemas'
 
@@ -37,6 +36,7 @@ export default function Volunteer() {
 			name: data.name,
 			email: data.email,
 			experience: data.experience,
+			position: data.position,
 			message: data.message,
 		})
 		if (!schema.success) {
@@ -83,7 +83,7 @@ export default function Volunteer() {
 			</section>
 			<section className="space-y-4">
 				<header>
-					<h2 className="text-center bg-gradient-to-r from-red-light to-primary-light text-transparent bg-clip-text">
+					<h2 className="text-center text-transparent bg-gradient-to-r from-red-light to-primary-light bg-clip-text">
 						Volunteer form
 					</h2>
 				</header>
