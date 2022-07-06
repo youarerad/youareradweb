@@ -11,7 +11,6 @@ export const createContactVolunteerSchema = z.object({
 	message: z.string({ required_error: 'Message is required' }).min(20, {
 		message: 'Message must be at least 20 characters',
 	}),
-	// TODO -- update to not be optional once added in frontend
 	position: z.string().optional().default(''),
 })
 
