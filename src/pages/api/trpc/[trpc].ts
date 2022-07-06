@@ -5,6 +5,6 @@ import { appRouter } from 'backend/router'
 export type AppRouter = typeof appRouter
 
 export default trpcNext.createNextApiHandler({
-  router: appRouter,
-  createContext: () => null,
+	router: appRouter,
+	createContext: () => null,
 })

@@ -21,6 +21,8 @@ model Donation {
   email          String?        @db.VarChar
   User           User?          @relation(fields: [user], references: [email], onDelete: NoAction, onUpdate: NoAction)
   name           String?        @db.VarChar
+  message        String?        @db.VarChar
+  honor          String?        @db.VarChar
 }
 
 model Volunteer {

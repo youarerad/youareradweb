@@ -6,9 +6,12 @@ import PrimaryButton from '@components/PrimaryButton'
 import DonateCustomInput from './DonateCustomInput'
 import AppRadioGroup from './AppRadioGroup'
 import PayPalButton from '@components/PayPalButton'
+import Select from '@components/Select'
+import Checkbox from '@components/Checkbox'
 
 export default function DonateOnce() {
 	const [currentOption, setCurrentOption] = useState<number>(0)
+	const [inhonorChecked, setInHonorChecked] = useState<boolean>(false)
 	const [customAmount, setCustomAmount] = useState<number | undefined>(undefined)
 	const selectedOption = customAmount
 		? {
@@ -59,6 +62,7 @@ export default function DonateOnce() {
 						{selectedOption.message}
 					</p>
 				</div>
+				<Checkbox checked={false} label="Give in honor/memory" onChange={() => null} />
 				<PrimaryButton
 					buttonText={isLoading ? 'Loading' : 'Donate Now'}
 					type="submit"
