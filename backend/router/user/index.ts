@@ -1,13 +1,12 @@
-import * as trpc from '@trpc/server'
 import { z } from 'zod'
+import { createRouter } from '../createRouter'
 import {
 	createUserMonthlyDonation,
 	createUserOneTimeDonation,
 	createUserOneTimePaypalDonation,
 } from './create-user'
 
-export const userRouter = trpc
-	.router()
+export const userRouter = createRouter()
 	.mutation('create-user', {
 		input: z.object({
 			email: z.string(),
@@ -15,7 +14,7 @@ export const userRouter = trpc
 			amount: z.number(),
 			customer_id: z.string(),
 		}),
-		async resolve({ input }) {
+		async resolve({ input, ctx }) {
 			return await createUserOneTimeDonation(
 				input.name,
 				input.email,
