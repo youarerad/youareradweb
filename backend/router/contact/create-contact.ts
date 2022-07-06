@@ -1,4 +1,5 @@
 import prisma from '@libs/prisma'
+import { CreateContactVolunteerSchema } from 'src/shared/schemas'
 
 /* create-contact contains our core router functions for sending contact data to our database. Each function outlines what information is expected from the database, as well as what the type definition for this information is. To work correctly, the variable within the .insert function of supabase must match the name of the column contained within the targeted supabase database. For example, there is a table named contactform, which has the following columns: name, email, department, and message. Any mismatch of column name or type definition will result in an error. */
 
@@ -41,41 +42,35 @@ export async function createNewsletterForm(email: string) {
 	}
 }
 
-export async function createVolunteerForm(
-	name: string,
-	email: string,
-	position: string,
-	experience: string,
-	message: string
-) {
+export async function createVolunteerForm(input: CreateContactVolunteerSchema) {
 	const user = await prisma.user.findUnique({
 		where: {
-			email: email.toLowerCase(),
+			email: input.email.toLowerCase(),
 		},
 	})
 	if (user) {
 		await prisma.user.update({
-			where: { email: email.toLowerCase() },
+			where: { email: input.email.toLowerCase() },
 			data: {
-				name: name,
+				name: input.name,
 				Volunteer: {
 					upsert: {
 						where: {
 							id: user.id,
 						},
 						create: {
-							name: name,
-							email: email.toLowerCase(),
-							position: position,
-							experience: experience,
-							message: message,
+							name: input.name,
+							email: input.email.toLowerCase(),
+							position: input.position,
+							experience: input.experience,
+							message: input.message,
 						},
 						update: {
-							name: name,
-							email: email.toLowerCase(),
-							position: position,
-							experience: experience,
-							message: message,
+							name: input.name,
+							email: input.email.toLowerCase(),
+							position: input.position,
+							experience: input.experience,
+							message: input.message,
 						},
 					},
 				},
@@ -85,16 +80,16 @@ export async function createVolunteerForm(
 	if (!user) {
 		await prisma.user.create({
 			data: {
-				name: name,
-				email: email.toLowerCase(),
+				name: input.name,
+				email: input.email.toLowerCase(),
 				newsletter: true,
 				Volunteer: {
 					create: {
-						name: name,
-						email: email.toLowerCase(),
-						position: position,
-						experience: experience,
-						message: message,
+						name: input.name,
+						email: input.email.toLowerCase(),
+						position: input.position,
+						experience: input.experience,
+						message: input.message,
 					},
 				},
 			},
