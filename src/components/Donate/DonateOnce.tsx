@@ -10,10 +10,14 @@ import Checkbox from '@components/Checkbox'
 import UncontrolledInput from '@components/UnControlledInput'
 import classNames from '@utils/classNames'
 import Select from '@components/Select'
+import { useRouter } from 'next/router'
+import * as Fathom from 'fathom-client'
 
 const honorandmemoryOptions = [{ label: 'In honor of' }, { label: 'In memory of' }]
 
 export default function DonateOnce() {
+	const router = useRouter()
+	const eventId = '?utm_campaign=donaterad&utm_source=google'
 	const [currentOption, setCurrentOption] = useState<number>(0)
 	const [inhonorChecked, setInHonorChecked] = useState<boolean>(false)
 	const [onbehalfof, setOnBehalfOf] = useState<string>('')
@@ -43,7 +47,9 @@ export default function DonateOnce() {
 
 	const handleDonationSubmit = async (event: { preventDefault: () => void }) => {
 		event.preventDefault()
-
+		if (router.asPath.includes(eventId)) {
+			Fathom.trackGoal('SLXOTXYI', 0)
+		}
 		const response = await createCheckout.mutateAsync({
 			priceId: selectedOption.priceId,
 			honor: onbehalfof.toLowerCase() + ' ' + inhonorMessage,

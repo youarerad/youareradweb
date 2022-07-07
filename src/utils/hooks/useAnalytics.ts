@@ -4,23 +4,23 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export const useAnalytics = () => {
-  const router = useRouter()
+	const router = useRouter()
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID as string, {
-        includedDomains: ['youarerad.org', 'www.youarerad.org'],
-      })
-    }
+	useEffect(() => {
+		if (process.env.NODE_ENV === 'production') {
+			Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID as string, {
+				includedDomains: ['youarerad.org', 'www.youarerad.org'],
+			})
+		}
 
-    function onRouteChangeComplete() {
-      Fathom.trackPageview()
-    }
+		function onRouteChangeComplete() {
+			Fathom.trackPageview()
+		}
 
-    router.events.on('routeChangeComplete', onRouteChangeComplete)
+		router.events.on('routeChangeComplete', onRouteChangeComplete)
 
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete)
-    }
-  }, [router.events])
+		return () => {
+			router.events.off('routeChangeComplete', onRouteChangeComplete)
+		}
+	}, [router.events])
 }
