@@ -1,30 +1,15 @@
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import { trpc } from '@libs/trpc'
-import { createContext, useContext } from 'react'
 
-const PaypalClientKey = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_KEY ?? ''
-
-interface PayPalDonorContextProps {
-	name: string
-	email: string
-	amount: number
-}
-
-export const PayPalDonorContext = createContext<PayPalDonorContextProps>({
-	name: '',
-	email: '',
-	amount: 0,
-})
+const PaypalClientKey = process.env.PAYPAL_CLIENT_KEY ?? ''
 
 interface PayPalProps {
 	donationValue: number
 }
 
 export default function PayPalButton({ donationValue }: PayPalProps) {
-	const context = useContext(PayPalDonorContext)
-
 	const { ...createDonation } = trpc.useMutation('user.create-paypal-user')
-
+	const ConvertStripeNumbers = Math.floor(donationValue / 100)
 	return (
 		<PayPalScriptProvider
 			options={{
@@ -46,11 +31,11 @@ export default function PayPalButton({ donationValue }: PayPalProps) {
 						purchase_units: [
 							{
 								amount: {
-									value: donationValue.toString(),
+									value: ConvertStripeNumbers.toString(),
 									breakdown: {
 										item_total: {
 											currency_code: 'USD',
-											value: donationValue.toString(),
+											value: ConvertStripeNumbers.toString(),
 										},
 									},
 								},
@@ -60,7 +45,7 @@ export default function PayPalButton({ donationValue }: PayPalProps) {
 										quantity: '1',
 										unit_amount: {
 											currency_code: 'USD',
-											value: donationValue.toString(),
+											value: ConvertStripeNumbers.toString(),
 										},
 										category: 'DONATION',
 									},
@@ -71,18 +56,14 @@ export default function PayPalButton({ donationValue }: PayPalProps) {
 				}}
 				onApprove={async (data, actions) => {
 					await actions.order?.capture().then((details) => {
-						createDonation
-							.mutateAsync({
-								name: details.payer.name?.given_name || '',
-								email: details.payer.email_address || '',
-								amount: donationValue,
-								customer_id: details.payer.payer_id || '',
-							})
-							.then(() => {
-								context.name = details.payer.name?.given_name || ''
-								context.email = details.payer.email_address || ''
-								context.amount = donationValue
-							})
+						createDonation.mutateAsync({
+							name: details.payer.name?.given_name || '',
+							email: details.payer.email_address || '',
+							amount: donationValue,
+							customer_id: details.payer.payer_id || '',
+							honor: localStorage.getItem('inhonorMessage') || '',
+							message: localStorage.getItem('leavecommentMessage') || '',
+						})
 					})
 				}}
 			/>
