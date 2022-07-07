@@ -1,7 +1,7 @@
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import { trpc } from '@libs/trpc'
 
-const PaypalClientKey = process.env.PAYPAL_CLIENT_KEY ?? ''
+const PaypalClientKey = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_KEY ?? ''
 
 interface PayPalProps {
 	donationValue: number
