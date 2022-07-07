@@ -10,19 +10,19 @@ export const userRouter = trpc
 	.router()
 	.mutation('create-user', {
 		input: z.object({
-			email: z.string(),
-			name: z.string(),
 			amount: z.number(),
 			customer_id: z.string(),
+			email: z.string().optional(),
+			name: z.string().optional(),
 			honor: z.string().optional(),
 			message: z.string().optional(),
 		}),
 		async resolve({ input }) {
 			return await createUserOneTimeDonation(
-				input.name,
-				input.email,
 				input.amount,
 				input.customer_id,
+				input.name,
+				input.email,
 				input.honor,
 				input.message
 			)
@@ -30,19 +30,19 @@ export const userRouter = trpc
 	})
 	.mutation('create-monthly-user', {
 		input: z.object({
-			email: z.string(),
-			name: z.string(),
 			amount: z.number(),
 			customer_id: z.string(),
+			email: z.string().optional(),
+			name: z.string().optional(),
 			honor: z.string(),
 			message: z.string(),
 		}),
 		async resolve({ input }) {
 			return await createUserMonthlyDonation(
-				input.name,
-				input.email,
 				input.amount,
 				input.customer_id,
+				input.name,
+				input.email,
 				input.honor,
 				input.message
 			)
