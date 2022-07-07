@@ -130,7 +130,7 @@ export default function DonateOnce() {
 							<UncontrolledInput
 								variant="textarea"
 								name="leavecommentMessage"
-								value={leavecommentMessage.slice(0, 600).trimEnd()}
+								value={leavecommentMessage.slice(0, 600)}
 								onChange={(e) => setLeaveCommentMessage(e.currentTarget.value)}
 							>
 								<div
