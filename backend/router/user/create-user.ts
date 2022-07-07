@@ -1,3 +1,5 @@
+import prisma from '@libs/prisma'
+
 export async function createUserOneTimeDonation(
 	amount: number,
 	customer_id: string,

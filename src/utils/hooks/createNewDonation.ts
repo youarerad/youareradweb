@@ -1,4 +1,5 @@
 import Stripe from 'stripe'
+import prisma from '@libs/prisma'
 
 export const createNewDonation = async (event: Stripe.DiscriminatedEvent) => {
 	if (event.type === 'checkout.session.completed') {
