@@ -8,6 +8,7 @@ interface Props {
 	name: string
 	label?: string
 	variant: 'text' | 'textarea' | 'radio' | 'email' | 'number' | 'phone' | 'zipcode'
+
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 	radioGroup?: string
 	checked?: boolean
@@ -173,7 +174,6 @@ export default function Input({
 			</div>
 		)
 	}
-
 	return (
 		<div className="relative group">
 			{label && (
