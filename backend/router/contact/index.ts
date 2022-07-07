@@ -1,5 +1,9 @@
 import * as trpc from '@trpc/server'
-import { createContactVolunteerSchema } from 'src/shared/schemas'
+import {
+	createContactFormSchema,
+	createContactPartnerSchema,
+	createContactVolunteerSchema,
+} from 'src/shared/schemas'
 import { z } from 'zod'
 import { createContactForm, createNewsletterForm, createPartnerForm } from './create-contact'
 import { createVolunteerForm } from './create-contact'
@@ -29,13 +33,7 @@ export const contactRouter = trpc
 		},
 	})
 	.mutation('create-contact-partner', {
-		input: z.object({
-			name: z.string(),
-			email: z.string(),
-			company: z.string(),
-			type: z.string(),
-			message: z.string(),
-		}),
+		input: createContactPartnerSchema,
 		async resolve({ input }) {
 			return await createPartnerForm(
 				input.name,
@@ -47,12 +45,7 @@ export const contactRouter = trpc
 		},
 	})
 	.mutation('create-contact-general', {
-		input: z.object({
-			name: z.string(),
-			email: z.string(),
-			department: z.string(),
-			message: z.string(),
-		}),
+		input: createContactFormSchema,
 		async resolve({ input }) {
 			return await createContactForm(input.name, input.email, input.department, input.message)
 		},

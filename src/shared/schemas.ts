@@ -15,3 +15,32 @@ export const createContactVolunteerSchema = z.object({
 })
 
 export type CreateContactVolunteerSchema = z.output<typeof createContactVolunteerSchema>
+
+export const createContactPartnerSchema = z.object({
+	name: z
+		.string({ required_error: 'Name is required' })
+		.min(2, 'Name must be at least 2 characters'),
+	email: z.string().email({ message: 'Email invalid' }),
+	type: z.string().optional().default(''),
+	company: z
+		.string({ required_error: 'Company is required' })
+		.min(2, 'Company must be at least 2 characters'),
+	message: z
+		.string({ required_error: 'Details are required' })
+		.min(2, 'Details must be at least 2 characters'),
+})
+
+export type CreateContactPartnerSchema = z.output<typeof createContactPartnerSchema>
+
+export const createContactFormSchema = z.object({
+	name: z
+		.string({ required_error: 'Name is required' })
+		.min(2, 'Name must be at least 2 characters'),
+	email: z.string().email({ message: 'Email invalid' }),
+	department: z.string().optional().default(''),
+	message: z
+		.string({ required_error: 'Message is required' })
+		.min(10, 'Message must be at least 10 characters'),
+})
+
+export type CreateContactFormSchema = z.output<typeof createContactFormSchema>
