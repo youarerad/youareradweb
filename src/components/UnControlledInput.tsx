@@ -29,7 +29,7 @@ export default function UncontrolledInput({
 					name={name}
 					value={value}
 					rows={4}
-					className="relative block w-full px-3 py-2 text-black transition-all duration-300 ease-in-out border-2 outline-none border-gray-light rounded-xl bg-secondary-light/10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent focus:ring-4 focus:ring-secondary-light"
+					className="relative w-full px-3 py-2 text-black transition-all duration-300 ease-in-out border-2 outline-none border-gray-light rounded-xl bg-secondary-light/10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent focus:ring-4 focus:ring-secondary-light"
 				/>
 				{children}
 			</label>
@@ -45,7 +45,7 @@ export default function UncontrolledInput({
 				name={name}
 				value={value}
 				type="text"
-				className="px-3 py-2 text-black transition-all duration-300 ease-in-out border-2 outline-none border-gray-light rounded-xl bg-secondary-light/10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent focus:ring-4 focus:ring-secondary-light"
+				className="w-full px-3 py-2 text-black transition-all duration-300 ease-in-out border-2 outline-none w border-gray-light rounded-xl bg-secondary-light/10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent focus:ring-4 focus:ring-secondary-light"
 			/>
 		</label>
 	)

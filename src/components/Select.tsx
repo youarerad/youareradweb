@@ -34,7 +34,7 @@ export default function Select({ ariaLabel, options, disabled, state }: SelectPr
 						}`
 					}
 				>
-					<span className="block truncate min-w-[140px] text-left">{selected}</span>
+					<span className="block truncate min-w-[130px] text-left">{selected}</span>
 					<span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
