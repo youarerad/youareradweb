@@ -45,7 +45,7 @@ export default function Train() {
 	return (
 		<div className="">
 			<PageSEO title="Train" description="Train with Rise Above The Disorder" />
-			<section className="grid items-center mt-6 pb-80 sm:grid-cols-2 sm:mt-10">
+			<section className="grid items-center mt-6 sm:grid-cols-2 sm:mt-10">
 				<header>
 					<h1 className="">Community Care</h1>
 					<h3 className="text-xl text-transparent sm:block bg-gradient-to-b from-gray-dark to-gray bg-clip-text">
@@ -69,7 +69,7 @@ export default function Train() {
 				</div>
 			</section>
 
-			<section className="relative flex flex-col items-center w-full mt-20 overflow-hidden rounded-xl">
+			<section className="relative flex flex-col items-center w-full overflow-hidden rounded-xl sm:max-w-xl">
 				<div
 					ref={ref}
 					className={classNames(
