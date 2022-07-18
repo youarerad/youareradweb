@@ -10,7 +10,10 @@ import { Form } from '@unform/web'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
 import Select from '@components/Select'
-import { CreateContactVolunteerSchema, createContactVolunteerSchema } from 'src/shared/schemas'
+import {
+	CreateContactVolunteerSchema,
+	createContactVolunteerSchema,
+} from 'src/shared/ContactSchemas'
 
 const selectOptions = [
 	{

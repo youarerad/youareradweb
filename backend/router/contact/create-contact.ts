@@ -1,5 +1,5 @@
 import prisma from '@libs/prisma'
-import { CreateContactVolunteerSchema } from 'src/shared/schemas'
+import { CreateContactVolunteerSchema } from 'src/shared/ContactSchemas'
 
 /* create-contact contains our core router functions for sending contact data to our database. Each function outlines what information is expected from the database, as well as what the type definition for this information is. To work correctly, the variable within the .insert function of supabase must match the name of the column contained within the targeted supabase database. For example, there is a table named contactform, which has the following columns: name, email, department, and message. Any mismatch of column name or type definition will result in an error. */
 

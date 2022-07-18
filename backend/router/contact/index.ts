@@ -3,7 +3,7 @@ import {
 	createContactFormSchema,
 	createContactPartnerSchema,
 	createContactVolunteerSchema,
-} from 'src/shared/schemas'
+} from 'src/shared/ContactSchemas'
 import { z } from 'zod'
 import { createContactForm, createNewsletterForm, createPartnerForm } from './create-contact'
 import { createVolunteerForm } from './create-contact'

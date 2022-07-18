@@ -68,6 +68,21 @@ model User {
   Volunteer  Volunteer[]
 }
 
+model Creator {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String?
+  email      String?
+  discord    String?
+  profilePhoto String?
+  twitchChannel String? @db.VarChar
+  youtubeChannel String? @db.VarChar
+  twitterPage String? @db.VarChar
+  therapySessionsPaid Int?
+  therapySessionsTotal Int?
+  therapySessionsRemaining Int?
+}
+
 enum PaymentMethod {
   STRIPE
   PAYPAL
@@ -89,4 +104,12 @@ enum VolunteerPosition {
   CLINICAL
   COMMUNITY
   EVENT
+}
+
+enum SocialMedia {
+  TWITCH
+  FACEBOOK
+  INSTAGRAM
+  YOUTUBE
+  TWITTER
 }

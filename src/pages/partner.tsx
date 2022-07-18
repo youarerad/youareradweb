@@ -9,17 +9,8 @@ import { SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
-import { z } from 'zod'
 import Select from '@components/Select'
-import { createContactPartnerSchema } from 'src/shared/schemas'
-
-interface PartnerFormData {
-	name: string
-	email: string
-	company: string
-	type: string
-	message: string
-}
+import { CreateContactPartnerSchema, createContactPartnerSchema } from 'src/shared/ContactSchemas'
 
 const selectOptions = [
 	{
@@ -41,7 +32,7 @@ export default function Partner() {
 
 	const { isSuccess, ...contactRouter } = trpc.useMutation(['contact.create-contact-partner'])
 
-	const handleSubmit: SubmitHandler<PartnerFormData> = async (data) => {
+	const handleSubmit: SubmitHandler<CreateContactPartnerSchema> = async (data) => {
 		const schema = createContactPartnerSchema.safeParse({
 			name: data.name,
 			email: data.email,

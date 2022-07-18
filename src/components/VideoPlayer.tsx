@@ -3,7 +3,13 @@ import { useEffect, useRef } from 'react'
 
 /* VideoPlayer, often importated as LazyVideo with Next/Dynamic, contains both the default function and styling of videos on our site. Leveraging useIsVisable, an intersection observer hook, we check to see if the video is in view, then pause the video when out of view. */
 
-export default function LazyVideo({ src }: { src: string | undefined }) {
+export default function LazyVideo({
+	src,
+	classnames,
+}: {
+	src: string | undefined
+	classnames?: string | undefined
+}) {
 	const elemRef = useRef<HTMLDivElement>(null)
 	const isVisible = useIsVisible(elemRef)
 
@@ -23,7 +29,7 @@ export default function LazyVideo({ src }: { src: string | undefined }) {
 			loop
 			playsInline
 			controls
-			className="relative aspect-video rounded-xl"
+			className={`relative aspect-video rounded-xl ${classnames}`}
 			src={src}
 		>
 			{isVisible}

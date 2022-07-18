@@ -5,16 +5,8 @@ import { SubmitHandler, FormHandles } from '@unform/core'
 import { Form } from '@unform/web'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
-import { z } from 'zod'
 import Select from '@components/Select'
-import { createContactFormSchema } from 'src/shared/schemas'
-
-interface ContactFormData {
-	name: string
-	email: string
-	department: string
-	message: string
-}
+import { CreateContactFormSchema, createContactFormSchema } from 'src/shared/ContactSchemas'
 
 const selectOptions = [
 	{
@@ -37,7 +29,7 @@ export default function Contact() {
 
 	const { isSuccess, ...contactRouter } = trpc.useMutation(['contact.create-contact-general'])
 
-	const handleSubmit: SubmitHandler<ContactFormData> = async (data) => {
+	const handleSubmit: SubmitHandler<CreateContactFormSchema> = async (data) => {
 		const schema = createContactFormSchema.safeParse({
 			name: data.name,
 			email: data.email,

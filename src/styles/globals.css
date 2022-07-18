@@ -3,216 +3,220 @@
 @tailwind utilities;
 
 @layer base {
-  /* Typography
+	/* Typography
 
 The typography is set with consideration of the fluid type system and its associated Tailwind CSS plugin, named tailwindcss-fluid-type. The combination of these results in a font that changes based on the screen size and a music methodology for how fonts should scale.
 
  */
 
-  h1 {
-    @apply text-6xl font-extrabold text-gray-dark;
-  }
+	h1 {
+		@apply text-6xl font-extrabold text-gray-dark;
+	}
 
-  h2 {
-    @apply text-3xl font-extrabold whitespace-pre-wrap sm:text-4xl text-gray-dark;
-  }
-  h3 {
-    @apply text-xl font-extrabold tracking-tight text-gray-dark;
-  }
-  h4 {
-    @apply font-extrabold text-base;
-  }
-  p {
-    @apply text-base max-w-prose;
-    -webkit-text-stroke: 0.45px;
-    -webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
-  }
+	h2 {
+		@apply text-3xl font-extrabold whitespace-pre-wrap sm:text-4xl text-gray-dark;
+	}
+	h3 {
+		@apply text-xl font-extrabold tracking-tight text-gray-dark;
+	}
+	h4 {
+		@apply font-extrabold text-base;
+	}
+	p {
+		@apply text-base max-w-prose;
+		-webkit-text-stroke: 0.45px;
+		-webkit-text-stroke: 0.45px rgba(0, 0, 0, 0.1);
+	}
 
-  .text-transparent {
-    -webkit-box-decoration-break: clone;
-  }
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 
-  .text-rad {
-    animation: flow 20s ease-in-out infinite;
-    position: inline;
-    background: linear-gradient(-60deg, #60a5fa, #f472b6);
-    background-size: 200%;
-    -webkit-animation: flow 30s ease infinite;
-    -moz-animation: flow 30s ease infinite;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-box-decoration-break: clone;
-  }
-  @-webkit-keyframes flow {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @-moz-keyframes flow {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+	.text-transparent {
+		-webkit-box-decoration-break: clone;
+	}
 
-  @keyframes flow {
-    0% {
-      background-position: 0 50%;
-    }
+	.text-rad {
+		animation: flow 20s ease-in-out infinite;
+		position: inline;
+		background: linear-gradient(-60deg, #60a5fa, #f472b6);
+		background-size: 200%;
+		-webkit-animation: flow 30s ease infinite;
+		-moz-animation: flow 30s ease infinite;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-webkit-box-decoration-break: clone;
+	}
+	@-webkit-keyframes flow {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@-moz-keyframes flow {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
-    50% {
-      background-position: 100% 50%;
-    }
+	@keyframes flow {
+		0% {
+			background-position: 0 50%;
+		}
 
-    100% {
-      background-position: 0 50%;
-    }
-  }
+		50% {
+			background-position: 100% 50%;
+		}
 
-  /* Common Page Element Styles*/
-  header {
-    @apply space-y-4;
-  }
-  section {
-    @apply py-20 mx-auto space-y-20 my-20;
-  }
+		100% {
+			background-position: 0 50%;
+		}
+	}
 
-  .bg-sunset {
-    background: linear-gradient(359deg, #94e2f3, #fbeaa7, #fbbaa7, #426d90);
-    background-size: 800% 800%;
+	/* Common Page Element Styles*/
+	header {
+		@apply space-y-4;
+	}
+	section {
+		@apply py-20 mx-auto space-y-20 my-20;
+	}
 
-    -webkit-animation: sunset 30s ease infinite;
-    -moz-animation: sunset 30s ease infinite;
-    animation: sunset 30s ease infinite;
-  }
+	.bg-sunset {
+		background: linear-gradient(359deg, #94e2f3, #fbeaa7, #fbbaa7, #426d90);
+		background-size: 800% 800%;
 
-  @-webkit-keyframes sunset {
-    0% {
-      background-position: 51% 0%;
-    }
-    50% {
-      background-position: 50% 100%;
-    }
-    100% {
-      background-position: 51% 0%;
-    }
-  }
-  @-moz-keyframes sunset {
-    0% {
-      background-position: 51% 0%;
-    }
-    50% {
-      background-position: 50% 100%;
-    }
-    100% {
-      background-position: 51% 0%;
-    }
-  }
-  @keyframes sunset {
-    0% {
-      background-position: 51% 0%;
-    }
-    50% {
-      background-position: 50% 100%;
-    }
-    100% {
-      background-position: 51% 0%;
-    }
-  }
+		-webkit-animation: sunset 30s ease infinite;
+		-moz-animation: sunset 30s ease infinite;
+		animation: sunset 30s ease infinite;
+	}
 
-  .bg-rad {
-    background: linear-gradient(270deg, #60a5fa, #f472b6, #64dfb8);
-    background-size: 300% 600%;
-    -webkit-animation: bgrad 50s ease infinite;
-    -moz-animation: bgrad 50s ease infinite;
-    animation: bgrad 50s ease infinite;
-  }
+	@-webkit-keyframes sunset {
+		0% {
+			background-position: 51% 0%;
+		}
+		50% {
+			background-position: 50% 100%;
+		}
+		100% {
+			background-position: 51% 0%;
+		}
+	}
+	@-moz-keyframes sunset {
+		0% {
+			background-position: 51% 0%;
+		}
+		50% {
+			background-position: 50% 100%;
+		}
+		100% {
+			background-position: 51% 0%;
+		}
+	}
+	@keyframes sunset {
+		0% {
+			background-position: 51% 0%;
+		}
+		50% {
+			background-position: 50% 100%;
+		}
+		100% {
+			background-position: 51% 0%;
+		}
+	}
 
-  @-webkit-keyframes bgrad {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @-moz-keyframes bgrad {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  @keyframes bgrad {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  .bg-highlight {
-    background: linear-gradient(295deg, #ffffff, #ffe7ad, #b1e3b5, #fbaaaa);
-    background-size: 800% 800%;
+	.bg-rad {
+		background: linear-gradient(270deg, #60a5fa, #f472b6, #64dfb8);
+		background-size: 300% 600%;
+		-webkit-animation: bgrad 50s ease infinite;
+		-moz-animation: bgrad 50s ease infinite;
+		animation: bgrad 50s ease infinite;
+	}
 
-    -webkit-animation: Highlight 43s ease infinite;
-    -moz-animation: Highlight 43s ease infinite;
-    animation: Highlight 43s ease infinite;
-  }
+	@-webkit-keyframes bgrad {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@-moz-keyframes bgrad {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@keyframes bgrad {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	.bg-highlight {
+		background: linear-gradient(295deg, #ffffff, #ffe7ad, #b1e3b5, #fbaaaa);
+		background-size: 800% 800%;
 
-  @-webkit-keyframes Highlight {
-    0% {
-      background-position: 33% 0%;
-    }
-    50% {
-      background-position: 68% 100%;
-    }
-    100% {
-      background-position: 33% 0%;
-    }
-  }
-  @-moz-keyframes Highlight {
-    0% {
-      background-position: 33% 0%;
-    }
-    50% {
-      background-position: 68% 100%;
-    }
-    100% {
-      background-position: 33% 0%;
-    }
-  }
-  @keyframes Highlight {
-    0% {
-      background-position: 33% 0%;
-    }
-    50% {
-      background-position: 68% 100%;
-    }
-    100% {
-      background-position: 33% 0%;
-    }
-  }
+		-webkit-animation: Highlight 43s ease infinite;
+		-moz-animation: Highlight 43s ease infinite;
+		animation: Highlight 43s ease infinite;
+	}
+
+	@-webkit-keyframes Highlight {
+		0% {
+			background-position: 33% 0%;
+		}
+		50% {
+			background-position: 68% 100%;
+		}
+		100% {
+			background-position: 33% 0%;
+		}
+	}
+	@-moz-keyframes Highlight {
+		0% {
+			background-position: 33% 0%;
+		}
+		50% {
+			background-position: 68% 100%;
+		}
+		100% {
+			background-position: 33% 0%;
+		}
+	}
+	@keyframes Highlight {
+		0% {
+			background-position: 33% 0%;
+		}
+		50% {
+			background-position: 68% 100%;
+		}
+		100% {
+			background-position: 33% 0%;
+		}
+	}
 }
