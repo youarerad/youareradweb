@@ -94,6 +94,7 @@ export default function Train() {
 			</section>
 
 			<section className="flex flex-col py-10">
+				{/*
 				<header className="sticky z-10 block py-10 text-center bg-white -top-1">
 					<div role={'directory'}>
 						<button onClick={handleBotClick} className="group">
@@ -107,6 +108,7 @@ export default function Train() {
 						</button>
 					</div>
 				</header>
+					*/}
 
 				<div className="grid grid-cols-1 mx-auto md:grid-cols-2">
 					<h2 ref={botRef}>
