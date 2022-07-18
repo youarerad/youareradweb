@@ -43,7 +43,7 @@ export default function Train() {
 	})
 
 	return (
-		<div>
+		<div className="">
 			<PageSEO title="Train" description="Train with Rise Above The Disorder" />
 			<section className="grid items-center mt-6 pb-80 sm:grid-cols-2 sm:mt-10">
 				<header>
@@ -69,7 +69,7 @@ export default function Train() {
 				</div>
 			</section>
 
-			<section className="relative flex flex-col items-center w-full mt-20 rounded-xl">
+			<section className="relative flex flex-col items-center w-full mt-20 overflow-hidden rounded-xl">
 				<div
 					ref={ref}
 					className={classNames(
@@ -84,7 +84,7 @@ export default function Train() {
 						playsInline
 						controls={false}
 						src="https://res.cloudinary.com/df23ubjbb/video/upload/v1658125586/UG_ZhIRUOH4PxRIQ_dp3bvo.mp4"
-						className="max-w-md"
+						className="w-full"
 					/>
 					<h2 className="text-center">
 						<span className="text-red-dark">Trainwreckstv </span>just donated 12,000 therapy

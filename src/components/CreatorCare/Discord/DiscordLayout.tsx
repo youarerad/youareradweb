@@ -20,7 +20,7 @@ export default function DiscordLayout() {
 	const formatDate = date.replace(/:\d+ /, ' ')
 
 	return (
-		<div className="h-[70vh] relative overflow-hidden rounded-xl">
+		<div className="sm:h-[70vh] h-[80vh] relative overflow-hidden rounded-xl">
 			<SwipeableViews
 				index={view.index}
 				onChangeIndex={handleViewReset}
