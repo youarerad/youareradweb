@@ -10,12 +10,9 @@ import { useInView } from 'react-intersection-observer'
 import 'keen-slider/keen-slider.min.css'
 import { Variants, motion } from 'framer-motion'
 import SectionGrid from '@layouts/SectionGrid'
-import dynamic from 'next/dynamic'
+import TweetSlider from '@components/Tweet/TweetSlider'
 
 export default function Train() {
-	const TweetSlider = dynamic(() => import('@components/Tweet/TweetSlider'), {
-		ssr: true,
-	})
 	const [creators, setCreators] = useState<Creator[]>([])
 	const alertRef = useRef<HTMLVideoElement>(null)
 	const [alertVisable, setAlertVisable] = useState(true)
