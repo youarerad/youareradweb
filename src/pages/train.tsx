@@ -8,11 +8,14 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import 'keen-slider/keen-slider.min.css'
-import TweetSlider from '@components/Tweet/TweetSlider'
 import { Variants, motion } from 'framer-motion'
 import SectionGrid from '@layouts/SectionGrid'
+import dynamic from 'next/dynamic'
 
 export default function Train() {
+	const TweetSlider = dynamic(() => import('@components/Tweet/TweetSlider'), {
+		ssr: false,
+	})
 	const [creators, setCreators] = useState<Creator[]>([])
 	const alertRef = useRef<HTMLVideoElement>(null)
 	const [alertVisable, setAlertVisable] = useState(true)

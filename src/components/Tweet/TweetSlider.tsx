@@ -1,7 +1,7 @@
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { creatorCarePart1, creatorCarePart2 } from './TweetData'
-import TweetSlide from './TweetSlide'
+import TweetSlide from '@components/Tweet/TweetSlide'
 
 export default function TweetSlider() {
 	const animation = { duration: 30000, easing: (t: number) => t }

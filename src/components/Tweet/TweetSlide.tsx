@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import 'keen-slider/keen-slider.min.css'
 import * as Icons from './TweetIcons'
-import { RefObject } from 'react'
 
 /* TweetBody is the main exported function for the collective Tweet function. It contains all sections of a Twitter post, leaving us with a template that can be filled to emulate the full function of a Twitter post. In the future, we'd love to imporve the TweetBody by parsing through the actual tweetBody data and being able to hyper link where @youarerad is tagged. */
 
@@ -27,7 +26,8 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 	return (
 		<>
 			{TwitterPostData.map((tweet) => (
-				<div
+				<a
+					href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
 					className="relative w-full min-h-full py-4 overflow-hidden group min-w-[400px] keen-slider__slide group"
 					key={tweet.userName}
 				>
@@ -35,7 +35,7 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 						<div className="flex items-stretch justify-between">
 							<div className="flex items-center">
 								<a
-									href={`https://twitter.com/${tweet.userHandle}`}
+									href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
 									className="w-12 h-12 rounded-full relative overflow-hidden outline-[#1d9bf0]"
 								>
 									<Image
@@ -47,7 +47,7 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 									/>
 								</a>
 								<a
-									href={`https://twitter.com/${tweet.userHandle}`}
+									href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
 									className="flex flex-col ml-1.5 outline-[#1d9bf0] focus:bg-[#1d9bf0]/10"
 								>
 									<h1 className="flex items-center text-sm font-bold leading-5">
@@ -73,7 +73,7 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 							<p className="text-base max-w-prose">{tweet.tweetBody}</p>
 						</div>
 					</div>
-				</div>
+				</a>
 			))}
 		</>
 	)
