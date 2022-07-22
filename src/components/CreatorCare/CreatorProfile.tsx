@@ -1,7 +1,7 @@
-import { Creator } from '@prisma/client'
 import { Tab } from '@headlessui/react'
 import Image from 'next/image'
 import classNames from '@utils/classNames'
+import { Creator } from '@prisma/client'
 
 type CreatorProfileProps = {
 	creators: Array<Creator>
