@@ -82,7 +82,7 @@ export default function DonateMonthly() {
 						{selectedOption.message}
 					</p>
 				</div>
-				<div className="space-y-4 group">
+				<div className="space-y-4">
 					<div className="inline-flex flex-col">
 						<Checkbox
 							checked={inhonorChecked}

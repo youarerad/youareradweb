@@ -106,3 +106,122 @@ export const therapyTweetData = [
 		tweetLikes: '28',
 	},
 ]
+
+export const creatorCarePart1 = [
+	{
+		tweetId: '1549205212480655368',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658441862/creatorcare/Dansgaming.png',
+		userName: 'DansGaming',
+		isVerified: true,
+		userHandle: 'Dansgaming',
+		tweetBody: 'This is such a W',
+	},
+	{
+		tweetId: '1549278628827041793',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658442072/creatorcare/Thiefs.webp',
+		userName: 'Thiefs',
+		isVerified: true,
+		userHandle: 'Thiefs',
+		tweetBody: 'This is amazing, thank you for doing',
+	},
+
+	{
+		tweetId: '1549231251378171904',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658442270/creatorcare/Alexandrabotez.webp',
+		userName: 'Alexandra Botez',
+		isVerified: true,
+		userHandle: 'alexandravbotez',
+		tweetBody: 'Thank you for doing this!',
+	},
+	{
+		tweetId: '1549192217142497280',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658443241/creatorcare/JakeLucky.webp',
+		userName: 'Jake Lucky',
+		isVerified: true,
+		userHandle: 'Jakesucky',
+		tweetBody: 'Incredible. W.',
+	},
+	{
+		tweetId: '1549192217142497280',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658445292/creatorcare/MorganTremaine.webp',
+		userName: 'Morgan Tremaine',
+		isVerified: true,
+		userHandle: 'MorganTremaine',
+		tweetBody: 'I’m in.',
+	},
+	{
+		tweetId: '1549192729648922624',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658445997/creatorcare/JasonLake.webp',
+		userName: 'JasonBWLake.eth',
+		isVerified: true,
+		userHandle: 'JasonBWLakew',
+		tweetBody: 'Love it!  👏',
+	},
+	{
+		tweetId: '1549196951643688962',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658446213/creatorcare/JakeNBake.webp',
+		userName: "Jake'n'Bake",
+		isVerified: true,
+		userHandle: 'jakenbakeLIVE',
+		tweetBody: 'Legendary',
+	},
+]
+
+export const creatorCarePart2 = [
+	{
+		tweetId: '1549254858171187200',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658442439/creatorcare/DevinNash.webp',
+		userName: 'Devin Nash',
+		isVerified: true,
+		userHandle: 'DevinNash',
+		tweetBody:
+			"What a groundbreaking idea and partnership. It's inspiring to see @YouAreRAD continuing to transform one of the biggest issues of our time. Amazing!",
+	},
+	{
+		tweetId: '1549233776714211329',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658443460/creatorcare/healthygamer.webp',
+		userName: 'Healthy Gamer',
+		isVerified: true,
+		userHandle: 'HealthyGamerGG',
+		tweetBody:
+			'So much impact, love to see this. Congrats to you both @Trainwreckstv and @YouAreRAD! This is no easy thing to pull off, appreciate the work ❤️',
+	},
+	{
+		tweetId: '1549864512337035264',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658445417/creatorcare/Sonii.webp',
+		userName: 'SONNI',
+		isVerified: true,
+		userHandle: 'sonii',
+		tweetBody:
+			'Would absolutely love to be a part of this. Love helping my community and preaching core health principles on all my platforms.',
+	},
+	{
+		tweetId: '1549858757131264000',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658445598/creatorcare/AnthonyWheeler.webp',
+		userName: 'Anthony Wheeler',
+		isVerified: true,
+		userHandle: 'NAMELESS',
+		tweetBody: 'this is much needed for the gaming community, doing the good work brotha.',
+	},
+	{
+		tweetId: '1549199413838376961',
+		userProfileImage:
+			'https://res.cloudinary.com/df23ubjbb/image/upload/v1658446548/creatorcare/Ovilee.webp',
+		userName: 'Ovilee',
+		isVerified: true,
+		userHandle: 'OvileeMay',
+		tweetBody:
+			'This is incredibly kind and amazing of you to do. Thank you for supporting people who just need a bit of help to find their way.',
+	},
+]

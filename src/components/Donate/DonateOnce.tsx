@@ -95,7 +95,7 @@ export default function DonateOnce() {
 						{selectedOption.message}
 					</p>
 				</div>
-				<div className="space-y-4 group">
+				<div className="space-y-4">
 					<div className="inline-flex flex-col">
 						<Checkbox
 							checked={inhonorChecked}
@@ -137,7 +137,7 @@ export default function DonateOnce() {
 									className={classNames(
 										limitReach ? 'text-red-dark font-bold' : '',
 										limitCaution ? 'text-black font-semibold' : 'text-gray',
-										'mt-1 text-right select-none transition-colors duration-1000'
+										'mt-1 text-right select-none duration-1000'
 									)}
 								>
 									{leavecommentMessage.length} / 600

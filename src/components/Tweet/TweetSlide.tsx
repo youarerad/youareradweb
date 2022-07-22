@@ -1,7 +1,7 @@
-import SectionHighlight from '@utils/SectionHighlight'
 import Image from 'next/image'
-import TweetFooter from './TweetFooter'
+import 'keen-slider/keen-slider.min.css'
 import * as Icons from './TweetIcons'
+import { RefObject } from 'react'
 
 /* TweetBody is the main exported function for the collective Tweet function. It contains all sections of a Twitter post, leaving us with a template that can be filled to emulate the full function of a Twitter post. In the future, we'd love to imporve the TweetBody by parsing through the actual tweetBody data and being able to hyper link where @youarerad is tagged. */
 
@@ -12,23 +12,23 @@ interface TweetBodyTypes {
 	isVerified?: boolean
 	tweetId?: string | undefined
 	tweetBody: string
-	tweetTime: string
-	tweetDate: string
-	tweetLikes: string
-	tweetRetweets: string
-	tweetComments: string
+	tweetTime?: string
+	tweetDate?: string
+	tweetLikes?: string
+	tweetRetweets?: string
+	tweetComments?: string
 }
 
 type TwitterPostInput = {
 	TwitterPostData: Array<TweetBodyTypes>
 }
 
-export default function TweetBody({ TwitterPostData }: TwitterPostInput) {
+export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 	return (
 		<>
 			{TwitterPostData.map((tweet) => (
-				<SectionHighlight key={tweet.userName}>
-					<div className="flex flex-col max-w-lg p-5 space-y-3 border rounded-xl">
+				<div className="py-4 keen-slider__slide group" key={tweet.userName}>
+					<div className="flex flex-col max-w-lg p-5 space-y-3 duration-200 bg-white border rounded-xl opacity-60 hover:opacity-100 hover:drop-shadow-xl hover:min-w-full hover:-translate-y-2">
 						<div className="flex items-stretch justify-between">
 							<div className="flex items-center">
 								<a
@@ -69,30 +69,8 @@ export default function TweetBody({ TwitterPostData }: TwitterPostInput) {
 						<div className="flex flex-col">
 							<p className="text-base max-w-prose">{tweet.tweetBody}</p>
 						</div>
-						<div>
-							<a
-								className="text-sm leading-5 hover:underline decoration-[#6b7280] focus:underline outline-none"
-								href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
-							>
-								{tweet.tweetTime}
-							</a>{' '}
-							·{' '}
-							<a
-								className="text-sm leading-5 hover:underline decoration-[#6b7280] focus:underline outline-none"
-								href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
-							>
-								{tweet.tweetDate}
-							</a>
-						</div>
-						<TweetFooter
-							tweetLikes={tweet.tweetLikes}
-							tweetRetweets={tweet.tweetRetweets}
-							tweetComments={tweet.tweetComments}
-							tweetId={tweet.tweetId}
-							userHandle={tweet.userHandle}
-						/>
 					</div>
-				</SectionHighlight>
+				</div>
 			))}
 		</>
 	)
