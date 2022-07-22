@@ -54,11 +54,11 @@ export default function Train() {
 
 	const cardVariants: Variants = {
 		offscreen: {
-			x: 0,
+			x: -10,
 			opacity: 0,
 		},
 		onscreen: {
-			x: 20,
+			x: 0,
 			opacity: 1,
 			transition: {
 				duration: 0.8,
@@ -134,7 +134,7 @@ export default function Train() {
 				<div
 					className={classNames(
 						alertcanPlay ? 'visible' : 'opacity-0',
-						'duration-700 absolute top-24 md:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full items-center flex flex-col'
+						'duration-700 absolute top-28 md:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full items-center flex flex-col'
 					)}
 				>
 					<video
