@@ -26,12 +26,14 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 	return (
 		<>
 			{TwitterPostData.map((tweet) => (
-				<a
-					href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
+				<div
 					className="relative w-full min-h-full py-4 overflow-hidden group min-w-[400px] keen-slider__slide group"
 					key={tweet.userName}
 				>
-					<div className="flex flex-col max-w-lg p-5 space-y-3 duration-200 bg-white border rounded-xl opacity-60 hover:opacity-100 hover:drop-shadow-xl hover:min-w-full hover:-translate-y-2">
+					<a
+						className="flex flex-col max-w-lg p-5 space-y-3 duration-200 bg-white border rounded-xl opacity-60 hover:opacity-100 hover:drop-shadow-xl hover:min-w-full hover:-translate-y-2"
+						href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
+					>
 						<div className="flex items-stretch justify-between">
 							<div className="flex items-center">
 								<a
@@ -72,8 +74,8 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 						<div className="flex flex-col">
 							<p className="text-base max-w-prose">{tweet.tweetBody}</p>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
 			))}
 		</>
 	)
