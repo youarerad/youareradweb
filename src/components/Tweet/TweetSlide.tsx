@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import 'keen-slider/keen-slider.min.css'
 import * as Icons from './TweetIcons'
+import { RefObject } from 'react'
 
 /* TweetBody is the main exported function for the collective Tweet function. It contains all sections of a Twitter post, leaving us with a template that can be filled to emulate the full function of a Twitter post. In the future, we'd love to imporve the TweetBody by parsing through the actual tweetBody data and being able to hyper link where @youarerad is tagged. */
 
@@ -27,7 +28,7 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 		<>
 			{TwitterPostData.map((tweet) => (
 				<div
-					className="relative w-full min-h-full py-4 overflow-hidden group min-w-[400px]"
+					className="relative w-full min-h-full py-4 overflow-hidden group min-w-[400px] keen-slider__slide group"
 					key={tweet.userName}
 				>
 					<div className="flex flex-col max-w-lg p-5 space-y-3 duration-200 bg-white border rounded-xl opacity-60 hover:opacity-100 hover:drop-shadow-xl hover:min-w-full hover:-translate-y-2">
