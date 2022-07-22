@@ -31,15 +31,14 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 					key={tweet.userName}
 				>
 					<a
-						className="flex flex-col max-w-lg p-5 space-y-3 duration-200 bg-white border rounded-xl opacity-60 hover:opacity-100 hover:drop-shadow-xl hover:min-w-full hover:-translate-y-2"
 						href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="flex flex-col max-w-lg min-w-full p-5 space-y-3 text-left duration-200 bg-white border rounded-xl opacity-60 hover:opacity-100 hover:drop-shadow-xl hover:min-w-full hover:-translate-y-2"
 					>
 						<div className="flex items-stretch justify-between">
 							<div className="flex items-center">
-								<a
-									href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
-									className="w-12 h-12 rounded-full relative overflow-hidden outline-[#1d9bf0]"
-								>
+								<div className="w-12 h-12 rounded-full relative overflow-hidden outline-[#1d9bf0]">
 									<Image
 										className="transition-all duration-150 rounded-full focus:brightness-90 hover:brightness-90"
 										src={tweet.userProfileImage}
@@ -47,11 +46,8 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 										layout="fill"
 										objectFit="fill"
 									/>
-								</a>
-								<a
-									href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
-									className="flex flex-col ml-1.5 outline-[#1d9bf0] focus:bg-[#1d9bf0]/10"
-								>
+								</div>
+								<div className="flex flex-col ml-1.5 outline-[#1d9bf0] focus:bg-[#1d9bf0]/10">
 									<h1 className="flex items-center text-sm font-bold leading-5">
 										{tweet.userName}
 										{tweet.isVerified && (
@@ -61,14 +57,11 @@ export default function TweetSlide({ TwitterPostData }: TwitterPostInput) {
 										)}
 									</h1>
 									<h2 className="text-sm font-normal leading-5">@{tweet.userHandle}</h2>
-								</a>
+								</div>
 							</div>
-							<a
-								href={`https://twitter.com/${tweet.userHandle}/status/${tweet.tweetId}`}
-								className=" outline-[#1d9bf0] focus:bg-[#1d9bf0]/10"
-							>
+							<div className=" outline-[#1d9bf0] focus:bg-[#1d9bf0]/10">
 								<Icons.TwitterLogo />
-							</a>
+							</div>
 						</div>
 						{/* Tweet body */}
 						<div className="flex flex-col">

@@ -11,7 +11,7 @@ import { corePages, fundraisePages, mobileNav, supportPages } from '@data/PageLi
 
 export default function Navbar() {
 	return (
-		<Popover as="nav" className="z-50 mx-auto py-4">
+		<Popover as="nav" className="z-50 py-4 mx-auto">
 			{({ open, close }) => (
 				<>
 					<nav
@@ -30,7 +30,7 @@ export default function Navbar() {
 							</a>
 						</Link>
 						<Popover.Button
-							className="md:hidden inline-flex items-center justify-center p-2 bg-white rounded-md"
+							className="inline-flex items-center justify-center p-2 bg-white rounded-md md:hidden"
 							id="mobileMenu"
 							as="button"
 						>
@@ -51,7 +51,7 @@ export default function Navbar() {
 							</svg>
 						</Popover.Button>
 						<Popover.Group
-							className="hidden items-baseline justify-end w-4/5 space-x-4 md:flex"
+							className="items-baseline justify-end hidden w-4/5 space-x-4 md:flex"
 							as="nav"
 							role="navigation"
 							aria-label="Secondary menu"
@@ -65,7 +65,7 @@ export default function Navbar() {
 								{({ open, close }) => (
 									<>
 										<Popover.Button
-											className="flex flex-wrap items-center p-2 text-sm font-bold group overflow-hidden rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black outline-none"
+											className="flex flex-wrap items-center p-2 overflow-hidden text-sm font-bold outline-none group rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black"
 											role="navigation"
 											aria-label="Open menu to learn more about getting involved."
 										>
@@ -105,16 +105,16 @@ export default function Navbar() {
 													<div className="w-1/2 bg-secondary-light/10" />
 												</div>
 												<div className="relative grid grid-cols-2 mx-auto">
-													<nav className="py-12 px-6 lg:px-8 xl:pr-12 grid grid-cols-2">
+													<nav className="grid grid-cols-2 px-6 py-12 lg:px-8 xl:pr-12">
 														<h3>Supporting RAD</h3>
-														<ul className="space-y-6 mt-5 col-start-1">
+														<ul className="col-start-1 mt-5 space-y-6">
 															{supportPages.map((supportpage) => (
 																<li key={supportpage.name} className="flow-root">
 																	<Link href={supportpage.href} passHref>
 																		<Popover.Button
 																			as="a"
 																			onClick={() => close()}
-																			className="flex items-center p-3 -m-3 text-base font-medium rounded-md hover:bg-secondary-light/10 focus:bg-secondary-light/10 focus:ring-4 focus:ring-secondary-light outline-none"
+																			className="flex items-center p-3 -m-3 text-base font-medium rounded-md outline-none hover:bg-secondary-light/10 focus:bg-secondary-light/10 focus:ring-4 focus:ring-secondary-light"
 																		>
 																			<Image
 																				src={supportpage.icon}
@@ -131,7 +131,7 @@ export default function Navbar() {
 															))}
 														</ul>
 													</nav>
-													<div className="py-12 px-6 lg:px-8 xl:pr-12">
+													<div className="px-6 py-12 lg:px-8 xl:pr-12">
 														<h3>RAD Community</h3>
 														<ul className="mt-5 space-y-6">
 															{fundraisePages.map((fundraisepage) => (
@@ -140,13 +140,13 @@ export default function Navbar() {
 																		<Popover.Button
 																			as="a"
 																			onClick={() => close()}
-																			className="flex p-3 -m-3 rounded-md hover:bg-white focus:bg-white focus:ring-4 focus:ring-secondary-light outline-none"
+																			className="flex p-3 -m-3 rounded-md outline-none hover:bg-white focus:bg-white focus:ring-4 focus:ring-secondary-light"
 																		>
 																			<Image
 																				width={200}
 																				height={100}
 																				objectFit="cover"
-																				className="rounded-md flex-shrink-0"
+																				className="flex-shrink-0 rounded-md"
 																				src={fundraisepage.image}
 																				alt=""
 																			/>
@@ -199,7 +199,7 @@ export default function Navbar() {
 										</a>
 									</Link>
 								</div>
-								<Popover.Button className="inline-flex items-center justify-center p-2 bg-white rounded-md focus:bg-red-light outline-none focus:ring-4 focus:ring-inset">
+								<Popover.Button className="inline-flex items-center justify-center p-2 bg-white rounded-md outline-none focus:bg-red-light focus:ring-4 focus:ring-inset">
 									<span className="sr-only">Close mobile menu</span>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +217,7 @@ export default function Navbar() {
 									</svg>
 								</Popover.Button>
 							</div>
-							<div className="p-4 flex flex-col h-full space-y-10 mt-20">
+							<div className="flex flex-col h-full p-4 mt-20 space-y-10">
 								<div className="text-white">
 									{mobileNav.map((corepages) => {
 										return (
@@ -247,7 +247,7 @@ export default function Navbar() {
 								<Link href="/therapy" passHref>
 									<div className="rounded-xl">
 										<button
-											className="relative px-3 py-2 text-base font-bold bg-white rounded-xl border-2 border-black w-full"
+											className="relative w-full px-3 py-2 text-base font-bold bg-white border-2 border-black rounded-xl"
 											onClick={() => close()}
 										>
 											Start Therapy

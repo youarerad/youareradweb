@@ -10,7 +10,7 @@ type CreatorProfileProps = {
 export default function CreatorProfile({ creators }: CreatorProfileProps) {
 	return (
 		<Tab.Group vertical>
-			<div className="flex flex-col lg:flex-row">
+			<div className="flex flex-col w-full lg:flex-row">
 				<Tab.List className="h-[30vh] w-full lg:order-2 lg:w-1/2 flex flex-col">
 					{creators.map((creator) => (
 						<Tab
@@ -27,7 +27,7 @@ export default function CreatorProfile({ creators }: CreatorProfileProps) {
 									</tr>
 									<tr className="flex justify-between w-full text-xl font-bold">
 										<td className="">{creator.name}</td>
-										<td>{creator.therapySessionsPaid}</td>
+										<td>{creator.therapySessionsPaid?.toLocaleString()}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -36,7 +36,16 @@ export default function CreatorProfile({ creators }: CreatorProfileProps) {
 				</Tab.List>
 				{Object.values(creators).map((creator) => (
 					<Tab.Panel key={creator.name} className="flex flex-col items-center mx-auto">
-						<Image src={creator.profilePhoto!} height={600} width={199} alt="" quality="100" />
+						<div className="relative w-64 overflow-hidden h-96">
+							<Image
+								src={creator.profilePhoto!}
+								layout="fill"
+								alt=""
+								quality="100"
+								objectFit="cover"
+								objectPosition="top"
+							/>
+						</div>
 					</Tab.Panel>
 				))}
 			</div>
