@@ -14,7 +14,7 @@ import dynamic from 'next/dynamic'
 
 export default function Train() {
 	const TweetSlider = dynamic(() => import('@components/Tweet/TweetSlider'), {
-		ssr: false,
+		ssr: true,
 	})
 	const [creators, setCreators] = useState<Creator[]>([])
 	const alertRef = useRef<HTMLVideoElement>(null)
