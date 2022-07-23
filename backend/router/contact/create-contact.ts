@@ -137,11 +137,11 @@ export async function createContactForm(
 	return { message: 'Form Sent!' }
 }
 
-export async function createEventSignupForm(input: CreateEventSignupFormSchema) {
+export async function createEventSignupForm(name: string, email: string) {
 	await prisma.eventSignup.create({
 		data: {
-			name: input.name,
-			email: input.email.toLowerCase(),
+			name: name,
+			email: email.toLowerCase(),
 		},
 	})
 }
