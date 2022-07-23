@@ -135,7 +135,7 @@ export async function createContactForm(
 }
 
 export async function createEventSignupForm(name: string, email: string) {
-	await prisma.eventsignup.create({
+	await prisma.eventSignup.create({
 		data: {
 			email: email.toLowerCase(),
 			name: name,
