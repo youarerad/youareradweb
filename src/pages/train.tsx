@@ -13,6 +13,7 @@ import CreatorProfile from '@components/CreatorCare/CreatorProfile'
 import { useRouter } from 'next/router'
 import SectionLinks from '@components/CreatorCare/SectionLinks'
 import { FeatureCard } from '@components/CreatorCare/FeatureCard'
+import CreatorCard from '@components/CreatorCare/CreatorCard'
 
 export default function Train() {
 	const [activeLink, setActiveLink] = useState<string>('')
@@ -196,7 +197,7 @@ export default function Train() {
 							className="max-w-[200px] md:max-w-md lg:max-w-xl mx-auto"
 							src="https://res.cloudinary.com/df23ubjbb/video/upload/v1658125586/UG_ZhIRUOH4PxRIQ_dp3bvo.mp4"
 						/>
-						<h3 className="mt-4 text-center lg:text-3xl lg:max-w-2xl sm:max-w-md">
+						<h3 className="max-w-xs mt-4 text-lg text-center lg:text-3xl lg:max-w-2xl sm:max-w-md">
 							<span className="text-red-dark">Trainwreckstv </span>just donated 12,000 therapy
 							sessions.
 						</h3>
@@ -206,6 +207,10 @@ export default function Train() {
 				<section className="flex justify-between w-full">
 					<CreatorProfile creators={creators} />
 				</section>
+
+				<div className="h-40 bg-red">
+					<CreatorCard creators={creators} />
+				</div>
 
 				<section className="flex flex-col" id="bot">
 					<div className="grid grid-cols-1 py-10 mx-auto md:grid-cols-2">
