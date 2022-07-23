@@ -185,7 +185,7 @@ export default function Train() {
 					<div
 						className={classNames(
 							alertcanPlay ? 'visible' : 'opacity-0',
-							'duration-700 absolute top-28 md:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full items-center flex flex-col'
+							'duration-700 absolute top-24 md:top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full items-center flex flex-col'
 						)}
 					>
 						<video
