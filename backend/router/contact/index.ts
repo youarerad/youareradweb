@@ -59,6 +59,6 @@ export const contactRouter = trpc
 	.mutation('create-event-signup', {
 		input: createEventSignupFormSchema,
 		async resolve({ input }) {
-			return await createEventSignupForm(input.name, input.email)
+			return await createEventSignupForm(input)
 		},
 	})
