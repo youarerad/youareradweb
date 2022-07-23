@@ -44,3 +44,12 @@ export const createContactFormSchema = z.object({
 })
 
 export type CreateContactFormSchema = z.output<typeof createContactFormSchema>
+
+export const createEventSignupFormSchema = z.object({
+	name: z
+		.string({ required_error: 'Name is required' })
+		.min(2, 'Name must be at least 2 characters'),
+	email: z.string().email({ message: 'Email invalid' }),
+})
+
+export type CreateEventSignupFormSchema = z.output<typeof createEventSignupFormSchema>
