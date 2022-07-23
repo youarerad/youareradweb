@@ -3,16 +3,16 @@ lockfileVersion: 5.4
 specifiers:
   '@headlessui/react': ^1.6.6
   '@paypal/react-paypal-js': ^7.8.1
-  '@prisma/client': ^4.1.0
+  '@prisma/client': ^4.0.0
   '@splidejs/react-splide': ^0.7.8
   '@stripe/react-stripe-js': ^1.9.0
   '@stripe/stripe-js': ^1.32.0
   '@supabase/supabase-js': ^1.35.4
   '@tailwindcss/typography': ^0.5.4
-  '@trpc/client': ^9.26.2
-  '@trpc/next': ^9.26.2
-  '@trpc/react': ^9.26.2
-  '@trpc/server': ^9.26.2
+  '@trpc/client': ^9.26.0
+  '@trpc/next': ^9.26.0
+  '@trpc/react': ^9.26.0
+  '@trpc/server': ^9.26.0
   '@types/body-parser': ^1.19.2
   '@types/micro': ^7.3.7
   '@types/micro-cors': ^0.1.2
@@ -21,8 +21,8 @@ specifiers:
   '@types/react-dom': 18.0.5
   '@types/react-swipeable-views': ^0.13.1
   '@types/react-swipeable-views-utils': ^0.13.3
-  '@typescript-eslint/eslint-plugin': ^5.30.7
-  '@typescript-eslint/parser': ^5.30.7
+  '@typescript-eslint/eslint-plugin': ^5.30.6
+  '@typescript-eslint/parser': ^5.30.6
   '@unform/core': ^2.1.6
   '@unform/web': ^2.1.6
   autoprefixer: ^10.4.7
@@ -33,30 +33,30 @@ specifiers:
   eslint: 8.16.0
   eslint-config-next: 12.1.6
   eslint-config-prettier: ^8.5.0
-  eslint-plugin-jsx-a11y: ^6.6.1
+  eslint-plugin-jsx-a11y: ^6.6.0
   eslint-plugin-prettier: ^4.2.1
   fathom-client: ^3.5.0
   framer-motion: ^6.5.1
   keen-slider: ^6.7.0
   next: 12.1.6
-  next-seo: ^5.5.0
+  next-seo: ^5.4.0
   postcss: ^8.4.14
   prettier: 2.6.2
-  prisma: ^4.1.0
+  prisma: ^4.0.0
   react: 18.1.0
   react-chartjs-2: ^4.3.1
   react-dom: 18.1.0
-  react-intersection-observer: ^9.4.0
+  react-intersection-observer: ^9.3.5
   react-minimal-pie-chart: ^8.3.0
   react-query: ^3.39.2
   react-swipeable-views: ^0.14.0
   react-swipeable-views-utils: ^0.14.0
   sharp: ^0.30.7
-  stripe: ^9.14.0
+  stripe: ^9.13.0
   tailwindcss: ^3.1.6
   tailwindcss-fluid-type: ^1.3.3
   typescript: ^4.7.4
-  zod: ^3.17.10
+  zod: ^3.17.3
 
 dependencies:
   '@headlessui/react': 1.6.6_ef5jwxihqo6n7gxfmzogljlgcm
