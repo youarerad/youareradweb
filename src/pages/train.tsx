@@ -194,7 +194,7 @@ export default function Train() {
 							autoPlay
 							playsInline
 							controls={false}
-							className="max-w-[200px] md:max-w-md lg:max-w-xl mx-auto"
+							className="max-w-[150px] md:max-w-md lg:max-w-xl mx-auto"
 							src="https://res.cloudinary.com/df23ubjbb/video/upload/v1658125586/UG_ZhIRUOH4PxRIQ_dp3bvo.mp4"
 						/>
 						<h3 className="max-w-xs mt-1 text-lg text-center sm:mt-4 lg:text-3xl lg:max-w-2xl sm:max-w-md">
