@@ -2,7 +2,6 @@ import DiscordLayout from '@components/CreatorCare/Discord/DiscordLayout'
 import PageSEO from '@components/SEO/PageSEO'
 import LazyVideo from '@components/VideoPlayer'
 import { trpc } from '@libs/trpc'
-import { Creator } from '@prisma/client'
 import classNames from '@utils/classNames'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
@@ -13,20 +12,20 @@ import CreatorProfile from '@components/CreatorCare/CreatorProfile'
 import { useRouter } from 'next/router'
 import SectionLinks from '@components/CreatorCare/SectionLinks'
 import { FeatureCard } from '@components/CreatorCare/FeatureCard'
-import CreatorCard from '@components/CreatorCare/CreatorCard'
+import { FilterCreators } from 'backend/router/creators/fetchCreators'
+import SectionGrid from '@layouts/SectionGrid'
 
 export default function Train() {
+	const [creators, setCreators] = useState<FilterCreators[]>([])
 	const [activeLink, setActiveLink] = useState<string>('')
 	const updateOption = () => {
 		setActiveLink(activeLink)
 	}
-	const [creators, setCreators] = useState<Creator[]>([])
 	const alertRef = useRef<HTMLVideoElement>(null)
 	const [alertVisable, setAlertVisable] = useState(true)
-	const { isLoading } = trpc.useQuery(['creators.creators'], {
+	const { data } = trpc.useQuery(['creators.creators'], {
 		onSuccess(data) {
-			console.log(data)
-			setCreators(data.sort((a, b) => b.therapySessionsPaid! - a.therapySessionsPaid!))
+			setCreators(data)
 		},
 		staleTime: Infinity,
 		refetchOnReconnect: false,
@@ -208,15 +207,11 @@ export default function Train() {
 					<CreatorProfile creators={creators} />
 				</section>
 
-				<div className="h-40 bg-red">
-					<CreatorCard creators={creators} />
-				</div>
-
 				<section className="flex flex-col" id="bot">
-					<div className="grid grid-cols-1 py-10 mx-auto md:grid-cols-2">
+					<div className="grid items-start grid-cols-1 mt-20 gap-y-10 sm:gap-40 sm:grid-cols-2">
 						<h2 ref={botRef}>
 							Starting therapy?
-							<span> There&apos;s a bot for that.</span>
+							<span className="font-mono"> There&apos;s a bot for that.</span>
 						</h2>
 						<DiscordLayout />
 					</div>
