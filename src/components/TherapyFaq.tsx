@@ -3,7 +3,7 @@ import classNames from '@utils/classNames'
 
 export default function TherapyFAQ() {
 	return (
-		<div className="w-full max-w-screen-md space-y-4">
+		<div className="w-full space-y-4">
 			{therapyFaqData.map((faq) => (
 				<Disclosure key={faq.question}>
 					{({ open }) => (
