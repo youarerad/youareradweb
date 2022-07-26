@@ -1,5 +1,5 @@
 import { DonateOnceConfig } from './DonateConfig'
-import { useState, useEffect, SetStateAction } from 'react'
+import { useState, useEffect, SetStateAction, useMemo } from 'react'
 import getStripe from '@utils/hooks/getStripe'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
@@ -43,6 +43,11 @@ export default function DonateOnce() {
 				message: ` will cover ${Math.floor(customAmount / 30)} therapy sessions.`,
 		  }
 		: DonateOnceConfig[currentOption]
+
+	const canChooseDonation = useMemo(() => {
+		return !!customAmount && customAmount > 0
+	}, [customAmount])
+
 	const { isLoading, ...createCheckout } = trpc.useMutation('checkout.create-onetime-donation')
 
 	const handleDonationSubmit = async (event: { preventDefault: () => void }) => {
@@ -75,6 +80,7 @@ export default function DonateOnce() {
 				<div className="grid grid-cols-3 gap-4 mb-4">
 					<AppRadioGroup
 						value={currentOption}
+						disabled={canChooseDonation}
 						onChange={(index) => {
 							setCurrentOption(index)
 							setCustomAmount(undefined)
@@ -87,7 +93,9 @@ export default function DonateOnce() {
 					/>
 					<DonateCustomInput
 						value={customAmount}
-						onChange={(e) => setCustomAmount(e.currentTarget.valueAsNumber)}
+						onChange={(e) => {
+							setCustomAmount(e.currentTarget.valueAsNumber)
+						}}
 					/>
 					<p className="col-span-3">
 						Your donation of{' '}

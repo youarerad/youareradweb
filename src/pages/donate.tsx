@@ -74,7 +74,7 @@ export default function Doante() {
 					headerTextHighlightBlock
 				/>
 				<Tab.Group vertical>
-					<div className="grid items-center grid-cols-1 sm:grid-cols-4">
+					<div className="grid items-center grid-cols-1 sm:grid-cols-4 sm:gap-x-2 lg:gap-x-0">
 						<Tab.List className="grid order-2 grid-cols-2 gap-2 mt-10 sm:gap-x-0 sm:flex sm:flex-col sm:space-y-2 sm:order-1 sm:mt-0">
 							<TabButton tabHeader="Gender" />
 							<TabButton tabHeader="Sexuality" />
@@ -124,7 +124,7 @@ function TabButton({ tabHeader }: { tabHeader: string }) {
 function TabPanel({ children }: { children: React.ReactNode }) {
 	return (
 		<Tab.Panel>
-			<div className="max-w-lg mx-auto">{children}</div>
+			<div className="max-w-lg lg:max-w-2xl mx-auto">{children}</div>
 		</Tab.Panel>
 	)
 }
