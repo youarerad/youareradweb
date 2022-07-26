@@ -44,10 +44,6 @@ export default function DonateOnce() {
 		  }
 		: DonateOnceConfig[currentOption]
 
-	const canChooseDonation = useMemo(() => {
-		return !!customAmount && customAmount > 0
-	}, [customAmount])
-
 	const { isLoading, ...createCheckout } = trpc.useMutation('checkout.create-onetime-donation')
 
 	const handleDonationSubmit = async (event: { preventDefault: () => void }) => {
@@ -74,13 +70,14 @@ export default function DonateOnce() {
 		localStorage.setItem('leavecommentMessage', JSON.stringify(leavecommentMessage))
 	}, [inhonorMessage, leavecommentMessage])
 
+	console.log(selectedOption)
+
 	return (
 		<>
 			<form onSubmit={handleDonationSubmit}>
 				<div className="grid grid-cols-3 gap-4 mb-4">
 					<AppRadioGroup
 						value={currentOption}
-						disabled={canChooseDonation}
 						onChange={(index) => {
 							setCurrentOption(index)
 							setCustomAmount(undefined)
@@ -95,7 +92,9 @@ export default function DonateOnce() {
 						value={customAmount}
 						onChange={(e) => {
 							setCustomAmount(e.currentTarget.valueAsNumber)
+							setCurrentOption(e.currentTarget.valueAsNumber ? -1 : 0)
 						}}
+						activeStyle={customAmount ? true : false}
 					/>
 					<p className="col-span-3">
 						Your donation of{' '}
