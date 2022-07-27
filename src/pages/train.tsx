@@ -13,7 +13,6 @@ import { useRouter } from 'next/router'
 import SectionLinks from '@components/CreatorCare/SectionLinks'
 import { FeatureCard } from '@components/CreatorCare/FeatureCard'
 import { FilterCreators } from 'backend/router/creators/fetchCreators'
-import SectionGrid from '@layouts/SectionGrid'
 
 export default function Train() {
 	const [creators, setCreators] = useState<FilterCreators[]>([])
@@ -23,9 +22,10 @@ export default function Train() {
 	}
 	const alertRef = useRef<HTMLVideoElement>(null)
 	const [alertVisable, setAlertVisable] = useState(true)
-	const { data } = trpc.useQuery(['creators.creators'], {
+	const { status } = trpc.useQuery(['creators.creators'], {
 		onSuccess(data) {
 			setCreators(data)
+			console.log(status)
 		},
 		staleTime: Infinity,
 		refetchOnReconnect: false,

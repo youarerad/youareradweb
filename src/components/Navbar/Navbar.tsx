@@ -65,7 +65,7 @@ export default function Navbar() {
 								{({ open, close }) => (
 									<>
 										<Popover.Button
-											className="flex flex-wrap items-center p-2 overflow-hidden text-sm font-bold outline-none group rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black"
+											className="flex flex-wrap items-center p-2 overflow-hidden text-sm font-semibold outline-none group rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black"
 											role="navigation"
 											aria-label="Open menu to learn more about getting involved."
 										>
@@ -168,6 +168,11 @@ export default function Navbar() {
 									</>
 								)}
 							</Popover>
+							<Link href="/donate" passHref>
+								<button className="relative z-30 px-4 py-2 text-sm font-semibold text-white duration-200 shadow-xl outline-none bg-rad rounded-xl focus:ring-4 ring-secondary-light hover:bg-primary-light focus:bg-primary-light">
+									Donate
+								</button>
+							</Link>
 						</Popover.Group>
 					</nav>
 					<Transition

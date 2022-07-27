@@ -4,7 +4,6 @@ export const corePages = [
 		name: 'Start therapy',
 		href: '/therapy',
 	},
-	{ name: 'Donate', href: '/donate' },
 ]
 
 export const supportPages = [

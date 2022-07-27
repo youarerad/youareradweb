@@ -14,7 +14,7 @@ export default function NavLink({ children, href, subItem, onClick }: NavLinkPro
 		<Link href={href} passHref>
 			<button
 				onClick={onClick}
-				className={`relative z-30 inline-block p-2 text-sm font-semibold outline-none rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black ${
+				className={`relative z-30 p-2 text-sm font-semibold outline-none rounded-xl focus:ring-4 focus:ring-secondary-light hover:bg-black hover:text-white focus-within:text-white focus-within:bg-black ${
 					subItem &&
 					'items-center flex p-3 text-xl font-bold rounded-md hover:bg-primary-light hover:bg-opacity-20 focus:bg-primary-light focus:bg-opacity-20 w-full'
 				}`}

@@ -1,5 +1,5 @@
 import { DonateOnceConfig } from './DonateConfig'
-import { useState, useEffect, SetStateAction, useMemo } from 'react'
+import { useState, useEffect, SetStateAction } from 'react'
 import getStripe from '@utils/hooks/getStripe'
 import { trpc } from '@libs/trpc'
 import PrimaryButton from '@components/PrimaryButton'
