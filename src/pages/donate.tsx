@@ -1,16 +1,9 @@
-import {
-	CareAgeChart,
-	CareCountryChart,
-	CareGenderChart,
-	CareRaceChart,
-	CareSexualityChart,
-} from '@components/CareCharts'
 import FeatureSection from '@components/FeatureSection'
 import HeaderSection from '@components/HeaderSection'
 import dynamic from 'next/dynamic'
 import PageSEO from '@components/SEO/PageSEO'
-import { Tab } from '@headlessui/react'
-import classNames from '@utils/classNames'
+
+const CareCharts = dynamic(() => import('@components/CareCharts'))
 
 const DonateWidget = dynamic(() => import('@components/Donate/DonateLayout'), {
 	ssr: false,
@@ -73,58 +66,8 @@ export default function Doante() {
 					headerTextHighlightColor="from-primary to-secondary"
 					headerTextHighlightBlock
 				/>
-				<Tab.Group vertical>
-					<div className="grid items-center grid-cols-1 sm:grid-cols-4 sm:gap-x-2 lg:gap-x-0">
-						<Tab.List className="grid order-2 grid-cols-2 gap-2 mt-10 sm:gap-x-0 sm:flex sm:flex-col sm:space-y-2 sm:order-1 sm:mt-0">
-							<TabButton tabHeader="Gender" />
-							<TabButton tabHeader="Sexuality" />
-							<TabButton tabHeader="Race" />
-							<TabButton tabHeader="Age Range" />
-							<TabButton tabHeader="Country" />
-						</Tab.List>
-						<Tab.Panels className="order-1 col-span-3 sm:order-2">
-							<TabPanel>
-								<CareGenderChart />
-							</TabPanel>
-							<TabPanel>
-								<CareSexualityChart />
-							</TabPanel>
-							<TabPanel>
-								<CareRaceChart />
-							</TabPanel>
-							<TabPanel>
-								<CareAgeChart />
-							</TabPanel>
-							<TabPanel>
-								<CareCountryChart />
-							</TabPanel>
-						</Tab.Panels>
-					</div>
-				</Tab.Group>
+				<CareCharts />
 			</section>
 		</div>
-	)
-}
-
-function TabButton({ tabHeader }: { tabHeader: string }) {
-	return (
-		<Tab
-			className={({ selected }) =>
-				classNames(
-					selected ? 'bg-secondary text-white border-white' : 'hover:bg-black/10',
-					'py-2 px-3 text-base font-bold w-full rounded-xl focus:bg-secondary focus:text-white transition-all duration-300 ease-linear outline-none focus:ring-4 focus:ring-secondary-light text-left border'
-				)
-			}
-		>
-			{tabHeader}
-		</Tab>
-	)
-}
-
-function TabPanel({ children }: { children: React.ReactNode }) {
-	return (
-		<Tab.Panel>
-			<div className="max-w-lg mx-auto lg:max-w-2xl">{children}</div>
-		</Tab.Panel>
 	)
 }
