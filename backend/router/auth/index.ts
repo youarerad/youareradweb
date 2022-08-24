@@ -1,10 +1,10 @@
-import { TRPCError } from '@trpc/server'
+import * as trpc from '@trpc/server'
 import { string, z } from 'zod'
-import { createRouter } from '../createRouter'
 import checkCreatorAuth from './checkCreatorAuth'
 import getDiscordID, { getDiscordConnections } from './fetchDiscordId'
 
-export const router = createRouter()
+export const authRouter = trpc
+	.router()
 	.query('next-auth.getSession', {
 		async resolve({ ctx }) {
 			return ctx.session
@@ -26,15 +26,7 @@ export const router = createRouter()
 			return await getDiscordConnections(input.key)
 		},
 	})
-	.middleware(async ({ ctx, next }) => {
-		if (!ctx.session) {
-			throw new TRPCError({
-				code: 'UNAUTHORIZED',
-				message: 'You must be logged in to access this resource.',
-			})
-		}
-		return next()
-	})
+
 	.query('next-auth.getSecretCode', {
 		async resolve() {
 			const secretCode = process.env.NEXTAUTH_SECRET

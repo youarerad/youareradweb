@@ -9,7 +9,6 @@ import { useAnalytics } from '@utils/hooks/useAnalytics'
 import DefaultSEO from '@components/SEO/DefaultSEO'
 import { ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
-import superjson from 'superjson'
 import { AppType } from 'next/dist/shared/lib/utils'
 
 export type NextPageWithLayout = NextPage & {
@@ -46,33 +45,19 @@ function getBaseUrl() {
 
 export default withTRPC<AppRouter>({
 	config() {
+		const url = `${getBaseUrl()}/api/trpc`
 		return {
 			links: [
 				loggerLink({
-					enabled: () => true,
+					enabled: (opts) =>
+						process.env.NODE_ENV === 'development' ||
+						(opts.direction === 'down' && opts.result instanceof Error),
 				}),
 				httpBatchLink({
-					url: `${getBaseUrl()}/api/trpc`,
+					url,
 				}),
 			],
-			transformer: superjson,
 		}
 	},
-	ssr: true,
-	responseMeta({ ctx, clientErrors }) {
-		if (clientErrors.length) {
-			// propagate http first error from API calls
-			return {
-				status: clientErrors[0].data?.httpStatus ?? 500,
-			}
-		}
-
-		// cache request for 1 day + revalidate once every second
-		const ONE_DAY_IN_SECONDS = 60 * 60 * 24
-		return {
-			headers: {
-				'cache-control': `s-maxage=1, stale-while-revalidate=${ONE_DAY_IN_SECONDS}`,
-			},
-		}
-	},
+	ssr: false,
 })(MyApp)
