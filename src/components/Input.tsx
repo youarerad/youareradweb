@@ -7,7 +7,16 @@ import { useField } from '@unform/core'
 interface Props {
 	name: string
 	label?: string
-	variant: 'text' | 'textarea' | 'radio' | 'email' | 'number' | 'phone' | 'zipcode'
+	variant:
+		| 'text'
+		| 'textarea'
+		| 'radio'
+		| 'email'
+		| 'number'
+		| 'phone'
+		| 'zipcode'
+		| 'alt-text'
+		| 'alt-email'
 
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 	radioGroup?: string
@@ -174,6 +183,77 @@ export default function Input({
 			</div>
 		)
 	}
+
+	if (variant === 'alt-text') {
+		return (
+			<div className="relative group">
+				{label && (
+					<label className="font-semibold" htmlFor={fieldName}>
+						{label}
+					</label>
+				)}
+				<input
+					id={fieldName}
+					ref={inputRef}
+					onFocus={clearError}
+					defaultValue={defaultValue}
+					type="text"
+					{...rest}
+					className={classNames(
+						error ? 'border-red-light' : 'border-gray-light',
+						'relative block w-full px-3 py-2 transition-all duration-300 ease-in-out border-2 rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light hover:text-black focus-within:text-black'
+					)}
+				/>
+				{error && <span className="text-sm text-red">{error}</span>}
+			</div>
+		)
+	}
+
+	if (variant === 'alt-email') {
+		return (
+			<div>
+				{label && (
+					<label className="font-semibold" htmlFor={fieldName}>
+						{label}
+					</label>
+				)}
+				<div className="relative group">
+					<input
+						id={fieldName}
+						ref={inputRef}
+						type="email"
+						onFocus={clearError}
+						disabled={props.disabled}
+						defaultValue={defaultValue}
+						{...rest}
+						className={classNames(
+							error ? 'border-red-light' : 'border-gray-light',
+							'relative block w-full px-10 py-2 transition-all duration-300 ease-in-out border-2 rounded-xl bg-secondary-light bg-opacity-10 focus-within:bg-white focus-within:shadow-sm hover:bg-white disabled:bg-gray-light disabled:bg-opacity-50 disabled:placeholder-transparent outline-none focus:ring-4 focus:ring-secondary-light hover:text-black focus-within:text-black'
+						)}
+					/>
+					<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none select-none">
+						<svg
+							aria-hidden
+							xmlns="http://www.w3.org/2000/svg"
+							className="h-7 w-7 text-gray-light"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+							/>
+						</svg>
+					</div>
+				</div>
+				{error && <span className="text-sm text-red">{error}</span>}
+			</div>
+		)
+	}
+
 	return (
 		<div className="relative group">
 			{label && (

@@ -11,7 +11,7 @@ export default function LazyVideo({
 	classnames?: string | undefined
 }) {
 	const [inViewRef, inView] = useInView({
-		threshold: 1,
+		threshold: 0.5,
 	})
 	const videoRef = useRef<HTMLVideoElement>()
 

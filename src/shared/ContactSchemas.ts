@@ -53,3 +53,14 @@ export const createEventSignupFormSchema = z.object({
 })
 
 export type CreateEventSignupFormSchema = z.output<typeof createEventSignupFormSchema>
+
+export const createCommunityCareFormSchema = z.object({
+	email: z.string().email({ message: 'Email invalid' }),
+	discord: z
+		.string({ required_error: 'Discord is required' })
+		.min(4, 'Discord must be at least 4 characters'),
+	twitter: z.string().optional().default(''),
+	platform: z.string({ required_error: 'Platform username is required' }).min(2),
+})
+
+export type CreateCommunityCareFormSchema = z.output<typeof createCommunityCareFormSchema>

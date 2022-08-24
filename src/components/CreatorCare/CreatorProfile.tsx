@@ -4,6 +4,7 @@ import classNames from '@utils/classNames'
 import { FilterCreators } from 'backend/router/creators/fetchCreators'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
 type CreatorProfileProps = {
 	creators: Array<FilterCreators>
 }
@@ -31,14 +32,14 @@ export default function CreatorProfile({ creators }: CreatorProfileProps) {
 	const [tabIndex, setTabIndex] = useState(0)
 	return (
 		<Tab.Group vertical selectedIndex={tabIndex} onChange={(index) => setTabIndex(index)}>
-			<div className="flex flex-col w-full lg:flex-row">
-				<Tab.List className="flex flex-col order-2 w-full lg:w-1/2">
+			<div className="grid w-full grid-cols-1 sm:grid-cols-2">
+				<Tab.List className="flex flex-col order-2 w-full">
 					{creators.map((creator) => (
 						<Tab
 							key={creator.name}
 							className={({ selected }) =>
 								classNames(
-									selected ? ' text-white bg-primary' : 'hover:bg-gray-light ',
+									selected ? ' text-white bg-secondary' : 'hover:bg-gray-light ',
 									'rounded-xl outline-none duration-100'
 								)
 							}
@@ -53,27 +54,40 @@ export default function CreatorProfile({ creators }: CreatorProfileProps) {
 										<td>{creator.name}</td>
 										<td>{creator.therapySessionsPaid?.toLocaleString()}</td>
 									</tr>
+									<tr className="flex justify-between w-full text-sm font-bold">
+										<td>
+											<Link href={creator.twitchChannel!} passHref>
+												<a href={creator.twitchChannel!} target="_blank" rel="noreferrer">
+													<Image src="/icons/Twitch.svg" width="20" height="20" alt="" />
+												</a>
+											</Link>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</Tab>
 					))}
 				</Tab.List>
 				{creators.map((creator) => (
-					<Tab.Panel key={creator.name} className="flex flex-col items-center mx-auto">
-						<div className="relative w-64 overflow-hidden h-96">
-							<AnimatePresence exitBeforeEnter>
-								<motion.div initial="hide" animate="show" exit="hide" variants={tabAnim}>
-									<Image
-										src={creator!.profilePhoto!}
-										layout="fill"
-										alt=""
-										quality="100"
-										objectFit="cover"
-										objectPosition="top"
-									/>
-								</motion.div>
-							</AnimatePresence>
-						</div>
+					<Tab.Panel key={creator.name} className="px-20">
+						<AnimatePresence exitBeforeEnter>
+							<motion.div
+								initial="hide"
+								animate="show"
+								exit="hide"
+								variants={tabAnim}
+								className="relative overflow-hidden aspect-square rounded-xl"
+							>
+								<Image
+									src={creator!.profilePhoto!}
+									layout="fill"
+									alt=""
+									quality="100"
+									objectFit="cover"
+									objectPosition="top"
+								/>
+							</motion.div>
+						</AnimatePresence>
 					</Tab.Panel>
 				))}
 			</div>

@@ -170,7 +170,7 @@ export default function CareCharts() {
 	)
 }
 
-function TabButton({ tabHeader }: { tabHeader: string }) {
+export function TabButton({ tabHeader }: { tabHeader: string }) {
 	return (
 		<Tab
 			className={({ selected }) =>
@@ -185,7 +185,7 @@ function TabButton({ tabHeader }: { tabHeader: string }) {
 	)
 }
 
-function TabPanel({ children }: { children: React.ReactNode }) {
+export function TabPanel({ children }: { children: React.ReactNode }) {
 	return (
 		<Tab.Panel>
 			<div className="max-w-lg mx-auto lg:max-w-2xl">{children}</div>

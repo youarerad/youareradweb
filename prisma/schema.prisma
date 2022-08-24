@@ -83,11 +83,30 @@ model Creator {
   therapySessionsRemaining Int?
 }
 
+model CCSignup {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  discord   String?   @db.VarChar
+  email      String?  @db.VarChar @unique
+  twitter   String?    @db.VarChar
+  platform  String?    @db.VarChar
+}
+
 model EventSignup {
   id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   created_at DateTime? @default(now()) @db.Timestamptz(6)
   name       String?
   email      String?
+}
+
+
+ model Bids {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String?   @db.VarChar
+  email      String?   @db.VarChar
+  amount     Decimal?  @db.Decimal
+  item       String?   @db.VarChar
 }
 
 enum PaymentMethod {

@@ -54,7 +54,7 @@ export const twitterTestimonialData = [
 		isVerified: true,
 		userHandle: 'ItzMasayoshi',
 		tweetBody:
-			'shout out to @YouAreRAD for helping my family, friends, and myself for doing all the heavy lifting when finding us therapists. If you are also intimitweetDated to get help like I was, consider checking out RAD 😇',
+			'shout out to @YouAreRAD for helping my family, friends, and myself for doing all the heavy lifting when finding us therapists. If you are also intimidated to get help like I was, consider checking out RAD 😇',
 		tweetTime: '1:11 PM',
 		tweetDate: 'Dec 21, 2021',
 		tweetComments: '16',

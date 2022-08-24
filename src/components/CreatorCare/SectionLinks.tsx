@@ -52,9 +52,7 @@ export default function SectionLinks({ state, href, label }: activeLinkProps) {
 		<Link href={'#' + href} passHref>
 			<a
 				href={'#' + href}
-				className={`${
-					activeLink === href ? '' : 'text-gray hover:text-primary'
-				} group relative font-bold`}
+				className={`${activeLink === href ? '' : ' hover:text-primary'} group relative font-bold`}
 			>
 				{label}
 				<span>

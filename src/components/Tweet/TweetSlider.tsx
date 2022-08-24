@@ -8,10 +8,6 @@ export default function TweetSlider() {
 
 	const [refCallback] = useKeenSlider(
 		{
-			slideChanged() {
-				console.log('slide changed')
-			},
-
 			loop: true,
 			renderMode: 'precision',
 			slides: {
@@ -55,7 +51,7 @@ export default function TweetSlider() {
 	)
 
 	return (
-		<>
+		<div className="space-y-0">
 			<div ref={refCallback} className="keen-slider">
 				<TweetSlide TwitterPostData={creatorCarePart1} />
 			</div>
@@ -63,6 +59,6 @@ export default function TweetSlider() {
 			<div ref={refSlideTwo} className="keen-slider">
 				<TweetSlide TwitterPostData={creatorCarePart2} />
 			</div>
-		</>
+		</div>
 	)
 }

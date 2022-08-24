@@ -169,7 +169,7 @@ export default function Navbar() {
 								)}
 							</Popover>
 							<Link href="/donate" passHref>
-								<button className="relative z-30 px-4 py-2 text-sm font-semibold text-white duration-200 shadow-xl outline-none bg-rad rounded-xl focus:ring-4 ring-secondary-light hover:bg-primary-light focus:bg-primary-light">
+								<button className="relative z-30 px-4 py-2 text-sm font-semibold text-white duration-200 shadow-xl outline-none bg-rad rounded-xl focus:ring-4 ring-secondary-light hover:shadow-none hover:bg-black/20 hover:bg-blend-overlay">
 									Donate
 								</button>
 							</Link>

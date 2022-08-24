@@ -21,9 +21,7 @@ export default function Select({ ariaLabel, options, disabled, state }: SelectPr
 
 	return (
 		<div className="relative space-y-1 group">
-			<span className="font-semibold text-gray group-focus-within:text-secondary ">
-				{ariaLabel}
-			</span>
+			<span className="font-semibold group-focus-within:text-secondary ">{ariaLabel}</span>
 			<Listbox value={selected} onChange={setSelected} disabled={disabled}>
 				<Listbox.Button
 					className={({ open }) =>

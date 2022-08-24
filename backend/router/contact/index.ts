@@ -1,5 +1,6 @@
 import * as trpc from '@trpc/server'
 import {
+	createCommunityCareFormSchema,
 	createContactFormSchema,
 	createContactPartnerSchema,
 	createContactVolunteerSchema,
@@ -9,6 +10,7 @@ import { z } from 'zod'
 import {
 	createContactForm,
 	createEventSignupForm,
+	createNewCreatorSignup,
 	createNewsletterForm,
 	createPartnerForm,
 } from './create-contact'
@@ -60,5 +62,11 @@ export const contactRouter = trpc
 		input: createEventSignupFormSchema,
 		async resolve({ input }) {
 			return await createEventSignupForm(input.name, input.email)
+		},
+	})
+	.mutation('create-cc-signup', {
+		input: createCommunityCareFormSchema,
+		async resolve({ input }) {
+			return await createNewCreatorSignup(input)
 		},
 	})
