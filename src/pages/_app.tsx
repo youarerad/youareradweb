@@ -59,5 +59,16 @@ export default withTRPC<AppRouter>({
 			],
 		}
 	},
-	ssr: false,
+	ssr: true,
+	responseMeta({ ctx, clientErrors }) {
+		if (clientErrors.length) {
+			return { status: clientErrors[0].data?.httpStatus ?? 500 }
+		}
+		const ONE_DAY_IN_SECONDS = 60 * 60 * 24
+		return {
+			headers: {
+				'cache-control': `s-maxage=1, stale-while-revalidate=${ONE_DAY_IN_SECONDS}`,
+			},
+		}
+	},
 })(MyApp)

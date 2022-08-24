@@ -1,10 +1,9 @@
-import * as trpc from '@trpc/server'
 import { string, z } from 'zod'
+import { createRouter } from '../createRouter'
 import checkCreatorAuth from './checkCreatorAuth'
 import getDiscordID, { getDiscordConnections } from './fetchDiscordId'
 
-export const authRouter = trpc
-	.router()
+export const authRouter = createRouter()
 	.query('next-auth.getSession', {
 		async resolve({ ctx }) {
 			return ctx.session
