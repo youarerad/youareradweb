@@ -11,11 +11,15 @@ interface PrimaryButtonProps {
 	disabled?: boolean
 	as?: 'button' | 'a'
 	size?: 'max-w-sm' | 'max-w-md' | 'max-w-lg' | 'max-w-xl'
+	name?: string | undefined
+	alt?: string | undefined
 }
 
 export default function PrimaryButton({
 	buttonText,
 	type,
+	name,
+	alt,
 	onClick,
 	disabled,
 	size,
@@ -25,6 +29,8 @@ export default function PrimaryButton({
 			disabled={disabled}
 			onClick={onClick}
 			type={type}
+			name={name}
+			alt={alt}
 			className={`relative w-full px-3 py-2 overflow-hidden text-base font-bold transition-all duration-300 ease-linear bg-white border-2 border-black outline-none rounded-xl hover:shadow-none focus-within:shadow-none hover:bg-black hover:text-white shadow-deep focus:bg-green-light disabled:bg-green-light disabled:shadow-none disabled:pointer-events-none focus-within:text-black focus:ring-4 focus:ring-secondary-light ${size}`}
 		>
 			<LazyMotion features={domAnimation}>
@@ -34,7 +40,7 @@ export default function PrimaryButton({
 					animate={{ y: [70, -200], rotate: [45, -20, 40] }}
 					transition={{ duration: 15, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Bubble1.webp" alt="" layout="fill" />
+					<Image src="/air/Bubble1.webp" alt="light purple bubbles flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -42,7 +48,7 @@ export default function PrimaryButton({
 					animate={{ y: [100, -100], rotate: [0, -45, 40] }}
 					transition={{ duration: 10, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf2.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf2.svg" alt="Green leaf flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -50,7 +56,7 @@ export default function PrimaryButton({
 					animate={{ y: [100, -200] }}
 					transition={{ duration: 15, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Bubble2.webp" alt="" layout="fill" />
+					<Image src="/air/Bubble2.webp" alt="light purple bubbles flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -82,7 +88,7 @@ export default function PrimaryButton({
 					animate={{ y: [100, -100], rotate: [0, -40, 0], x: [0, 100] }}
 					transition={{ duration: 17, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf4.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf4.svg" alt="Green leaf flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -90,7 +96,7 @@ export default function PrimaryButton({
 					animate={{ y: [100, -100], rotate: [0, -45, 60] }}
 					transition={{ duration: 14, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf1.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf1.svg" alt="Green leaf flowing upwards" layout="fill" />
 				</m.div>
 				{buttonText}
 			</LazyMotion>
