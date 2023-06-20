@@ -58,7 +58,8 @@ export default function FooterNewsletter() {
 	}
 	return (
 		<Form ref={formRef} onSubmit={handleSubmit} className="space-y-2">
-			<Input name="email" variant="email" disabled={submit} />
+			<label for="email"></label>
+			<Input id="email" name="email" variant="email" disabled={submit} />
 			<button
 				name="Subscribe"
 				alt="Subscribe"
