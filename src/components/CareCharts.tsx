@@ -142,7 +142,7 @@ export default function CareCharts() {
 		<Tab.Group vertical>
 			<div className="grid items-center grid-cols-1 sm:grid-cols-4 sm:gap-x-2 lg:gap-x-0">
 				<Tab.List className="grid order-2 grid-cols-2 gap-2 mt-10 sm:gap-x-0 sm:flex sm:flex-col sm:space-y-2 sm:order-1 sm:mt-0">
-					<TabButton tabHeader="Gender" />
+					<TabButton tabHeader="Gender" alt="Gender" />
 					<TabButton tabHeader="Sexuality" />
 					<TabButton tabHeader="Race" />
 					<TabButton tabHeader="Age Range" />
