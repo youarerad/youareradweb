@@ -84,7 +84,7 @@ const Page: NextPageWithLayout = () => {
 							</header>
 							<Discord />
 							<ModTraining />
-							<ReverseButton buttonText="Get Started" type="button" />
+							<ReverseButton buttonText="Get Started" type="button" name='Get started' alt='Get started' />
 						</section>
 
 						<section className="flex flex-col px-4 sm:px-6 lg:px-8 max-w-7xl">

@@ -4,14 +4,18 @@ import React from 'react'
 
 interface ReverseButtonProps {
 	buttonText: string | undefined
+	name?: string | undefined
+	alt?: string | undefined
 	type: 'button' | 'submit'
 	onClick?: (e: React.MouseEvent<HTMLElement>) => void
 	disabled?: boolean
 }
 
-export default function ReverseButton({ buttonText, type, onClick, disabled }: ReverseButtonProps) {
+export default function ReverseButton({ buttonText, type, onClick, disabled, name, alt }: ReverseButtonProps) {
 	return (
 		<button
+			name={name}
+			alt={alt}
 			disabled={disabled}
 			onClick={onClick}
 			type={type}
@@ -24,7 +28,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [70, -200], rotate: [45, -20, 40] }}
 					transition={{ duration: 15, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Bubble1.webp" alt="" layout="fill" />
+					<Image src="/air/Bubble1.webp" alt="Bubbles flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -32,7 +36,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -100], rotate: [0, -45, 40] }}
 					transition={{ duration: 10, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf2.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf2.svg" alt="Leaf flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -40,7 +44,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -200] }}
 					transition={{ duration: 15, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Bubble2.webp" alt="" layout="fill" />
+					<Image src="/air/Bubble2.webp" alt="Bubbles flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -48,7 +52,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -100], x: [-100, 0, 100], rotate: [0, -10, 40] }}
 					transition={{ duration: 14, repeat: Infinity, type: 'tween', ease: 'backOut' }}
 				>
-					<Image src="/air/Bubble3.webp" alt="" layout="fill" />
+					<Image src="/air/Bubble3.webp" alt="Bubbles flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -56,7 +60,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -100], rotate: [0, -40, 0] }}
 					transition={{ duration: 12, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf3.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf3.svg" alt="Leaf flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -64,7 +68,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -100] }}
 					transition={{ duration: 10, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Bubble4.webp" alt="" layout="fill" />
+					<Image src="/air/Bubble4.webp" alt="Bubbles flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -72,7 +76,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -100], rotate: [0, -40, 0], x: [0, 100] }}
 					transition={{ duration: 17, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf4.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf4.svg" alt="Leaf flowing upwards" layout="fill" />
 				</m.div>
 				<m.div
 					aria-hidden
@@ -80,7 +84,7 @@ export default function ReverseButton({ buttonText, type, onClick, disabled }: R
 					animate={{ y: [100, -100], rotate: [0, -45, 60] }}
 					transition={{ duration: 14, repeat: Infinity, type: 'spring' }}
 				>
-					<Image src="/air/Leaf1.svg" alt="" layout="fill" />
+					<Image src="/air/Leaf1.svg" alt="Leaf flowing upwards" layout="fill" />
 				</m.div>
 				{buttonText}
 			</LazyMotion>
